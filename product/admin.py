@@ -6,9 +6,9 @@ from . import models
 @admin.register(models.ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     # Display fields on the Admin page
-    list_display = ['title', 'parent', 'is_active', 'is_delete']
+    list_display = ['title', 'is_active', 'is_delete']
     # Changing the fields on the Admin page
-    list_editable = ['parent', 'is_active']
+    list_editable = ['is_active']
 
 
 # Admin panel customization for the ProductBrand

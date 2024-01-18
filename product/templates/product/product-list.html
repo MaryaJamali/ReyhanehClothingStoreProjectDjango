@@ -84,27 +84,13 @@
                                             <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب دسته بندی</h6>
                                         </div>
                                         <div class="single_filter_card">
-                                            {% for main_category in main_categories %}
-                                                <h5><a href="#womens" data-toggle="collapse" class="collapsed"
-                                                       aria-expanded="false" role="button">
-                                                        {{ main_category.title }}
-                                                        <i class="accordion-indicator ti-angle-down"></i>
-                                                    </a></h5>
-                                                <div class="collapse" id="womens"
-                                                     data-parent="#womens-categories">
-                                                    <div class="card-body">
-                                                        <div class="inner_widget_link">
-                                                            <ul class="m-0 p-0">
-                                                                {% for sub_category in main_category.product_categories_set.all %}
-                                                                    <li>
-                                                                        <a href="{% url 'product_list_page_view' %}">
-                                                                            {{ sub_category.title }}<span>112</span></a>
-                                                                    </li>
-                                                                {% endfor %}
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            {% for main_category in product_main_categories %}
+                                                {% if main_category.product_categories.all %}
+                                                    <h5>
+                                                        <a href="{% url 'product_by_category_list' category=main_category.url_title %}">
+                                                        {{ main_category.title }}</a>
+                                                    </h5>
+                                                {% endif %}
                                             {% endfor %}
                                         </div>
                                     </div>

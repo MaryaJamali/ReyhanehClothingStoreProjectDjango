@@ -9,7 +9,6 @@ class ProductCategory(models.Model):
     # ...This increases the speed of query and is used for fields that receive a lot of query.
     title = models.CharField(max_length=300, db_index=True, verbose_name='عنوان')
     url_title = models.CharField(max_length=300, db_index=True, verbose_name='عنوان در url')
-    parent = models.ForeignKey('ProductCategory', null=True, blank=True, on_delete=models.CASCADE, verbose_name='دسته بندی والد')
     is_active = models.BooleanField(verbose_name='فعال / غیرفعال')
     # The information is not displayed except in the admin
     is_delete = models.BooleanField(verbose_name='حذف شده / نشده')
