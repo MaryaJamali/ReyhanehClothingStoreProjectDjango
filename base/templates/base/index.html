@@ -1,0 +1,567 @@
+{% extends 'shared/layout.html' %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Themezhub"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>فروشگاه لباس ریحانه</title>
+    </head>
+    <body>
+    <!-- ============Preloader - style you can find in spinners.css============ -->
+    <div class="preloader"></div>
+    <!-- ============================ Hero Banner  Start================================== -->
+    <div class="home-slider hide-navigation margin-bottom-0">
+        <!-- ============================Slide================================== -->
+        <div data-background-image="{% static 'img/banner-f.jpg' %}" class="item" data-overlay="3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="home-slider-container">
+                            <!-- ============================Slide Title================================= -->
+                            <div class="home-slider-desc text-center">
+                                <div class="home-slider-title mb-4">
+                                    <h5 class="text-light ft-medium lg-heading">استایل خودت رو بساز</h5>
+                                    <h1 class="mb-1 ft-medium mb-md-3">2023</h1>
+                                </div>
+                            </div>
+                            <!-- ============================End Slide Title================================= -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================Slide================================== -->
+        <div data-background-image="{% static 'img/banner-d.jpg' %}" class="item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="home-slider-container">
+                            <!-- ============================Slide Title================================= -->
+                            <div class="home-slider-desc">
+                                <div class="home-slider-title mb-4">
+                                    <h1 class="text-light ft-medium lg-heading">متفاوت باشید،متفاوت بپوشید</h1>
+                                    <span class="trending text-light">فروش ویژه انواع لباس های مردانه</span>
+                                </div>
+                            </div>
+                            <!-- ============================End Slide Title================================= -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================Slide================================== -->
+        <div data-background-image="{% static 'img/banner-e.jpg' %}" class="item" data-overlay="3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="home-slider-container">
+                            <!-- ============================Slide Title================================= -->
+                            <div class="home-slider-desc text-center">
+                                <div class="home-slider-title mb-4">
+                                    <h5 class="text-light fs-lg ft-medium mb-0">سبک های زمستانی را دریافت کنید</h5>
+                                    <h1 class="mb-1 ft-bold lg-heading">تخفیف تا40%</h1>
+                                </div>
+                            </div>
+                            <!-- ============================End Slide Title================================= -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================ Hero Banner End ================================== -->
+    <!-- =======================Start Category Style ======================== -->
+    <section class="p-0">
+        <div class="container">
+            <div class="row overlio">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                    <div class="cats_caption_wrap">
+                        <div class="cats_caption_thumb mb-2">
+                            <a href="{% url 'product_list_page_view' %}" class="d-block"><img
+                                    src="{% static 'img/a-4.png' %}" class="img-fluid rounded"
+                                    alt=""/></a>
+                        </div>
+                        <div class="cats_caption text-center">
+                            <h4 class="m-0">زنانه</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                    <div class="cats_caption_wrap">
+                        <div class="cats_caption_thumb mb-2">
+                            <a href="{% url 'product_list_page_view' %}" class="d-block"><img
+                                    src="{% static 'img/a-5.png' %}" class="img-fluid rounded"
+                                    alt=""/></a>
+                        </div>
+                        <div class="cats_caption text-center">
+                            <h4 class="m-0">مردانه</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                    <div class="cats_caption_wrap">
+                        <div class="cats_caption_thumb mb-2">
+                            <a href="{% url 'product_list_page_view' %}" class="d-block"><img
+                                    src="{% static 'img/a-12.png' %}" class="img-fluid rounded"
+                                    alt=""/></a>
+                        </div>
+                        <div class="cats_caption text-center">
+                            <h4 class="m-0">دخترانه</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                    <div class="cats_caption_wrap">
+                        <div class="cats_caption_thumb mb-2">
+                            <a href="{% url 'product_list_page_view' %}" class="d-block"><img
+                                    src="{% static 'img/a-6.png' %}" class="img-fluid rounded"
+                                    alt=""/></a>
+                        </div>
+                        <div class="cats_caption text-center">
+                            <h4 class="m-0">پسرانه</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =======================End Category Style ======================== -->
+    <!-- =======================Start Product List ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="sec_title position-relative text-center">
+                        <h2 class="off_title">محصولات پر طرفدار</h2>
+                        <h3 class="ft-bold pt-3">محصولات پر طرفدار ما</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================Row================================= -->
+            <div class="row align-items-center rows-products">
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
+                            پرفروش
+                        </div>
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/1.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">نیم ست
+                                        دویدن</a></h5>
+                                    <div class="elis_rty"><span class="ft-bold fs-md text-dark">119000 تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <div class="badge bg-info text-white position-absolute ft-regular ab-right  text-upper">جدید
+                        </div>
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/2.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">
+                                        مردانه رسمی</a></h5>
+                                    <div class="elis_rty"><span
+                                            class="text-muted ft-medium line-through ml-2">129000 تومان</span><span
+                                            class="ft-bold theme-cl fs-md">79000 تومان</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/3.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">لباس دویدن
+                                        نیمه</a></h5>
+                                    <div class="elis_rty"><span class="ft-bold fs-md text-dark">80000 تومان</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <div class="badge bg-warning text-white position-absolute ft-regular ab-right  text-upper">
+                            پرطرفدار
+                        </div>
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/4.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">لباس زنانه
+                                        نیمه فانتزی</a></h5>
+                                    <div class="elis_rty"><span
+                                            class="text-muted ft-medium line-through ml-2">149000 تومان</span><span
+                                            class="ft-bold theme-cl fs-md">110000 تومان</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/5.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">شلوار
+                                        جین</a></h5>
+                                    <div class="elis_rty"><span
+                                            class="text-muted ft-medium line-through ml-2">90000 تومان</span><span
+                                            class="ft-bold theme-cl fs-md">49000 تومان</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <div class="badge bg-danger text-white position-absolute ft-regular ab-right  text-upper">
+                            پرطرفدار
+                        </div>
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/6.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">کت و شلوار
+                                        سالوار فانتزی</a></h5>
+                                    <div class="elis_rty"><span class="ft-bold fs-md text-dark">114000 تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
+                            پرفروش
+                        </div>
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/7.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">لباس کامل
+                                        کلوت</a></h5>
+                                    <div class="elis_rty"><span
+                                            class="ft-bold theme-cl fs-md text-dark">120000 تومان</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================Single================================= -->
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="product_grid card b-0">
+                        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                class="far fa-heart"></i></button>
+                        <div class="card-body p-0">
+                            <div class="shop_thumb position-relative">
+                                <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                        class="card-img-top" src="{% static 'img/product/8.jpg' %}" alt="..."></a>
+                                <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                    <div class="edlio"><a href="#" data-toggle="modal" data-target="#quickview"
+                                                          class="text-white fs-sm ft-medium"><i
+                                            class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                            <div class="text-left">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">رسمی فلوکس
+                                        کورتی</a></h5>
+                                    <div class="elis_rty"><span
+                                            class="text-muted ft-medium line-through ml-2">149000 تومان</span><span
+                                            class="ft-bold theme-cl fs-md">129000 تومان</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================Row================================= -->
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="position-relative text-center">
+                        <a href="shop-style-1.html" class="btn stretched-link borders">مشاهده بیشتر<i
+                                class="lni lni-arrow-left mr-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =======================End Product List ======================== -->
+    <!-- =======================Start Deals of The Day ====================== -->
+    <section class="bg-cover" style="background:url({% static 'img/banner-i.jpg' %}) no-repeat;" data-overlay="5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
+                    <div class="deals_wrap text-center">
+                        <h4 class="ft-medium text-light">تا %40 تخفیف بگیرید</h4>
+                        <h2 class="ft-bold text-light">فقط مجموعه های تابستانی</h2>
+                        <p class="text-light">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                            شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
+                            ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان
+                            جامعه و متخصصان را می طلبد</p>
+                        <div class="mt-5">
+                            <a href="#" class="btn btn-outline-light stretched-link"> خرید کنید ( :</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =======================End Deals of The Day ====================== -->
+
+    <!-- ======================= Blog Start ============================ -->
+    <section class="space min">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="sec_title position-relative text-center">
+                        <h2 class="off_title">آخرین خبرها</h2>
+                        <h3 class="ft-bold pt-3">به روز رسانی های جدید</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="_blog_wrap">
+                        <div class="_blog_thumb mb-2">
+                            <a href="#" class="d-block"><img src="{% static 'img/bl-1.png' %}" class="img-fluid rounded"
+                                                             alt=""/></a>
+                        </div>
+                        <div class="_blog_caption">
+                            <span class="text-muted">26 دی 1400</span>
+                            <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                            <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="_blog_wrap">
+                        <div class="_blog_thumb mb-2">
+                            <a href="#" class="d-block"><img src="{% static 'img/bl-2.png' %}" class="img-fluid rounded"
+                                                             alt=""/></a>
+                        </div>
+                        <div class="_blog_caption">
+                            <span class="text-muted">17 دی 1400</span>
+                            <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                            <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="_blog_wrap">
+                        <div class="_blog_thumb mb-2">
+                            <a href="#" class="d-block"><img src="{% static 'img/bl-3.png' %}" class="img-fluid rounded"
+                                                             alt=""/></a>
+                        </div>
+                        <div class="_blog_caption">
+                            <span class="text-muted">10 دی 1400</span>
+                            <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                            <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================= Blog End ============================ -->
+    <!-- ======================= Instagram Start ============================ -->
+    <section class="p-0">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="sec_title position-relative text-center">
+                        <h2 class="off_title">گالری اینستاگرام</h2>
+                        <span class="fs-lg ft-bold theme-cl pt-3">your_page@</span>
+                        <h3 class="ft-bold lh-1">از اینستاگرام</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-1.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-2.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-3.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-4.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-7.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-5.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-6.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="_insta_wrap">
+                        <div class="_insta_thumb">
+                            <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/i-8.png' %}"
+                                                                               class="img-fluid" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </body>
+    </html>
+{% endblock %}
+<!-- =======================End Content Page============================= -->
