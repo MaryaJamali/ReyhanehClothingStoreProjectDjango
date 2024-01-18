@@ -1,0 +1,255 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% load static %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Themezhub"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>صفحه لیست محصولات</title>
+    </head>
+    <body>
+    <div class="preloader"></div>
+    <!-- =============Main wrapper - style you can find in pages.scss=================== -->
+    <div id="main-wrapper">
+        <div class="clearfix"></div>
+        <!-- =======================Start Shop Style 1 ======================== -->
+        <section class="bg-cover" style="background:url({% static 'img/banner-5.png' %}) no-repeat;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="text-center py-5 mt-3 mb-3">
+                            <h1 class="ft-medium mb-3">فروشگاه ریحانه</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================End Shop Style 1 ======================== -->
+        <!-- =======================Start Filter Wrap Style 1 ======================== -->
+        <section class="py-2 br-bottom br-top">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                        <nav aria-label="breadcrumb text-right">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'product_list_page_view' %}">فروشگاه</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">زنانه</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-xl-9 col-lg-8 col-md-7 col-sm-12">
+                        <div class="filter_wraps elspo_wrap d-flex align-items-center justify-content-end">
+                            <div class="single_fitres elspo_filter ml-2 br-left">
+                                <a href="#filterBox" class="simple-button px-2" data-toggle="collapse" role="button"
+                                   aria-expanded="false" aria-controls="filterBox"><i
+                                        class="lni lni-text-align-left ml-2"></i><span
+                                        class="hide_mob">فیلترها</span></a>
+                            </div>
+                            <div class="single_fitres ml-2 br-left">
+                                <select class="custom-select simple">
+                                    <option value="1" selected="">مرتب سازی پیش فرض</option>
+                                    <option value="2">مرتب سازی براساس قیمت صعودی</option>
+                                    <option value="3">مرتب سازی براساس قیمت نزولی</option>
+                                    <option value="4">مرتب سازی براساس جدیدترین ها</option>
+                                    <option value="5">مرتب سازی براساس محبوبیت</option>
+                                    <option value="6">مرتب سازی براساس میزان تخفیف</option>
+                                    <option value="7">بصورت تصادفی</option>
+                                </select>
+                            </div>
+                            <div class="single_fitres">
+                                <a href="shop-list-sidebar.html" class="simple-button active"><i
+                                        class="ti-view-list"></i></a>
+                                <a href="shop-grid-3.html" class="simple-button mr-1"><i
+                                        class="ti-layout-grid2"></i></a>
+                                <a href="shop-style-4.html" class="simple-button mr-1"><i
+                                        class="ti-layout-grid3"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="collapse" id="filterBox">
+                            <div class="card py-3 b-0">
+                                <div class="row">
+                                    <!-- =======================Choose Category======================= -->
+                                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
+                                        <div class="single_filter_title mb-2">
+                                            <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب دسته بندی</h6>
+                                        </div>
+                                        <div class="single_filter_card">
+                                            {% for main_category in main_categories %}
+                                                <h5><a href="#womens" data-toggle="collapse" class="collapsed"
+                                                       aria-expanded="false" role="button">
+                                                        {{ main_category.title }}
+                                                        <i class="accordion-indicator ti-angle-down"></i>
+                                                    </a></h5>
+                                                <div class="collapse" id="womens"
+                                                     data-parent="#womens-categories">
+                                                    <div class="card-body">
+                                                        <div class="inner_widget_link">
+                                                            <ul class="m-0 p-0">
+                                                                {% for sub_category in main_category.product_categories_set.all %}
+                                                                    <li>
+                                                                        <a href="{% url 'product_list_page_view' %}">
+                                                                            {{ sub_category.title }}<span>112</span></a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <!-- =======================Choose Category======================= -->
+                                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
+                                        <div class="single_filter_title mb-2">
+                                            <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب برند</h6>
+                                        </div>
+                                        <div class="single_filter_card">
+                                            <h5><a href="#womens" data-toggle="collapse" class="collapsed"
+                                                   aria-expanded="false" role="button">لیلیان</a></h5>
+                                        </div>
+                                    </div>
+                                    <!-- =======================Choose Category======================= -->
+                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                        <div class="single_filter_title mb-2">
+                                            <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب سایز</h6>
+                                        </div>
+                                        <div class="form-check form-option form-check-inline mb-2">
+                                            <input class="form-check-input" type="radio" name="size" id="a28">
+                                            <label class="form-option-label" for="a28">28</label>
+                                        </div>
+                                        <div class="form-check form-option form-check-inline mb-2">
+                                            <input class="form-check-input" type="radio" name="sizes" id="a32">
+                                            <label class="form-option-label" for="a32">32</label>
+                                        </div>
+                                        <div class="form-check form-option form-check-inline mb-2">
+                                            <input class="form-check-input" type="radio" name="sizes" id="a36">
+                                            <label class="form-option-label" for="a36">36</label>
+                                        </div>
+                                        <div class="form-check form-option form-check-inline mb-2">
+                                            <input class="form-check-input" type="radio" name="sizes" id="a40">
+                                            <label class="form-option-label" for="a40">42</label>
+                                        </div>
+                                        <div class="form-check form-option form-check-inline mb-2">
+                                            <input class="form-check-input" type="radio" name="sizes" id="a42">
+                                            <label class="form-option-label" for="a42">44</label>
+                                        </div>
+                                    </div>
+                                    <!-- =======================Choose Category======================= -->
+                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                        <div class="single_filter_title mb-2">
+                                            <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب رنگ</h6>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8"
+                                                       id="whitea8">
+                                                <label class="form-option-label rounded-circle" for="whitea8"><span
+                                                        class="form-option-color rounded-circle blc7"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8" id="bluea8">
+                                                <label class="form-option-label rounded-circle" for="bluea8"><span
+                                                        class="form-option-color rounded-circle blc2"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8"
+                                                       id="yellowa8">
+                                                <label class="form-option-label rounded-circle" for="yellowa8"><span
+                                                        class="form-option-color rounded-circle blc5"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8" id="pinka8">
+                                                <label class="form-option-label rounded-circle" for="pink8"><span
+                                                        class="form-option-color rounded-circle blc3"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8" id="ared">
+                                                <label class="form-option-label rounded-circle" for="red"><span
+                                                        class="form-option-color rounded-circle blc4"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8" id="agreen">
+                                                <label class="form-option-label rounded-circle" for="agreen"><span
+                                                        class="form-option-color rounded-circle blc6"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8"
+                                                       id="askypet">
+                                                <label class="form-option-label rounded-circle" for="askypet"><span
+                                                        class="form-option-color rounded-circle blc9"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8"
+                                                       id="aphilips">
+                                                <label class="form-option-label rounded-circle" for="aphilips"><span
+                                                        class="form-option-color rounded-circle blc8"></span></label>
+                                            </div>
+                                            <div class="form-check form-option form-check-inline mb-1">
+                                                <input class="form-check-input" type="radio" name="colora8" id="aelio">
+                                                <label class="form-option-label rounded-circle" for="aelio"><span
+                                                        class="form-option-color rounded-circle blc1"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- =======================Choose Category======================= -->
+                                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
+                                        <div class="single_filter_title mb-2">
+                                            <h6 class="mb-0 fs-sm ft-medium text-muted">فیلتر براساس قیمت</h6>
+                                        </div>
+                                        <div class="side-list mb-2" dir="ltr">
+                                            <div class="rg-slider">
+                                                <input type="text" class="js-range-slider" name="my_range" value=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =============================End Filter Wrap ============================== -->
+        <!-- =======================Start All Product List ======================== -->
+        <section class="middle">
+            <div class="container">
+                <!-- =============================Row============================== -->
+                <div class="row align-items-center rows-products">
+                    {% for product in products %}
+                        {% include 'product/include/products-item-component.html' with product=product %}
+                    {% endfor %}
+                    <!-- =============================Row============================= -->
+                    <div class="row center">
+                        <div class="col-xl-12 col-lg-12 col-md-12 text-center">
+                            <ul class="pagination">
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                                {% endif %}
+                                {% for pageNumber in paginator.page_range reversed %}
+                                    <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
+                                        <a href="?page={{ pageNumber }}">{{ pageNumber }}</a></li>
+                                {% endfor %}
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    </body>
+    </html>
+{% endblock %}
+<!-- =======================End Content Page============================= -->

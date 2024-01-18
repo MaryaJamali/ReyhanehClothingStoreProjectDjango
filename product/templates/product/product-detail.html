@@ -1,0 +1,694 @@
+{% extends 'shared/layout.html' %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en" dir="rtl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Themezhub"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>صفحه جزییات محصول</title>
+    </head>
+    <body>
+    <!-- =========Preloader - style you can find in spinners.css================= -->
+    <div class="preloader"></div>
+    <!-- ==========Main wrapper - style you can find in pages.scss===================== -->
+    <div id="main-wrapper">
+        <!-- =======================Start Product Detail ======================== -->
+        <section class="middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="sp-loading"><img src="{% static 'img/product/15.png' %}" alt=""><br>
+                            در حال بارگذاری تصاویر
+                        </div>
+                        <div class="sp-wrap mb-3">
+                            <a href="{% static 'img/product/16.png' %}"><img src="{% static 'img/product/16.png' %}"
+                                                                             alt=""></a>
+                            <a href="{% static 'img/product/17.png' %}"><img src="{% static 'img/product/17.png' %}"
+                                                                             alt=""></a>
+                            <a href="{% static 'img/product/18.png' %}"><img src="{% static 'img/product/18.png' %}"
+                                                                             alt=""></a>
+                            <a href="{% static 'img/product/19.png' %}"><img src="{% static 'img/product/19.png' %}"
+                                                                             alt=""></a>
+                            <a href="{% static 'img/product/20.png' %}"><img src="{% static 'img/product/20.png' %}"
+                                                                             alt=""></a>
+                            <a href="{% static 'img/product/21.png' %}"><img src="{% static 'img/product/21.png' %}"
+                                                                             alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="prd_details">
+                            <div class="prt_01 mb-1"><span class="text-purple bg-light-purple rounded py-1">
+                                {{ product_detail.title }}</span></div>
+                            <div class="prt_02 mb-3">
+                                <h2 class="ft-bold mb-1">{{ product_detail.short_description }}</h2>
+                                <div class="text-right">
+                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                        <i class="fas fa-star "></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="small filled">(412 دیدگاه)</span>
+                                    </div>
+                                    <div class="elis_rty"><span class="ft-medium text-muted line-through fs-md ml-2">
+                                        199000تومان</span>
+                                        <span class="ft-bold theme-cl fs-lg ml-2">{{ product_detail.price }} تومان</span>
+                                        <span class="ft-regular text-light bg-success py-1 px-2 fs-sm"> موجود در انبار</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prt_03 mb-4">
+                                <p>{{ product_detail.description }}</p>
+                            </div>
+                            <div class="prt_04 mb-2">
+                                <p class="d-flex align-items-center mb-0 text-dark ft-medium">رنگ :</p>
+                                <div class="text-right">
+                                    <div class="form-check form-option form-check-inline mb-1">
+                                        <input class="form-check-input" type="radio" name="color8" id="white8">
+                                        <label class="form-option-label rounded-circle" for="white8"><span
+                                                class="form-option-color rounded-circle blc7"></span></label>
+                                    </div>
+                                    <div class="form-check form-option form-check-inline mb-1">
+                                        <input class="form-check-input" type="radio" name="color8" id="blue8">
+                                        <label class="form-option-label rounded-circle" for="blue8"><span
+                                                class="form-option-color rounded-circle blc2"></span></label>
+                                    </div>
+                                    <div class="form-check form-option form-check-inline mb-1">
+                                        <input class="form-check-input" type="radio" name="color8" id="yellow8">
+                                        <label class="form-option-label rounded-circle" for="yellow8"><span
+                                                class="form-option-color rounded-circle blc5"></span></label>
+                                    </div>
+                                    <div class="form-check form-option form-check-inline mb-1">
+                                        <input class="form-check-input" type="radio" name="color8" id="pink8">
+                                        <label class="form-option-label rounded-circle" for="pink8"><span
+                                                class="form-option-color rounded-circle blc3"></span></label>
+                                    </div>
+                                    <div class="form-check form-option form-check-inline mb-1">
+                                        <input class="form-check-input" type="radio" name="color8" id="red">
+                                        <label class="form-option-label rounded-circle" for="red"><span
+                                                class="form-option-color rounded-circle blc4"></span></label>
+                                    </div>
+                                    <div class="form-check form-option form-check-inline mb-1">
+                                        <input class="form-check-input" type="radio" name="color8" id="green">
+                                        <label class="form-option-label rounded-circle" for="green"><span
+                                                class="form-option-color rounded-circle blc6"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prt_04 mb-4">
+                                <p class="d-flex align-items-center mb-0 text-dark ft-medium">سایز :</p>
+                                <div class="text-right pb-0 pt-2">
+                                    <div class="form-check size-option form-option form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="28" checked="">
+                                        <label class="form-option-label" for="28">28</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="30">
+                                        <label class="form-option-label" for="30">30</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="32">
+                                        <label class="form-option-label" for="32">32</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="34">
+                                        <label class="form-option-label" for="34">34</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="36">
+                                        <label class="form-option-label" for="36">36</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="38">
+                                        <label class="form-option-label" for="38">38</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="40">
+                                        <label class="form-option-label" for="40">40</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="42">
+                                        <label class="form-option-label" for="42">42</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="44">
+                                        <label class="form-option-label" for="44">44</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="46">
+                                        <label class="form-option-label" for="46">46</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="48">
+                                        <label class="form-option-label" for="48">48</label>
+                                    </div>
+                                    <div class="form-check form-option size-option  form-check-inline mb-2">
+                                        <input class="form-check-input" type="radio" name="size" id="50">
+                                        <label class="form-option-label" for="50">50</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prt_05 mb-4">
+                                <div class="form-row mb-7">
+                                    <div class="col-12 col-lg-auto">
+                                        <!-- ======================= Quantity================== -->
+                                        <select class="mb-2 custom-select">
+                                            <option value="1" selected="">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-lg">
+                                        <!-- ======================= Submit ===================== -->
+                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
+                                            <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-lg-auto">
+                                        <!-- ======================= Wishlist===================== -->
+                                        <button class="btn custom-height btn-default btn-block mb-2 text-dark"
+                                                data-toggle="button">
+                                            <i class="lni lni-heart ml-2"></i>علاقه مندی
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prt_06">
+                                <p class="mb-0 d-flex align-items-center">
+                                    <span class="ml-4"> برند :</span>
+                                    {% if product_detail.brand %}
+                                        {{ product_detail.brand.title }}
+                                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ======================= Product Detail End ======================== -->
+        <!-- =======================Start Product Description ======================= -->
+        <section class="middle">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12">
+                        <ul class="nav nav-tabs b-0 d-flex align-items-center justify-content-center simple_tab_links mb-4 p-0"
+                            id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="description-tab" href="#description" data-toggle="tab"
+                                   role="tab" aria-controls="description" aria-selected="true">توضیحات</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="#information" id="information-tab" data-toggle="tab"
+                                   role="tab" aria-controls="information" aria-selected="false">اطلاعات تکمیلی</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="#reviews" id="reviews-tab" data-toggle="tab" role="tab"
+                                   aria-controls="reviews" aria-selected="false">دیدگاه ها</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+                            <!-- ======================= Description Content ===================== -->
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                 aria-labelledby="description-tab">
+                                <div class="description_info">
+                                    <p class="p-0 mb-2">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                        سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع
+                                        با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                                    <p class="p-0">کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه
+                                        و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
+                                        الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+                                </div>
+                            </div>
+                            <!-- ======================= Additional Content ===================== -->
+                            <div class="tab-pane fade" id="information" role="tabpanel"
+                                 aria-labelledby="information-tab">
+                                <div class="additionals">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <th class="ft-medium text-dark text-right">آیدی</th>
+                                            <td>#1253458</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="ft-medium text-dark text-right">SKU</th>
+                                            <td>کومو125896</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="ft-medium text-dark text-right">رنگ</th>
+                                            <td>آبی آسمانی</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="ft-medium text-dark text-right">سایز</th>
+                                            <td>Xl, 42</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="ft-medium text-dark text-right">وزن</th>
+                                            <td>450 گرم</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- ======================= Reviews Content ===================== -->
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class="reviews_info">
+                                    <div class="single_rev d-flex align-items-start br-bottom py-3">
+                                        <div class="single_rev_thumb"><img src="{% static 'img/team-1.jpg' %}"
+                                                                           class="img-fluid circle" width="90" alt=""/>
+                                        </div>
+                                        <div class="single_rev_caption d-flex align-items-start pr-3">
+                                            <div class="single_capt_left">
+                                                <h5 class="mb-0 fs-md ft-medium lh-1">رضا حسنی</h5>
+                                                <span class="small">30 بهمن 1400</span>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                                    ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                                                    کاربردهای
+                                                    متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                                            </div>
+                                            <div class="single_capt_right">
+                                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ======================= Single Review ===================== -->
+                                    <div class="single_rev d-flex align-items-start br-bottom py-3">
+                                        <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
+                                                                           class="img-fluid circle" width="90" alt=""/>
+                                        </div>
+                                        <div class="single_rev_caption d-flex align-items-start pr-3">
+                                            <div class="single_capt_left">
+                                                <h5 class="mb-0 fs-md ft-medium lh-1">لیلا محمدی</h5>
+                                                <span class="small">29 بهمن 1400</span>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                                    ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                                                    کاربردهای
+                                                    متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                                            </div>
+                                            <div class="single_capt_right">
+                                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ======================= Single Review ===================== -->
+                                    <div class="single_rev d-flex align-items-start br-bottom py-3">
+                                        <div class="single_rev_thumb"><img src="{% static 'img/team-3.jpg' %}"
+                                                                           class="img-fluid circle" width="90" alt=""/>
+                                        </div>
+                                        <div class="single_rev_caption d-flex align-items-start pr-3">
+                                            <div class="single_capt_left">
+                                                <h5 class="mb-0 fs-md ft-medium lh-1">علی احمدی</h5>
+                                                <span class="small">28 بهمن 1400</span>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                                    ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                                                    کاربردهای
+                                                    متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                                            </div>
+                                            <div class="single_capt_right">
+                                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ======================= Single Review ===================== -->
+                                    <div class="single_rev d-flex align-items-start py-3">
+                                        <div class="single_rev_thumb"><img src="{% static 'img/team-4.jpg' %}' %}"
+                                                                           class="img-fluid circle" width="90" alt=""/>
+                                        </div>
+                                        <div class="single_rev_caption d-flex align-items-start pr-3">
+                                            <div class="single_capt_left">
+                                                <h5 class="mb-0 fs-md ft-medium lh-1">مریم مقدم</h5>
+                                                <span class="small">27 بهمن 1400</span>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                                    ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                                                    کاربردهای
+                                                    متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                                            </div>
+                                            <div class="single_capt_right">
+                                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="reviews_rate">
+                                    <form class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <h4>ارسال امتیاز</h4>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <div class="revie_stars d-flex align-items-center justify-content-between px-2 py-2 gray rounded mb-2 mt-1">
+                                                <div class="srt_013">
+                                                    <div class="submit-rating">
+                                                        <input id="star-5" type="radio" name="rating" value="star-5"/>
+                                                        <label for="star-5" title="5 stars">
+                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-4" type="radio" name="rating" value="star-4"/>
+                                                        <label for="star-4" title="4 stars">
+                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-3" type="radio" name="rating" value="star-3"/>
+                                                        <label for="star-3" title="3 stars">
+                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-2" type="radio" name="rating" value="star-2"/>
+                                                        <label for="star-2" title="2 stars">
+                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-1" type="radio" name="rating" value="star-1"/>
+                                                        <label for="star-1" title="1 star">
+                                                            <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="srt_014">
+                                                    <h6 class="mb-0">4 ستاره</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="medium text-dark ft-medium">نام</label>
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="medium text-dark ft-medium">آدرس ایمیل</label>
+                                                <input type="email" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="medium text-dark ft-medium">توضیحات</label>
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group m-0">
+                                                <a class="btn btn-white stretched-link hover-black">ارسال دیدگاه <i
+                                                        class="lni lni-arrow-left"></i></a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ======================= Product Description End ==================== -->
+        <!-- =======================Start Similar Products Start ============================ -->
+        <section class="middle pt-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="sec_title position-relative text-center">
+                            <h2 class="off_title">محصولات مشابه</h2>
+                            <h3 class="ft-bold pt-3">محصول معادل</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="slide_items">
+                            <!-- =======================single Item====================== -->
+                            <div class="single_itesm">
+                                <div class="product_grid card b-0 mb-0">
+                                    <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
+                                        پرفروش
+                                    </div>
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                            class="far fa-heart"></i></button>
+                                    <div class="card-body p-0">
+                                        <div class="shop_thumb position-relative">
+                                            <a class="card-img-top d-block overflow-hidden"
+                                               href="shop-single-v1.html"><img class="card-img-top"
+                                                                               src="{% static 'img/product/16.png' %}"
+                                                                               alt="..."></a>
+                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                <div class="edlio"><a href="#" data-toggle="modal"
+                                                                      data-target="#quickview"
+                                                                      class="text-white fs-sm ft-medium"><i
+                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                        <div class="text-left">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                        href="shop-single-v1.html">نیم ست دویدن</a></h5>
+                                                <div class="elis_rty"><span
+                                                        class="ft-bold fs-md text-dark">119000 تومان</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- =======================single Item====================== -->
+                            <div class="single_itesm">
+                                <div class="product_grid card b-0 mb-0">
+                                    <div class="badge bg-info text-white position-absolute ft-regular ab-right  text-upper">
+                                        جدید
+                                    </div>
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                            class="far fa-heart"></i></button>
+                                    <div class="card-body p-0">
+                                        <div class="shop_thumb position-relative">
+                                            <a class="card-img-top d-block overflow-hidden"
+                                               href="shop-single-v1.html"><img class="card-img-top"
+                                                                               src="{% static 'img/product/17.png' %}"
+                                                                               alt="..."></a>
+                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                <div class="edlio"><a href="#" data-toggle="modal"
+                                                                      data-target="#quickview"
+                                                                      class="text-white fs-sm ft-medium"><i
+                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                        <div class="text-left">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                        href="shop-single-v1.html">
+                                                    مردانه رسمی</a></h5>
+                                                <div class="elis_rty"><span
+                                                        class="text-muted ft-medium line-through ml-2">129000 تومان</span><span
+                                                        class="ft-bold theme-cl fs-md">79000 تومان</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- =======================single Item====================== -->
+                            <div class="single_itesm">
+                                <div class="product_grid card b-0 mb-0">
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                            class="far fa-heart"></i></button>
+                                    <div class="card-body p-0">
+                                        <div class="shop_thumb position-relative">
+                                            <a class="card-img-top d-block overflow-hidden"
+                                               href="shop-single-v1.html"><img class="card-img-top"
+                                                                               src="{% static 'img/product/18.png' %}"
+                                                                               alt="..."></a>
+                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                <div class="edlio"><a href="#" data-toggle="modal"
+                                                                      data-target="#quickview"
+                                                                      class="text-white fs-sm ft-medium"><i
+                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                        <div class="text-left">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                        href="shop-single-v1.html">لباس دویدن نیمه</a></h5>
+                                                <div class="elis_rty"><span
+                                                        class="ft-bold fs-md text-dark">80000 تومان</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- =======================single Item====================== -->
+                            <div class="single_itesm">
+                                <div class="product_grid card b-0 mb-0">
+                                    <div class="badge bg-warning text-white position-absolute ft-regular ab-right  text-upper">
+                                        پرطرفدار
+                                    </div>
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                            class="far fa-heart"></i></button>
+                                    <div class="card-body p-0">
+                                        <div class="shop_thumb position-relative">
+                                            <a class="card-img-top d-block overflow-hidden"
+                                               href="shop-single-v1.html"><img class="card-img-top"
+                                                                               src="{% static 'img/product/19.png' %}"
+                                                                               alt="..."></a>
+                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                <div class="edlio"><a href="#" data-toggle="modal"
+                                                                      data-target="#quickview"
+                                                                      class="text-white fs-sm ft-medium"><i
+                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                        <div class="text-left">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                        href="shop-single-v1.html">لباس زنانه نیمه فانتزی</a></h5>
+                                                <div class="elis_rty"><span
+                                                        class="text-muted ft-medium line-through ml-2">149000 تومان</span><span
+                                                        class="ft-bold theme-cl fs-md">110000 تومان</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- =======================single Item====================== -->
+                            <div class="single_itesm">
+                                <div class="product_grid card b-0 mb-0">
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                            class="far fa-heart"></i></button>
+                                    <div class="card-body p-0">
+                                        <div class="shop_thumb position-relative">
+                                            <a class="card-img-top d-block overflow-hidden"
+                                               href="shop-single-v1.html"><img class="card-img-top"
+                                                                               src="{% static 'img/product/20.png' %}"
+                                                                               alt="..."></a>
+                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                <div class="edlio"><a href="#" data-toggle="modal"
+                                                                      data-target="#quickview"
+                                                                      class="text-white fs-sm ft-medium"><i
+                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                        <div class="text-left">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                        href="shop-single-v1.html">شلوار جین فلیکس فلوکس</a></h5>
+                                                <div class="elis_rty"><span
+                                                        class="text-muted ft-medium line-through ml-2">90000 تومان</span><span
+                                                        class="ft-bold theme-cl fs-md">49000 تومان</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- =======================single Item====================== -->
+                            <div class="single_itesm">
+                                <div class="product_grid card b-0 mb-0">
+                                    <div class="badge bg-danger text-white position-absolute ft-regular ab-right  text-upper">
+                                        پرطرفدار
+                                    </div>
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                            class="far fa-heart"></i></button>
+                                    <div class="card-body p-0">
+                                        <div class="shop_thumb position-relative">
+                                            <a class="card-img-top d-block overflow-hidden"
+                                               href="shop-single-v1.html"><img class="card-img-top"
+                                                                               src="{% static 'img/product/21.png' %}"
+                                                                               alt="..."></a>
+                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                <div class="edlio"><a href="#" data-toggle="modal"
+                                                                      data-target="#quickview"
+                                                                      class="text-white fs-sm ft-medium"><i
+                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                        <div class="text-left">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                        href="shop-single-v1.html">کت و شلوار سالوار فانتزی</a></h5>
+                                                <div class="elis_rty"><span
+                                                        class="ft-bold fs-md text-dark">114000 تومان</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- =======================single Item====================== -->
+                            <div class="single_itesm">
+                                <div class="product_grid card b-0 mb-0">
+                                    <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
+                                        پرفروش
+                                    </div>
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                            class="far fa-heart"></i></button>
+                                    <div class="card-body p-0">
+                                        <div class="shop_thumb position-relative">
+                                            <a class="card-img-top d-block overflow-hidden"
+                                               href="shop-single-v1.html"><img class="card-img-top"
+                                                                               src="{% static 'img/product/22.png' %}"
+                                                                               alt="..."></a>
+                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                <div class="edlio"><a href="#" data-toggle="modal"
+                                                                      data-target="#quickview"
+                                                                      class="text-white fs-sm ft-medium"><i
+                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                        <div class="text-left">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                        href="shop-single-v1.html">لباس کامل</a></h5>
+                                                <div class="elis_rty"><span class="ft-bold theme-cl fs-md text-dark">112000 تومان</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================End Similar Products Start ============================ -->
+    </div>
+    </body>
+    </html>
+{% endblock %}
