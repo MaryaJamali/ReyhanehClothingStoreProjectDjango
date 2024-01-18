@@ -1,0 +1,164 @@
+{% load layout_items %}
+{% load static %}
+<!-- =====Main wrapper - style you can find in pages.scss========== -->
+<div id="main-wrapper">
+    <!-- =====================Start Navigation============================ -->
+    <!-- =====================Start Top Header============================ -->
+    <div class="py-2 bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 hide-ipad">
+                    <div class="top_first">
+                        <a href="callto:(+98)9121234567" class="medium text-light"> 567 234 9121 (98+)</a></div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 hide-ipad">
+                    <div class="top_second text-center">
+                        <p class="medium text-light m-0 p-0">ارسال رایگان برای سفارش بیشتر از 2,000,000 تومان </p>
+                    </div>
+                </div>
+                <!-- =====================Right Menu============================ -->
+                <div class="col-xl-4  col-sm-12 d-flex flex-row-reverse justify-content-end justify-content-xl-start">
+                    <!-- =====================Choose Language============================ -->
+                    <div class="language-selector-wrapper dropdown js-dropdown ml-3">
+                        <a class="popup-title" href="javascript:void(0)" data-toggle="dropdown" title="Language"
+                           aria-label="Language dropdown">
+                            <span class="hidden-xl-down medium text-muted">زبان :</span>
+                            <span class="iso_code medium text-muted">فارسی</span>
+                            <i class="fa fa-angle-down medium text-muted"></i>
+                        </a>
+                        <ul class="dropdown-menu popup-content link">
+                            <li class="current">
+                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
+                                        src="{% static 'img/1.jpg' %}" alt="en" width="16"
+                                        height="11"/><span>انگلیسی</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
+                                        src="{% static 'img/2.jpg' %}" alt="fr" width="16"
+                                        height="11"/><span>فرانسوی</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
+                                        src="{% static 'img/3.jpg' %}" alt="de" width="16"
+                                        height="11"/><span>آلمانی</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
+                                        src="{% static 'img/6.jpg' %}" alt="ar" width="16"
+                                        height="11"/><span>عربی</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                        <div class="currency-selector dropdown js-dropdown ml-3">
+                            <a href="{% url 'logout_page_view' %}" class="text-muted medium">خروج</a>
+                        </div>
+                        <div class="currency-selector dropdown js-dropdown ml-3">
+                            <a href="#" class="text-muted medium">{{ request.user.get_full_name }} عزیز، خوش آمدید</a>
+                        </div>
+                    {% else %}
+                        <div class="currency-selector dropdown js-dropdown ml-3">
+                            <a href="#" class="text-muted medium">به فروشگاه ریحانه خوش آمدید</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header header-light dark-text">
+        <div class="container">
+            <nav id="navigation" class="navigation navigation-landscape">
+                <div class="nav-header">
+                    <a class="nav-brand" href="#">
+                        <img src="{% static 'img/logo-1.png' %}" class="logo" alt=""/>
+                    </a>
+                    <div class="nav-toggle"></div>
+                    <div class="mobile_nav">
+                        <ul>
+                            <li>
+                                <a href="#" onclick="openSearch()">
+                                    <i class="lni lni-search-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nav-menus-wrapper" style="transition-property: none;">
+                    <ul class="nav-menu nav-menu-social align-to-right">
+                        <li>
+                            <a href="#" onclick="openSearch()">
+                                <i class="lni lni-search-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#login">
+                                <i class="lni lni-users"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8000/admin/"><i class="lni lni-user"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/MaryaJamali"><i class="lni lni-github"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="{% url 'home_page_view' %}"
+                               class="{% if request.resolver_match.url_name == 'home_page_view' %}active{% endif %}">
+                            صفحه اصلی</a>
+                        </li>
+                        <li><a href="#">زنانه</a>
+                            <ul class="nav-dropdown nav-submenu">
+                                <li><a href="{% url 'product_list_page_view' %}">تیشرت و پولوشرت</a></li>
+                                <li><a href="{% url 'product_list_page_view' %}">لباس مجلسی</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">مردانه</a>
+                            <ul class="nav-dropdown nav-submenu">
+                                <li><a href="{% url 'product_list_page_view' %}">تیشرت و پولوشرت</a></li>
+                                <li><a href="{% url 'product_list_page_view' %}"> کت و شلوار</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0);">بچگانه</a>
+                            <ul class="nav-dropdown nav-submenu">
+                                <li><a href="#">دخترانه</a>
+                                    <ul class="nav-menu">
+                                        <li><a href="{% url 'product_list_page_view' %}">تیشرت</a></li>
+                                        <li><a href="{% url 'product_list_page_view' %}">پیراهن</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"> پسرانه</a>
+                                    <ul class="nav-menu">
+                                        <li><a href="{% url 'product_list_page_view' %}">تیشرت</a></li>
+                                        <li><a href="{% url 'product_list_page_view' %}">کت و شلوار</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                        <a href="#" class="{% if request.resolver_match.url_name == '#' %}active
+                               {% endif %}">ارتباط با ما</a>
+                        </li>
+                        <li><a href="#">ریحانه</a>
+                            <ul class="nav-dropdown nav-submenu">
+                                <li><a href="{% url 'about_us_page_view' %}">درباره ما</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="{% if request.resolver_match.url_name == '#' %}active
+                               {% endif %}">مقالات</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- =====================End Navigation========================== -->
+    <div class="clearfix"></div>
+    <!-- =====================End Top header========================== -->
+</div>

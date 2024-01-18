@@ -1,0 +1,19 @@
+{% load layout_items %}
+{% load render_partial %}
+{% load static %}
+<!-- =====================Custom CSS============================ -->
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<!-- =====================Start Header============================ -->
+{% render_partial 'base.views.site_header_component' %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}{% endblock %}
+<!-- =======================Inclusion-Tag for Search =========================== -->
+{% site_search_component %}
+<!-- =======================Inclusion-Tag for Login In Modal =========================== -->
+{% site_login_component %}
+<!-- ============================= Customer Features =============================== -->
+{% render_partial 'base.views.site_customer_features_component' %}
+<!-- ============================Start Footer ================================== -->
+{% render_partial 'base.views.site_footer_component' %}
+<!-- ============================All Jquery================================= -->
+{% include 'shared/footer-references.html' %}

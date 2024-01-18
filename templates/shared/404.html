@@ -1,0 +1,52 @@
+{% extends 'shared/layout.html' %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Themezhub"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>صفحه 404</title>
+    </head>
+    <body>
+    <!-- ============Preloader - style you can find in spinners.css============ -->
+    <div class="preloader"></div>
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <div class="gray py-3">
+        <div class="container">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12">
+                    <nav aria-label="breadcrumb text-right">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">صفحه 404</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <!-- ======================= Product Detail ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
+                    <div class="p-4 d-inline-flex align-items-center justify-content-center circle bg-light-danger text-danger mx-auto mb-4">
+                        <i class="ti-face-smile fs-lg"></i>
+                    </div>
+                    <h2 class="mb-2 ft-bold">404. صفحه یافت نشد.</h2>
+                    <p class="ft-regular fs-md mb-5">متأسفیم، ما نتوانستیم صفحه ای را که در آن جستجو می کردید پیدا کنیم.
+                        پیشنهاد می کنیم به صفحه اصلی بازگردید.</p>
+                    <a class="btn btn-dark" href="{% url 'home_page_view' %}">برگشت به صفحه اصلی </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================= Product Detail End ======================== -->
+    </body>
+    </html>
+{% endblock %}
+<!-- =======================Start Content Page============================= -->
