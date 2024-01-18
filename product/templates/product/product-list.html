@@ -83,12 +83,12 @@
                                         <div class="single_filter_title mb-2">
                                             <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب دسته بندی</h6>
                                         </div>
-                                        <div class="single_filter_card">
-                                            {% for main_category in product_main_categories %}
+                                        <div>
+                                            {% for main_category in product_categories %}
                                                 {% if main_category.product_categories.all %}
-                                                    <h5>
-                                                        <a href="{% url 'product_by_category_list' category=main_category.url_title %}">
-                                                        {{ main_category.title }}</a>
+                                                    <h5 class="mb-0 fs-sm ft-medium text-muted text-secondary">
+                                                        <a href="{% url 'product_list_by_category' category=main_category.url_title %}">
+                                                            {{ main_category.title }}</a>
                                                     </h5>
                                                 {% endif %}
                                             {% endfor %}
@@ -99,9 +99,15 @@
                                         <div class="single_filter_title mb-2">
                                             <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب برند</h6>
                                         </div>
-                                        <div class="single_filter_card">
-                                            <h5><a href="#womens" data-toggle="collapse" class="collapsed"
-                                                   aria-expanded="false" role="button">لیلیان</a></h5>
+                                        <div>
+                                            {% for brand in brand_categories %}
+                                                <h5 class="mb-0 fs-sm ft-medium text-muted text-secondary">
+                                                    <a href="{% url 'product_list_by_brands' brand=brand.url_title %}">
+                                                        {{ brand.title }}
+                                                        <span class="mb-0 fs-sm ft-medium text-danger fa-pull-left">
+                                                            ({{ brand.products_count }})</span></a>
+                                                </h5>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     <!-- =======================Choose Category======================= -->
