@@ -1,5 +1,6 @@
 from django import forms
 from .models import ContactUs
+from django.core.validators import RegexValidator
 
 
 # Model_Form for Contact_us Form
@@ -61,4 +62,11 @@ class ContactUsModelForm(forms.ModelForm):
                 'required': 'لطفا متن پیام مورد نظرتان را وارد کنید'
             },
 
+        }
+        validators = {
+            'phone_number': [RegexValidator(
+                regex=r'^\d{11}$',
+                message='شماره موبایل باید 11 رقمی و شامل اعداد باشد.',
+                code='invalid_phone_number'
+            )]
         }
