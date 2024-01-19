@@ -34,6 +34,8 @@ class RegisterView(View):
             user: bool = User.objects.filter(email__iexact=user_email).exists()
             if user:
                 register_form.add_error('email', 'ایمیل وارد شده تکراری می باشد')
+            elif not phone_number.isdigit() or len(phone_number) != 11:
+                register_form.add_error('phone_number', 'شماره موبایل باید 11 رقمی و  شامل اعداد باشد')
             else:
                 # Create user account for user
                 new_user = User(
