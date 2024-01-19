@@ -23,6 +23,8 @@ class RegisterView(View):
     def post(self, request: HttpRequest):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
+            # The name of the received information taken from the Form for example('first_name')
+            # With this command (cleaned_data) ---> Prints the desired information from the desired Form
             first_name = register_form.cleaned_data.get('first_name')
             last_name = register_form.cleaned_data.get('last_name')
             phone_number = register_form.cleaned_data.get('phone_number')
@@ -35,6 +37,7 @@ class RegisterView(View):
             else:
                 # Create user account for user
                 new_user = User(
+                    # The variable name is taken from the Model name for example(first_name = ...)
                     first_name=first_name,
                     last_name=last_name,
                     phone_number=phone_number,

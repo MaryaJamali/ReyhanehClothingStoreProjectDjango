@@ -7,7 +7,8 @@ from django.core.exceptions import ValidationError
 class RegisterForm(forms.Form):
     first_name = forms.CharField(
         label='نام *',
-        # A widget is a simple shortcode that allows you to add features to your website or blog.
+        # A widget is a simple shortcode that allows you to add features to your website or blog.and we can
+        # with widgets manipulate the appearance of Html forms a bit
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
