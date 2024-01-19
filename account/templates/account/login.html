@@ -42,12 +42,12 @@
                          expected token, if it does not exist or is invalid, the application rejects the request.
                          == -->
                         {% csrf_token %}
-                        <div class="form-group">
+                        <div class="form-group {% if login_form.email.errors %} text-danger{% endif %}">
                             {{ login_form.email.label }}
                             {{ login_form.email }}
                             {{ login_form.email.errors }}
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {% if login_form.password.errors %} text-danger{% endif %}">
                             {{ login_form.password.label }}
                             {{ login_form.password }}
                             {{ login_form.password.errors }}

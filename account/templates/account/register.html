@@ -43,36 +43,36 @@
                          == -->
                         {% csrf_token %}
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 {% if register_form.last_name.errors %} text-danger{% endif %}">
                                 {{ register_form.first_name.label }}
                                 {{ register_form.first_name }}
-                                {{ register_form.first_name.errors }}
+                                {{ register_form.last_name.errors }}
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 {% if register_form.last_name.errors %} text-danger{% endif %}">
                                 {{ register_form.last_name.label }}
                                 {{ register_form.last_name }}
                                 {{ register_form.last_name.errors }}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 {% if register_form.phone_number.errors %} text-danger{% endif %}">
                                 {{ register_form.phone_number.label }}
                                 {{ register_form.phone_number }}
                                 {{ register_form.phone_number.errors }}
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 {% if register_form.email.errors %} text-danger{% endif %}">
                                 {{ register_form.email.label }}
                                 {{ register_form.email }}
                                 {{ register_form.email.errors }}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 {% if register_form.password.errors %} text-danger{% endif %}">
                                 {{ register_form.password.label }}
                                 {{ register_form.password }}
                                 {{ register_form.password.errors }}
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 {% if register_form.confirm_password.errors %} text-danger{% endif %}">
                                 {{ register_form.confirm_password.label }}
                                 {{ register_form.confirm_password }}
                                 {{ register_form.confirm_password.errors }}
