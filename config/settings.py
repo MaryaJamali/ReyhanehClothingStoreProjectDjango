@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "base",
     "account",
     "product",
+    "contact_us",
 ]
 
 MIDDLEWARE = [

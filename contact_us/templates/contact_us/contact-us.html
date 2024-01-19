@@ -1,0 +1,148 @@
+{% extends 'shared/layout.html' %}
+{% load static %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Themezhub"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>صفحه تماس با ما</title>
+    </head>
+    <body>
+    <!-- =============Preloader - style you can find in spinners.css================== -->
+    <div class="preloader"></div>
+    <!-- =============Main wrapper - style you can find in pages.scss=================== -->
+    <div id="main-wrapper">
+        <div class="clearfix"></div>
+        <!-- ============================ Hero Banner  Start================================== -->
+        <div class="home-slider hide-navigation margin-bottom-0">
+            <!-- ============================Slide================================== -->
+            <div data-background-image="{% static 'img/banner-25.png' %}" class="item" data-overlay="3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="home-slider-container">
+                                <!-- ============================Slide Title================================= -->
+                                <div class="home-slider-desc text-center">
+                                    <div class="home-slider-title mb-4">
+                                        <h5 class="text-light ft-medium lg-heading">فروشگاه لباس ریحانه</h5>
+                                        <h1 class="mb-1 ft-medium mb-md-3">با ما تماس بگیرید</h1>
+                                    </div>
+                                </div>
+                                <!-- ============================End Slide Title================================= -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================ Hero Banner End ================================== -->
+        <!-- =======================Start Top Breadcrubms ======================== -->
+        <div class="gray py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="colxl-12 col-lg-12 col-md-12">
+                        <nav aria-label="breadcrumb text-right">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">ارتباط با ما</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =======================End Top Breadcrubms ======================== -->
+        <!-- =======================Start Contact Page Detail ======================== -->
+        <section class="middle">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="sec_title position-relative text-center">
+                            <h2 class="off_title">ارتباط با ما</h2>
+                            <h3 class="ft-bold pt-3">در تماس باشید</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-start justify-content-between">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <div class="card-wrap-body mb-4">
+                            <h4 class="ft-medium mb-3 theme-cl">تماس بگیرید</h4>
+                            <p>تهران تهرانپارس ساختمان ریحانه</p>
+                            <p class="lh-1"><span class="text-dark ft-medium">ایمیل :</span> m.jamali16@yahoo.com</p>
+                        </div>
+                        <div class="card-wrap-body mb-3">
+                            <h4 class="ft-medium mb-3 theme-cl">تماس بگیرید</h4>
+                            <h6 class="ft-medium mb-1">ارتباط با مشتری :</h6>
+                            <p class="mb-2">567 234 9121 98+</p>
+                            <h6 class="ft-medium mb-1">مشاغل :</h6>
+                            <p>567 234 9121 98+</p>
+                        </div>
+
+                        <div class="card-wrap-body mb-3">
+                            <h4 class="ft-medium mb-3 theme-cl">ارسال ایمیل</h4>
+                            <p>فرم ما را پر کنید و ما ظرف 24 ساعت با شما تماس خواهیم گرفت.</p>
+                            <p class="lh-1 text-dark">m.jamali16@yahoo.com</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-8 col-md-12 col-sm-12">
+                        <form class="row" method="post">
+                            <!-- ====The CSRF token is a unique, secret and unpredictable value that is generated by the
+                             application on the server side and included in each user request.
+                             When the user's request is submitted, the application on the server side confirms that this
+                             request contains the expected token, if it does not exist or is invalid, the application
+                             rejects the request.====================== -->
+                            {% csrf_token %}
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <!-- ================In case of an error, its color will change=============== -->
+                                <div class="form-group {% if contact_form.full_name.errors %} text-danger{% endif %} ">
+                                    {{ contact_form.full_name.label }}
+                                    {{ contact_form.full_name }}
+                                    {{ contact_form.full_name.errors }}
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group {% if contact_form.email.errors %} text-danger{% endif %}">
+                                    {{ contact_form.email.label }}
+                                    {{ contact_form.email }}
+                                    {{ contact_form.email.errors }}
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group {% if contact_form.phone_number.errors %} text-danger{% endif %}">
+                                    {{ contact_form.phone_number.label }}
+                                    {{ contact_form.phone_number }}
+                                    {{ contact_form.phone_number.errors }}
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group {% if contact_form.title.errors %} text-danger{% endif %}">
+                                    {{ contact_form.title.label }}
+                                    {{ contact_form.title }}
+                                    {{ contact_form.full_name.errors }}
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group {% if contact_form.text.errors %} text-danger{% endif %}">
+                                    {{ contact_form.text.label }}
+                                    {{ contact_form.text }}
+                                    {{ contact_form.full_name.errors }}
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-dark">ارسال پیام</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================End Contact Page ======================== -->
+    </div>
+    </body>
+    </html>
+{% endblock %}

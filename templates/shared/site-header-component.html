@@ -141,8 +141,9 @@
                             </ul>
                         </li>
                         <li>
-                        <a href="#" class="{% if request.resolver_match.url_name == '#' %}active
-                               {% endif %}">ارتباط با ما</a>
+                        <a href="{% url 'contact_us_page_view' %}"
+                           class="{% if request.resolver_match.url_name == 'contact_us_page_view' %}active
+                                  {% endif %}">ارتباط با ما</a>
                         </li>
                         <li><a href="#">ریحانه</a>
                             <ul class="nav-dropdown nav-submenu">
