@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "product",
     "contact_us",
     "site_setting",
+    "polls",
 ]
 
 MIDDLEWARE = [
