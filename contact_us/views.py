@@ -2,15 +2,19 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.views import View
 from .forms import ContactUsModelForm
+from site_setting.models import SiteSetting
 
 
 # Create your view HomePage
 class ContactUsView(View):
     def get(self, request: HttpRequest):
         contact_form = ContactUsModelForm()
-        return render(request, 'contact_us/contact-us.html', {
-            'contact_form': contact_form
-        })
+        setting: SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
+        context = {
+            'contact_form': contact_form,
+            'site_setting': setting,
+        }
+        return render(request, 'contact_us/contact-us.html', context=context)
 
     def post(self, request: HttpRequest):
         # With this command (request.POST) we have access to the data.

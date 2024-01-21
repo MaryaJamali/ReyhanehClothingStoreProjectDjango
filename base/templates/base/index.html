@@ -16,62 +16,26 @@
     <!-- ============================ Hero Banner  Start================================== -->
     <div class="home-slider hide-navigation margin-bottom-0">
         <!-- ============================Slide================================== -->
-        <div data-background-image="{% static 'img/banner-f.jpg' %}" class="item" data-overlay="3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="home-slider-container">
-                            <!-- ============================Slide Title================================= -->
-                            <div class="home-slider-desc text-center">
-                                <div class="home-slider-title mb-4">
-                                    <h5 class="text-light ft-medium lg-heading">استایل خودت رو بساز</h5>
-                                    <h1 class="mb-1 ft-medium mb-md-3">2023</h1>
+        {% for slider in sliders %}
+            <div data-background-image="{{ slider.slider_image.url }}" class="item" data-overlay="3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="home-slider-container">
+                                <!-- ============================Slide Title================================= -->
+                                <div class="home-slider-desc text-center">
+                                    <div class="home-slider-title mb-4">
+                                        <h5 class="text-light ft-medium lg-heading">{{ slider.title }}</h5>
+                                        <h1 class="mb-1 ft-medium mb-md-3">{{ slider.description }}</h1>
+                                    </div>
                                 </div>
+                                <!-- ============================End Slide Title================================= -->
                             </div>
-                            <!-- ============================End Slide Title================================= -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- ============================Slide================================== -->
-        <div data-background-image="{% static 'img/banner-d.jpg' %}" class="item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="home-slider-container">
-                            <!-- ============================Slide Title================================= -->
-                            <div class="home-slider-desc">
-                                <div class="home-slider-title mb-4">
-                                    <h1 class="text-light ft-medium lg-heading">متفاوت باشید،متفاوت بپوشید</h1>
-                                    <span class="trending text-light">فروش ویژه انواع لباس های مردانه</span>
-                                </div>
-                            </div>
-                            <!-- ============================End Slide Title================================= -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ============================Slide================================== -->
-        <div data-background-image="{% static 'img/banner-e.jpg' %}" class="item" data-overlay="3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="home-slider-container">
-                            <!-- ============================Slide Title================================= -->
-                            <div class="home-slider-desc text-center">
-                                <div class="home-slider-title mb-4">
-                                    <h5 class="text-light fs-lg ft-medium mb-0">سبک های زمستانی را دریافت کنید</h5>
-                                    <h1 class="mb-1 ft-bold lg-heading">تخفیف تا40%</h1>
-                                </div>
-                            </div>
-                            <!-- ============================End Slide Title================================= -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <!-- ============================ Hero Banner End ================================== -->
     <!-- =======================Start Category Style ======================== -->
