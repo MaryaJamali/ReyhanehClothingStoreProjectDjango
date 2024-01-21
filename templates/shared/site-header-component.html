@@ -4,16 +4,16 @@
 <div id="main-wrapper">
     <!-- =====================Start Navigation============================ -->
     <!-- =====================Start Top Header============================ -->
-    <div class="py-2 bg-dark">
+    <div class="py-2 bg-light-inverse">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 hide-ipad">
                     <div class="top_first">
-                        <a href="callto:(+98)9121234567" class="medium text-light"> 567 234 9121 (98+)</a></div>
+                        <a href="callto:{{ site_setting.phone }}" class="text-muted medium">شماره تماس: {{ site_setting.phone }}</a></div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 hide-ipad">
                     <div class="top_second text-center">
-                        <p class="medium text-light m-0 p-0">ارسال رایگان برای سفارش بیشتر از 2,000,000 تومان </p>
+                        <h4 class="medium text-dark m-0 p-0"> به {{ site_setting.site_name }} خوش آمدید </h4>
                     </div>
                 </div>
                 <!-- =====================Right Menu============================ -->
