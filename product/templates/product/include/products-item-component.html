@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load poll_extras %}
 {% load static %}
 <!-- =============================Single Product============================= -->
 <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
@@ -51,7 +52,7 @@
                     </h5>
                     <div class="elis_rty"><span
                             class="text-muted ft-medium line-through ml-2">129,000 تومان</span><span
-                            class="ft-bold theme-cl fs-md">{{ product.price }} تومان</span></div>
+                            class="ft-bold theme-cl fs-md">{{ product.price | three_digits_currency }} تومان</span></div>
                 </div>
             </div>
         </div>
@@ -101,7 +102,7 @@
                                 <h4 class="ft-bold mb-1">{{ product.title }}</h4>
                                 <div class="text-left">
                                     <div class="elis_rty text-right"><span
-                                            class="ft-bold theme-cl fs-lg ml-2">قیمت: {{ product.price }}</span><span
+                                            class="ft-bold theme-cl fs-lg ml-2">قیمت: {{ product.price | three_digits_currency }}</span><span
                                             class="ft-regular text-danger bg-light-danger py-1 px-2 fs-sm"> تمام شده </span>
                                     </div>
                                 </div>
