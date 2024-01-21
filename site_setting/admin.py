@@ -12,9 +12,9 @@ class SiteSettingAdmin(admin.ModelAdmin):
 # Admin panel customization for the Slider
 @admin.register(models.Slider)
 class SliderAdmin(admin.ModelAdmin):
-    list_display = ['title', 'url', 'display_order']
+    list_display = ['title', 'url', 'display_order', 'is_active']
     # Changing the fields on the Admin page
-    list_editable = ['display_order']
+    list_editable = ['display_order', 'is_active']
 
 
 # Admin panel customization for the FooterLinkBox

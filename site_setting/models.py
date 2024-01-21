@@ -16,21 +16,22 @@ class SiteSetting(models.Model):
     avatar = models.ImageField(upload_to='images/site-setting', null=True, blank=True, verbose_name='تصویر ادمین')
     is_main_setting = models.BooleanField(verbose_name='تنظیمات اصلی')
 
+    def __str__(self):
+        return self.site_name
+
     class Meta:
         verbose_name = 'تنظیمات سایت'
         verbose_name_plural = 'تنظیمات'
 
-    def __str__(self):
-        return self.site_name
-
 
 class Slider(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
-    url = models.URLField(max_length=1000, verbose_name='آدرس url')
-    url_title = models.CharField(max_length=200, verbose_name='عنوان آدرس url')
-    description = models.CharField(max_length=600, verbose_name='توضیحات')
+    url = models.URLField(max_length=1000, verbose_name='لینک')
+    url_title = models.CharField(max_length=200, verbose_name='عنوان لینک')
+    description = models.CharField(max_length=600, verbose_name='توضیحات اسلایدر')
     slider_image = models.ImageField(upload_to='images/sliders', null=True, blank=True, verbose_name='تصویر اسلایدر')
     display_order = models.IntegerField(verbose_name='اولویت نمایش')
+    is_active = models.BooleanField(default=True, verbose_name='فعال / غیرفعال')
 
     def __str__(self):
         return self.title
@@ -43,12 +44,12 @@ class Slider(models.Model):
 class FooterLinkBox(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = 'دسته بندی لینک های فوتر'
         verbose_name_plural = 'دسته بندی های لینک های فوتر'
-
-    def __str__(self):
-        return self.title
 
 
 class FooterLink(models.Model):
@@ -56,9 +57,9 @@ class FooterLink(models.Model):
     url = models.URLField(max_length=500, verbose_name='لینک')
     footer_link_box = models.ForeignKey(to=FooterLinkBox, on_delete=models.CASCADE, verbose_name='دسته بندی')
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = 'لینک فوتر'
         verbose_name_plural = 'لینک های فوتر'
-
-    def __str__(self):
-        return self.title
