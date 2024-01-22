@@ -19,6 +19,8 @@ from . import views
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home_page_view'),
     path('about-us', views.AboutUsView.as_view(), name='about_us_page_view'),
+    path('question-common', views.QuestionCommonView.as_view(), name='question_common_page_view'),
+    path('cooperation', views.Cooperation.as_view(), name='cooperation_page_view'),
     path('404', views.Error404View.as_view(), name='error_404_page_view'),
     # Addressing example for component pages
     # path('', views.site_header_component, name='site_header_component_view'),

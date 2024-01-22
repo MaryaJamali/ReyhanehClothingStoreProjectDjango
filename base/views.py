@@ -26,9 +26,19 @@ class AboutUsView(TemplateView):
         return context
 
 
-# Class_base_templateview for AboutUs page
+# Class_base_templateview for 404 page
 class Error404View(TemplateView):
     template_name = 'shared/404.html'
+
+
+# Class_base_templateview for QuestionCommon page
+class QuestionCommonView(TemplateView):
+    template_name = 'base/questions-common.html'
+
+
+# Class_base_templateview for Cooperation page
+class Cooperation(TemplateView):
+    template_name = 'base/cooperation.html'
 
 
 # Function_base_view for site-header-component page
