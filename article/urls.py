@@ -17,6 +17,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+# Addressing the application
 urlpatterns = [
-    path('contact-us/', views.ContactUsView.as_view(), name='contact_us_page_view'),
+
 ]
