@@ -19,6 +19,6 @@ from . import views
 
 # Addressing the application
 urlpatterns = [
-    path('', views.ArticlesListView.as_view(), name='article_list_page_view'),
+    path('article/', views.ArticlesListView.as_view(), name='article_list_page_view'),
     path('cat/<str:category>', views.ArticlesListView.as_view(), name='article_list_by_category'),
 ]

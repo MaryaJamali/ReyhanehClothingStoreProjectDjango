@@ -135,8 +135,9 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="{% if request.resolver_match.url_name == '#' %}active
-                               {% endif %}">مقالات</a>
+                            <a href="{% url 'article_list_page_view' %}"
+                               class="{% if request.resolver_match.url_name == 'article_list_page_view' %}
+                               active{% endif %}">مقالات</a>
                         </li>
                     </ul>
                 </div>

@@ -5,7 +5,7 @@ from article.models import Article
 # Class_base_View for Articles page
 class ArticlesListView(ListView):
     model = Article
-    paginate_by = 8
+    paginate_by = 6
     template_name = 'article/article-list.html'
 
     def get_context_data(self, *args, **kwargs):
