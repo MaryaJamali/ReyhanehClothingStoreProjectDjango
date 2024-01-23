@@ -1,10 +1,13 @@
 from django.utils.translation import get_language
 from django.conf import settings
+from django import template
 import jdatetime
 import datetime
 import timeago
 import pytz
 import re
+
+register = template.Library()
 
 # Writing a tag template to date convertor
 PERSIAN_MONTH_NAMES = [

@@ -1,6 +1,6 @@
+from polls.templatetags import date_convertor
 from django import template
 import datetime
-from polls.templatetags import date_convertor
 
 register = template.Library()
 
