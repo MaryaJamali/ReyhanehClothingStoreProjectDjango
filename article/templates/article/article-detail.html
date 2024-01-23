@@ -22,7 +22,7 @@
                     <nav aria-label="breadcrumb text-right">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">مقالات فروشگاه ریحانه</li>
+                            <li class="breadcrumb-item active" aria-current="page">جزییات مقاله</li>
                         </ol>
                     </nav>
                 </div>
@@ -41,31 +41,43 @@
                 </div>
             </div>
             <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="_blog_wrap">
-                            <div class="_blog_thumb mb-2">
-                                {% if article.image %}
-                                    {% thumbnail article.image "1060x800" quality=90 crop='center' as im %}
-                                        <img class="img-fluid rounded" src="{{ im.url }}" alt="{{ article.title }}">
-                                    {% endthumbnail %}
-                                {% else %}
-                                    <img class="card-img-top" src="{% static 'img/default-blog.png' %}"
-                                         alt="{{ article.title }}">
-                                {% endif %}
-                            </div>
-                            <div class="_blog_caption">
-                                <span class="text-muted text-md-left">{{ article.create_date }}</span>
-                                <h5 class="bl_title">{{ article.title }}</h5>
-                                <p class="text-secondary">{{ article.text }}
-                                    <span>
-                                        {% if article.author is not None %}
-                                            <p class="text-dark"> نویسنده:{{ article.author }}</p>
-                                        {% endif %}
-                                    </span>
-                                </p>
-                            </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="_blog_wrap">
+                        <div class="_blog_thumb mb-2">
+                            {% if article.image %}
+                                {% thumbnail article.image "1060x800" quality=90 crop='center' as im %}
+                                    <img class="img-fluid rounded" src="{{ im.url }}" alt="{{ article.title }}">
+                                {% endthumbnail %}
+                            {% else %}
+                                <img class="card-img-top" src="{% static 'img/default-blog.png' %}"
+                                     alt="{{ article.title }}">
+                            {% endif %}
+                        </div>
+                        <div class="_blog_caption">
+                            <span class="text-muted text-md-left">{{ article.create_date }}</span>
+                            <h5 class="bl_title">{{ article.title }}</h5>
+                            <p class="text-secondary">{{ article.text }}</p>
+                            {% if article.author %}
+                                <div class="media">
+                                    {% if article.author.avatar %}
+                                        {% thumbnail article.author.avatar "121x86" quality=95 crop='center' as im %}
+                                            <img class="media-object" src="{{ im.url }}" alt="{{ article.title }}">
+                                        {% endthumbnail %}
+                                    {% else %}
+                                        <img class="media-object" src="{% static 'img/default-blog.png' %}"
+                                             alt="{{ article.title }}">
+                                    {% endif %}
+                                    <div class="media-body">
+                                        <h4 class="bl_title">نویسنده : {{ article.author }}</h4>
+                                        <p>
+                                            {{ article.author.about_user }}
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </section>
