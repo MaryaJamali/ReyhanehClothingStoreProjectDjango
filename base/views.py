@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.views.generic.base import TemplateView
-from site_setting.models import Slider, SiteSetting, FooterLinkBox
+from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox
 
 
 # Class_base_templateview for Home page
@@ -44,8 +44,13 @@ class Cooperation(TemplateView):
 # Function_base_view for site-header-component page
 def site_header_component(request: HttpRequest):
     setting: SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
+    menu_link_boxes = MenuLinkBox.objects.all()
+    for item in menu_link_boxes:
+        # It refers to the set of category links
+        item.menulink_set
     context = {
-        'site_setting': setting
+        'site_setting': setting,
+        'menu_link_boxes': menu_link_boxes
     }
     return render(request, 'shared/site-header-component.html', context=context)
 

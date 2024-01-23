@@ -9,6 +9,16 @@ class SiteSettingAdmin(admin.ModelAdmin):
     list_display = ['site_name', 'site_url', 'phone', 'email', 'is_main_setting']
 
 
+# Admin panel customization for the MenuLinkBox
+admin.site.register(models.MenuLinkBox)
+
+
+# Admin panel customization for the MenuLink
+@admin.register(models.MenuLink)
+class MenuLinkAdmin(admin.ModelAdmin):
+    list_display = ['title', 'url']
+
+
 # Admin panel customization for the Slider
 @admin.register(models.Slider)
 class SliderAdmin(admin.ModelAdmin):

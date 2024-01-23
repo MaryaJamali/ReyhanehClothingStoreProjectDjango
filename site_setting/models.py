@@ -24,6 +24,30 @@ class SiteSetting(models.Model):
         verbose_name_plural = 'تنظیمات'
 
 
+class MenuLinkBox(models.Model):
+    title = models.CharField(max_length=200, verbose_name='نام منو')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'دسته بندی اصلی منو'
+        verbose_name_plural = 'دسته بندی های اصلی منو'
+
+
+class MenuLink(models.Model):
+    title = models.CharField(max_length=200, verbose_name='عنوان')
+    url = models.URLField(max_length=500, verbose_name='لینک')
+    menu_link_box = models.ForeignKey(to=MenuLinkBox, on_delete=models.CASCADE, verbose_name='دسته بندی')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'لینک منو'
+        verbose_name_plural = 'لینک های منو'
+
+
 class Slider(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
     url = models.URLField(max_length=1000, verbose_name='لینک')

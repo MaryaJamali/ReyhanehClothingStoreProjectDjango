@@ -112,34 +112,18 @@
                                class="{% if request.resolver_match.url_name == 'home_page_view' %}active{% endif %}">
                             صفحه اصلی</a>
                         </li>
-                        <li><a href="#">زنانه</a>
+                        {% for menu_link_box in menu_link_boxes %}
+                            <li><a href="#">{{ menu_link_box.title }}</a>
                             <ul class="nav-dropdown nav-submenu">
-                                <li><a href="{% url 'product_list_page_view' %}">تیشرت و پولوشرت</a></li>
-                                <li><a href="{% url 'product_list_page_view' %}">لباس مجلسی</a></li>
+                                {% for link in menu_link_box.menulink_set.all %}
+                                    <li><a href="{{ link.url }}"
+                                           class="{% if request.resolver_match.url_name == 'contact_us_page_view' %}
+                                           active{% endif %}">{{ link.title}}</a>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </li>
-                        <li><a href="#">مردانه</a>
-                            <ul class="nav-dropdown nav-submenu">
-                                <li><a href="{% url 'product_list_page_view' %}">تیشرت و پولوشرت</a></li>
-                                <li><a href="{% url 'product_list_page_view' %}"> کت و شلوار</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="javascript:void(0);">بچگانه</a>
-                            <ul class="nav-dropdown nav-submenu">
-                                <li><a href="#">دخترانه</a>
-                                    <ul class="nav-menu">
-                                        <li><a href="{% url 'product_list_page_view' %}">تیشرت</a></li>
-                                        <li><a href="{% url 'product_list_page_view' %}">پیراهن</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#"> پسرانه</a>
-                                    <ul class="nav-menu">
-                                        <li><a href="{% url 'product_list_page_view' %}">تیشرت</a></li>
-                                        <li><a href="{% url 'product_list_page_view' %}">کت و شلوار</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                        {% endfor %}
                         <li>
                         <a href="{% url 'contact_us_page_view' %}"
                            class="{% if request.resolver_match.url_name == 'contact_us_page_view' %}active
