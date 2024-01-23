@@ -70,18 +70,26 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <div class="position-relative text-center">
-                        <a href="javascript:void(0);" class="btn stretched-link borders">وبلاگ های بیشتر<i
-                                class="lni lni-arrow-left mr-2"></i></a>
-                    </div>
+            <div class="row center">
+                <div class="col-xl-12 col-lg-12 col-md-12 text-center">
+                    <ul class="pagination">
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                        {% endif %}
+                        {% for pageNumber in paginator.page_range reversed %}
+                            <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
+                                <a href="?page={{ pageNumber }}">{{ pageNumber }}</a></li>
+                        {% endfor %}
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
-
         </div>
     </section>
     <!-- ======================= Blog End ============================ -->
     </body>
     </html>
 {% endblock %}
+
