@@ -7,7 +7,7 @@ class User(AbstractUser):
     # null = True : It means that the data stored in the corresponding table can be stored as null
     # blank = True : It means that it is mandatory to fill this field during registration
     phone_number = models.CharField(max_length=20, null=True, blank=True,  verbose_name='تلفن همراه')
-    avatar = models.CharField(max_length=20, null=True, blank=True, verbose_name='تصویر آواتار')
+    avatar = models.ImageField(upload_to='images/avatar', null=True, blank=True, verbose_name='تصویر آواتار')
     email_active_code = models.CharField(max_length=100, verbose_name='کد فعالسازی ایمیل')
     about_user = models.TextField(null=True, blank=True, verbose_name='درباره شخص')
     address = models.TextField(null=True, blank=True, verbose_name='آدرس')

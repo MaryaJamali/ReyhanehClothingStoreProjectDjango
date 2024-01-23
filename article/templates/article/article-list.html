@@ -57,7 +57,7 @@
                             <div class="_blog_caption">
                                 <span class="text-muted text-md-left">{{ article.create_date }}</span>
                                 <h5 class="bl_title">
-                                    <a href="{% url 'articles_detail_page_view' pk=article.id %}">{{ article.title }}</a>
+                                    <a href="{% url 'articles_detail_page_view' pk=article.pk %}">{{ article.title }}</a>
                                 </h5>
                                 <p class="text-secondary">{{ article.short_description }}
                                     <span>
