@@ -1,0 +1,136 @@
+{% extends 'shared/layout.html' %}
+{% load thumbnail %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Themezhub"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>صفحه مقالات</title>
+    </head>
+    <body>
+    <!-- ============Preloader - style you can find in spinners.css============ -->
+    <div class="preloader"></div>
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <div class="gray py-3">
+        <div class="container">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12">
+                    <nav aria-label="breadcrumb text-right">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">مقالات فروشگاه ریحانه</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- ======================= Blog Start ============================ -->
+        <section class="middle">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="sec_title position-relative text-center">
+                            <h2 class="off_title">آخرین خبرها</h2>
+                            <h3 class="ft-bold pt-3">به روز رسانی های جدید</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="_blog_wrap">
+                            <div class="_blog_thumb mb-2">
+                                <a href="#" class="d-block"><img src="assets/img/bl-1.png" class="img-fluid rounded" alt="" /></a>
+                            </div>
+                            <div class="_blog_caption">
+                                <span class="text-muted">26 دی 1400</span>
+                                <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                                <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="_blog_wrap">
+                            <div class="_blog_thumb mb-2">
+                                <a href="#" class="d-block"><img src="assets/img/bl-2.png" class="img-fluid rounded" alt="" /></a>
+                            </div>
+                            <div class="_blog_caption">
+                                <span class="text-muted">17 دی 1400</span>
+                                <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                                <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="_blog_wrap">
+                            <div class="_blog_thumb mb-2">
+                                <a href="#" class="d-block"><img src="assets/img/bl-3.png" class="img-fluid rounded" alt="" /></a>
+                            </div>
+                            <div class="_blog_caption">
+                                <span class="text-muted">10 دی 1400</span>
+                                <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                                <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="_blog_wrap">
+                            <div class="_blog_thumb mb-2">
+                                <a href="#" class="d-block"><img src="assets/img/bl-1.png" class="img-fluid rounded" alt="" /></a>
+                            </div>
+                            <div class="_blog_caption">
+                                <span class="text-muted">26 دی 1400</span>
+                                <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                                <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="_blog_wrap">
+                            <div class="_blog_thumb mb-2">
+                                <a href="#" class="d-block"><img src="assets/img/bl-2.png" class="img-fluid rounded" alt="" /></a>
+                            </div>
+                            <div class="_blog_caption">
+                                <span class="text-muted">17 دی 1400</span>
+                                <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                                <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="_blog_wrap">
+                            <div class="_blog_thumb mb-2">
+                                <a href="#" class="d-block"><img src="assets/img/bl-3.png" class="img-fluid rounded" alt="" /></a>
+                            </div>
+                            <div class="_blog_caption">
+                                <span class="text-muted">10 دی 1400</span>
+                                <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                                <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="position-relative text-center">
+                            <a href="javascript:void(0);" class="btn stretched-link borders">وبلاگ های بیشتر<i class="lni lni-arrow-left mr-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ======================= Blog End ============================ -->
+</body>
+</html>
+{% endblock %}

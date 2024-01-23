@@ -38,7 +38,7 @@ class ProductListView(ListView):
         return query
 
 
-# Class_base_List_View for Product page
+# Class_base_List_View for ProductDetail page
 class ProductDetailView(DetailView):
     template_name = 'product/product-detail.html'
     model = Product

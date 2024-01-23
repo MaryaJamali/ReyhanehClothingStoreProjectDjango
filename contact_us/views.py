@@ -5,7 +5,7 @@ from .forms import ContactUsModelForm
 from site_setting.models import SiteSetting
 
 
-# Create your view HomePage
+# Create your view ContactUs page
 class ContactUsView(View):
     def get(self, request: HttpRequest):
         contact_form = ContactUsModelForm()
