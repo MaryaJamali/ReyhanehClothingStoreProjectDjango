@@ -41,12 +41,11 @@
                 </div>
             </div>
             <div class="row">
-                {% for article in object_list %}
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="_blog_wrap">
                             <div class="_blog_thumb mb-2">
                                 {% if article.image %}
-                                    {% thumbnail article.image "550x367" quality=90 crop='center' as im %}
+                                    {% thumbnail article.image "1060x800" quality=90 crop='center' as im %}
                                         <img class="img-fluid rounded" src="{{ im.url }}" alt="{{ article.title }}">
                                     {% endthumbnail %}
                                 {% else %}
@@ -56,35 +55,17 @@
                             </div>
                             <div class="_blog_caption">
                                 <span class="text-muted text-md-left">{{ article.create_date }}</span>
-                                <h5 class="bl_title"><a href="#">{{ article.title }}</a></h5>
-                                <p class="text-secondary">{{ article.short_description }}
+                                <h5 class="bl_title">{{ article.title }}</h5>
+                                <p class="text-secondary">{{ article.text }}
                                     <span>
                                         {% if article.author is not None %}
                                             <p class="text-dark"> نویسنده:{{ article.author }}</p>
                                         {% endif %}
                                     </span>
                                 </p>
-                                <span><a href="#" class="text-dark fs-sm">ادامه مطلب...</a></span>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-            <div class="row center">
-                <div class="col-xl-12 col-lg-12 col-md-12 text-center">
-                    <ul class="pagination">
-                        {% if page_obj.has_next %}
-                            <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
-                        {% endif %}
-                        {% for pageNumber in paginator.page_range reversed %}
-                            <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
-                                <a href="?page={{ pageNumber }}">{{ pageNumber }}</a></li>
-                        {% endfor %}
-                        {% if page_obj.has_previous %}
-                            <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
             </div>
         </div>
     </section>

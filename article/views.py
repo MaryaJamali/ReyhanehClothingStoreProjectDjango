@@ -13,6 +13,11 @@ class ArticlesListView(ListView):
         context = super(ArticlesListView, self).get_context_data(*args, **kwargs)
         return context
 
+    def get_queryset(self):
+        query = super(ArticlesListView, self).get_queryset()
+        query = query.filter(is_active=True)
+        return query
+
 
 # Class_base_View for ArticleDetail page
 class ArticleDetailView(DetailView):

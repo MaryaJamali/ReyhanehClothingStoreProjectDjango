@@ -10,6 +10,7 @@ class User(AbstractUser):
     avatar = models.CharField(max_length=20, null=True, blank=True, verbose_name='تصویر آواتار')
     email_active_code = models.CharField(max_length=100, verbose_name='کد فعالسازی ایمیل')
 
+
     class Meta:
         verbose_name = 'کاربر'
         verbose_name_plural = 'کاربران'
