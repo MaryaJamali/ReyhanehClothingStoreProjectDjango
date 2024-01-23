@@ -1,8 +1,9 @@
 {% extends 'shared/layout.html' %}
 {% load thumbnail %}
+{% load date_time_tags %}
+{% load static %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    {% load static %}
     <!DOCTYPE html>
     <html lang="fa" dir="rtl">
     <head>
@@ -54,7 +55,9 @@
                             {% endif %}
                         </div>
                         <div class="_blog_caption">
-                            <span class="text-muted text-md-left">{{ article.create_date }}</span>
+                            <span class="text-muted text-md-left"> 
+                                تاریخ درج مطلب : {{ article.create_date|to_date_string_format }}
+                            </span>
                             <h5 class="bl_title">{{ article.title }}</h5>
                             <p class="text-secondary">{{ article.text }}</p>
                             {% if article.author %}

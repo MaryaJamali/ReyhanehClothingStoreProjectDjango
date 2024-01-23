@@ -1,8 +1,9 @@
 {% extends 'shared/layout.html' %}
 {% load thumbnail %}
+{% load date_time_tags %}
+{% load static %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    {% load static %}
     <!DOCTYPE html>
     <html lang="fa" dir="rtl">
     <head>
@@ -55,7 +56,8 @@
                                 {% endif %}
                             </div>
                             <div class="_blog_caption">
-                                <span class="text-muted text-md-left">{{ article.create_date }}</span>
+                                <span class="text-muted text-md-left">{{ article.create_date|to_date_string_format }}
+                                </span>
                                 <h5 class="bl_title">
                                     <a href="{% url 'articles_detail_page_view' pk=article.pk %}">{{ article.title }}</a>
                                 </h5>
@@ -67,8 +69,8 @@
                                     </span>
                                 </p>
                                 <span>
-                                    <a href="{% url 'articles_detail_page_view' pk=article.id %}" 
-                                         class="text-dark fs-sm">ادامه مطلب...</a>
+                                    <a href="{% url 'articles_detail_page_view' pk=article.id %}"
+                                       class="text-dark fs-sm">ادامه مطلب...</a>
                                 </span>
                             </div>
                         </div>
