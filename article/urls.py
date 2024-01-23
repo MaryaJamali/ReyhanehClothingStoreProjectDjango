@@ -20,5 +20,5 @@ from . import views
 # Addressing the application
 urlpatterns = [
     path('article/', views.ArticlesListView.as_view(), name='article_list_page_view'),
-    path('<pk>/', views.ArticleDetailView.as_view(), name='articles_detail'),
+    path('<pk>/', views.ArticleDetailView.as_view(), name='articles_detail_page_view'),
 ]
