@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.db.models import Count
 from django.views.generic import ListView, DetailView
-from .models import Product, ProductCategory, ProductBrand
+from .models import Product, ProductCategory, ProductBrand, ProductComment
 
 
 # Class_base_List_View for Product page
@@ -45,5 +45,12 @@ class ProductDetailView(DetailView):
     model = Product
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(ProductDetailView, self).get_context_data()
+        # Object is the key of the product value
+        product: Product = kwargs.get('object')
+        # This code shows us that when the parent is None, it is the original comment, not the reply
+        # prefetch_related : To avoid additional queries and retrieve information with one query
+        context['comments'] = (ProductComment.objects.filter(product_id=product.id, parent=None).order_by
+                               ('-create_date').prefetch_related('productcomment_set'))
+        context['comments_count'] = ProductComment.objects.filter(product_id=product.id).count()
         return context
