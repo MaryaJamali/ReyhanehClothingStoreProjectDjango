@@ -11,7 +11,8 @@
                 class="far fa-heart"></i></button>
         <div class="card-body p-0">
             <div class="shop_thumb position-relative">
-                <a class="card-img-top d-block overflow-hidden ovr-hide" href="#">
+                <a class="card-img-top d-block overflow-hidden ovr-hide" 
+                   href="{% url 'product_detail_page_view' slug=product.slug %}">
                     {% if product.front_image %}
                         {% thumbnail product.front_image "265x396" quality=90 crop='center' as im %}
                             <img class="card-img-top" src="{{ im.url }}" alt="{{ product.title }}">
@@ -20,7 +21,8 @@
                         <img class="card-img-top" src="{% static 'img/product/default-product.jpg' %}"
                              alt="{{ product.title }}"></a>
                     {% endif %}
-                <a class="card-img-top d-block overflow-hidden ovr-show" href="#">
+                <a class="card-img-top d-block overflow-hidden ovr-show" 
+                   href="{% url 'product_detail_page_view' slug=product.slug %}">
                     {% if product.back_image %}
                         {% thumbnail product.back_image "265x396" quality=90 crop='center' as im %}
                             <img class="card-img-top" src="{{ im.url }}" alt="{{ product.title }}">
@@ -48,7 +50,7 @@
             <div class="text-left">
                 <div class="text-center">
                     <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1">
-                        <a href="#">{{ product.title }}</a>
+                        <a href="{% url 'product_detail_page_view' slug=product.slug %}">{{ product.title }}</a>
                     </h5>
                     <div class="elis_rty"><span
                             class="text-muted ft-medium line-through ml-2">129,000 تومان</span><span

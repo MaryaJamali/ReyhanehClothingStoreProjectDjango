@@ -47,6 +47,4 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         loaded_product = self.object
         request = self.request
-        favorite_product_id = request.session.get("product_favorites")
-        context['is_favorite'] = favorite_product_id == str(loaded_product.id)
         return context

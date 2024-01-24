@@ -1,7 +1,8 @@
 {% extends 'shared/layout.html' %}
+{% load static %}
+{% load poll_extras %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    {% load static %}
     <!DOCTYPE html>
     <html lang="en" dir="rtl">
     <head>
@@ -40,28 +41,20 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="prd_details">
-                            <div class="prt_01 mb-1"><span class="text-purple bg-light-purple rounded py-1">
-                                {{ product_detail.title }}</span></div>
+                            <div class="prt_01 mb-1"><span class="text-light bg-info rounded px-2 py-1">
+                                لباس</span></div>
                             <div class="prt_02 mb-3">
-                                <h2 class="ft-bold mb-1">{{ product_detail.short_description }}</h2>
+                                <h2 class="ft-bold mb-1">{{ product.title }}</h2>
                                 <div class="text-right">
-                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                        <i class="fas fa-star "></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="small filled">(412 دیدگاه)</span>
-                                    </div>
                                     <div class="elis_rty"><span class="ft-medium text-muted line-through fs-md ml-2">
                                         199000تومان</span>
-                                        <span class="ft-bold theme-cl fs-lg ml-2">{{ product_detail.price }} تومان</span>
+                                        <span class="ft-bold theme-cl fs-lg ml-2">{{ product.price | three_digits_currency }}</span>
                                         <span class="ft-regular text-light bg-success py-1 px-2 fs-sm"> موجود در انبار</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="prt_03 mb-4">
-                                <p>{{ product_detail.description }}</p>
+                                <p><span class="text-bold text-dark">توضیحات: </span>{{ product.description }}</p>
                             </div>
                             <div class="prt_04 mb-2">
                                 <p class="d-flex align-items-center mb-0 text-dark ft-medium">رنگ :</p>
@@ -106,28 +99,12 @@
                                         <label class="form-option-label" for="28">28</label>
                                     </div>
                                     <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="30">
-                                        <label class="form-option-label" for="30">30</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
                                         <input class="form-check-input" type="radio" name="size" id="32">
                                         <label class="form-option-label" for="32">32</label>
                                     </div>
                                     <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="34">
-                                        <label class="form-option-label" for="34">34</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
                                         <input class="form-check-input" type="radio" name="size" id="36">
                                         <label class="form-option-label" for="36">36</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="38">
-                                        <label class="form-option-label" for="38">38</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="40">
-                                        <label class="form-option-label" for="40">40</label>
                                     </div>
                                     <div class="form-check form-option size-option  form-check-inline mb-2">
                                         <input class="form-check-input" type="radio" name="size" id="42">
@@ -136,18 +113,6 @@
                                     <div class="form-check form-option size-option  form-check-inline mb-2">
                                         <input class="form-check-input" type="radio" name="size" id="44">
                                         <label class="form-option-label" for="44">44</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="46">
-                                        <label class="form-option-label" for="46">46</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="48">
-                                        <label class="form-option-label" for="48">48</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="50">
-                                        <label class="form-option-label" for="50">50</label>
                                     </div>
                                 </div>
                             </div>
@@ -171,19 +136,8 @@
                                     </div>
                                     <div class="col-12 col-lg-auto">
                                         <!-- ======================= Wishlist===================== -->
-                                        <button class="btn custom-height btn-default btn-block mb-2 text-dark"
-                                                data-toggle="button">
-                                            <i class="lni lni-heart ml-2"></i>علاقه مندی
-                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="prt_06">
-                                <p class="mb-0 d-flex align-items-center">
-                                    <span class="ml-4"> برند :</span>
-                                    {% if product_detail.brand %}
-                                        {{ product_detail.brand.title }}
-                                    {% endif %}
                             </div>
                         </div>
                     </div>
@@ -217,13 +171,7 @@
                             <div class="tab-pane fade show active" id="description" role="tabpanel"
                                  aria-labelledby="description-tab">
                                 <div class="description_info">
-                                    <p class="p-0 mb-2">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع
-                                        با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                    <p class="p-0">کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه
-                                        و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-                                        الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+                                    <p class="p-0 mb-2">{{ product.description }}</p>
                                 </div>
                             </div>
                             <!-- ======================= Additional Content ===================== -->
@@ -234,23 +182,35 @@
                                         <tbody>
                                         <tr>
                                             <th class="ft-medium text-dark text-right">آیدی</th>
-                                            <td>#1253458</td>
+                                            <td>
+                                                {% if product.pk %}
+                                                    #{{ product.pk }}
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <th class="ft-medium text-dark text-right">SKU</th>
-                                            <td>کومو125896</td>
+                                            <th class="ft-medium text-dark text-right">برند</th>
+                                            <td>
+                                                {% if product.brand %}
+                                                    {{ product.brand.title }}
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th class="ft-medium text-dark text-right">رنگ</th>
-                                            <td>آبی آسمانی</td>
+                                            <td>
+                                                {% if product.color %}
+                                                    {{ product.color.title }}
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th class="ft-medium text-dark text-right">سایز</th>
-                                            <td>Xl, 42</td>
-                                        </tr>
-                                        <tr>
-                                            <th class="ft-medium text-dark text-right">وزن</th>
-                                            <td>450 گرم</td>
+                                            <td>
+                                                {% if product.size %}
+                                                    {{ product.size.title }}
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
