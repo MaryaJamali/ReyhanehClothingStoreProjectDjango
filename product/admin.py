@@ -57,3 +57,9 @@ class ProductVisitAdmin(admin.ModelAdmin):
 @admin.register(models.ProductGallery)
 class ProductGalleryAdmin(admin.ModelAdmin):
     list_display = ['product']
+
+
+# Admin panel customization for the ProductComment
+@admin.register(models.ProductComment)
+class ProductCommentAdmin(admin.ModelAdmin):
+    list_display = ['product', 'user', 'create_date']
