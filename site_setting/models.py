@@ -11,6 +11,7 @@ class SiteSetting(models.Model):
     fax = models.CharField(max_length=200, null=True, blank=True, verbose_name='شماره فکس')
     email = models.CharField(max_length=200, null=True, blank=True, verbose_name='ایمیل')
     copy_right = models.TextField(verbose_name='متن کپی رایت سایت')
+    header_text = models.TextField(null=True, blank=True, verbose_name='متن سایت')
     about_us_text = models.TextField(verbose_name='متن درباره ما سایت')
     site_logo = models.ImageField(upload_to='images/site-setting', null=True, blank=True, verbose_name='لوگو سایت')
     avatar = models.ImageField(upload_to='images/site-setting', null=True, blank=True, verbose_name='تصویر ادمین')
