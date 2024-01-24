@@ -1,0 +1,49 @@
+{% load static %}
+{% load poll_extras %}
+{% load date_time_tags %}
+<div class="reviews_info">
+    {% for comment in comments %}
+        <!-- ======================= Single Review ===================== -->
+        <div class="single_rev d-flex align-items-start br-bottom py-3">
+            <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
+                                               class="img-fluid circle" width="90"
+                                               alt=""/>
+            </div>
+            <div class="single_rev_caption d-flex align-items-start pr-3">
+                <div class="single_capt_left">
+                    <h5 class="mb-0 fs-md ft-medium lh-1">{{ comment.user }}</h5>
+                    <span class="small">{{ comment.create_date | to_date_string_format }}</span>
+                    <p>{{ comment.text }}</p>
+                    <a class="single_capt_right ft-medium small text-warning
+                                                    bg-light-warning rounded px-3 py-1"
+                       onclick="fillParentId({{ comment.id }})">
+                        <i class="fa fa-reply"></i>پاسـخ</a>
+                </div>
+                <div class="single_capt_right">
+                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for sub_comment in comment.productcomment_set.all %}
+            <div class="single_rev d-flex align-items-start br-bottom py-3">
+                <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
+                                                   class="img-fluid circle" width="90"
+                                                   alt=""/>
+                </div>
+                <div class="single_rev_caption d-flex align-items-start pr-3">
+                    <div class="single_capt_left">
+                        <h5 class="mb-0 fs-md ft-medium lh-1">{{ sub_comment.user }}</h5>
+                        <span class="small">{{ sub_comment.create_date | to_date_string_format }}</span>
+                        <p>{{ sub_comment.text }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

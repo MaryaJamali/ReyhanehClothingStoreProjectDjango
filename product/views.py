@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.db.models import Count
 from django.views.generic import ListView, DetailView
 from .models import Product, ProductCategory, ProductBrand, ProductComment
@@ -54,3 +54,21 @@ class ProductDetailView(DetailView):
                                ('-create_date').prefetch_related('productcomment_set'))
         context['comments_count'] = ProductComment.objects.filter(product_id=product.id).count()
         return context
+
+
+# Function_base_View for add_product_comment page
+def add_product_comment(request: HttpRequest):
+    if request.user.is_authenticated:
+        product_id = request.GET.get('product_id')
+        product_comment = request.GET.get('product_comment')
+        parent_id = request.GET.get('parent_id')
+        # Fill in the desired fields and save
+        new_comment = ProductComment(product_id=product_id, text=product_comment, user_id=request.user.id, parent_id=parent_id)
+        new_comment.save()
+        context = {
+            'comments': ProductComment.objects.filter(product_id=product_id, parent=None).order_by(
+                '-create_date').prefetch_related('productcomment_set'),
+            'comments_count': ProductComment.objects.filter(product_id=product_id).count()
+        }
+        return render(request, 'product/include/product-comments-component.html', context=context)
+    return HttpResponse('response')

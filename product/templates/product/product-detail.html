@@ -161,9 +161,9 @@
                                 <a class="nav-link" href="#information" id="information-tab" data-toggle="tab"
                                    role="tab" aria-controls="information" aria-selected="false">اطلاعات تکمیلی</a>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" id="comments_area">
                                 <a class="nav-link" href="#reviews" id="reviews-tab" data-toggle="tab" role="tab"
-                                   aria-controls="reviews" aria-selected="false">دیدگاه ها({{ comments.count }})</a>
+                                   aria-controls="reviews" aria-selected="false">دیدگاه ها({{ comments_count }})</a>
                             </li>
                         </ul>
 
@@ -232,7 +232,8 @@
                                                     <h5 class="mb-0 fs-md ft-medium lh-1">{{ comment.user }}</h5>
                                                     <span class="small">{{ comment.create_date | to_date_string_format }}</span>
                                                     <p>{{ comment.text }}</p>
-                                                    <a class="single_capt_right ft-medium small text-warning bg-light-warning rounded px-3 py-1">
+                                                    <a class=" btn single_capt_right ft-medium small text-warning 
+                                                    bg-light-warning rounded px-3 py-1" onclick="fillParentId({{ comment.id }})">
                                                         <i class="fa fa-reply"></i>پاسـخ</a>
                                                 </div>
                                                 <div class="single_capt_right">
@@ -263,7 +264,7 @@
                                         {% endfor %}
                                     {% endfor %}
                                 </div>
-                                <div class="reviews_rate">
+                                <div class="reviews_rate" id="comment_form">
                                     {% if request.user.is_authenticated %}
                                         <form class="row">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -307,13 +308,15 @@
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group">
+                                                    <input type="hidden" id="parent_id" value="">
                                                     <label class="medium text-dark ft-medium">متن دیدگاه</label>
                                                     <textarea class="form-control" id="commentText"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group m-0">
-                                                    <a class="btn btn-white stretched-link hover-black">ارسال دیدگاه</a>
+                                                    <a class="btn btn-white stretched-link hover-black"
+                                                       onclick="sendProductComment({{ product.id }})">ارسال دیدگاه</a>
                                                 </div>
                                             </div>
                                         </form>
