@@ -18,7 +18,8 @@ class ProductListView(ListView):
         query = Product.objects.all()
         context['product_categories'] = (ProductCategory.objects.filter(is_active=True, is_delete=False))
         # annotate : Ability to add calculated values to an existing query set
-        context['brand_categories'] = (ProductBrand.objects.annotate(products_count=Count('product')).filter(is_active=True))
+        context['brand_categories'] = (
+            ProductBrand.objects.annotate(products_count=Count('product')).filter(is_active=True))
         product: Product = query.order_by('-price').first()
         db_max_price = product.price if product is not None else 0
         context['db_max_price'] = db_max_price
@@ -45,6 +46,4 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        loaded_product = self.object
-        request = self.request
         return context
