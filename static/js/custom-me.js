@@ -2,7 +2,7 @@ function sendProductComment(productId) {
     // Returns the text value
     var comment = $('#commentText').val();
     var parentId = $('#parent_id').val();
-    $.get('/products/add-product-comment', {     // address be corrected
+    $.get('/products/add-product-comment', {
         product_comment: comment,
         product_id: productId,
         parent_id: parentId
