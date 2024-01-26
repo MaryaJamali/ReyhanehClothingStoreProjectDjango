@@ -30,7 +30,7 @@
                         {% for group in product_galleries_group %}
                             <div class="sp-wrap mb-3 {% if forloop.first %}active{% endif %}">
                                 {% for gallery in group %}
-                                    {% thumbnail gallery.image "600x700" quality=90 crop='center' as im %}
+                                    {% thumbnail gallery.image "600x750" quality=90 crop='center' as im %}
                                         <a href="{{ gallery.image.url }}">
                                             <img src="{{ im.url }}" alt="{{ product.title }}">
                                         </a>
@@ -348,241 +348,49 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="slide_items">
                             <!-- =======================single Item====================== -->
-                            <div class="single_itesm">
-                                <div class="product_grid card b-0 mb-0">
-                                    <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
-                                        پرفروش
-                                    </div>
-                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                                            class="far fa-heart"></i></button>
-                                    <div class="card-body p-0">
-                                        <div class="shop_thumb position-relative">
-                                            <a class="card-img-top d-block overflow-hidden"
-                                               href="shop-single-v1.html"><img class="card-img-top"
-                                                                               src="{% static 'img/product/16.png' %}"
-                                                                               alt="..."></a>
-                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
-                                                <div class="edlio"><a href="#" data-toggle="modal"
-                                                                      data-target="#quickview"
-                                                                      class="text-white fs-sm ft-medium"><i
-                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
+                            {% for group in related_products %}
+                                {% for product in group %}
+                                    <div class="single_itesm">
+                                        <div class="product_grid card b-0 mb-0">
+                                            <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
+                                                {{ product.brand.title }}
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                        <div class="text-left">
-                                            <div class="text-center">
-                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                        href="shop-single-v1.html">نیم ست دویدن</a></h5>
-                                                <div class="elis_rty"><span
-                                                        class="ft-bold fs-md text-dark">119000 تومان</span></div>
+                                            <button class="snackbar-wishlist btn btn_love position-absolute ab-left">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                            <div class="card-body p-0">
+                                                <div class="shop_thumb position-relative">
+                                                    <a class="card-img-top d-block overflow-hidden"
+                                                       href="shop-single-v1.html">
+                                                        {% thumbnail product.front_image "295x420" quality=90 crop='center' as im %}
+                                                            <img class="card-img-top" src="{{ im.url }}"
+                                                                 alt="{{ product.title }}">
+                                                        {% endthumbnail %}
+                                                    </a>
+                                                    <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                                        <div class="edlio">
+                                                            <a href="#" data-toggle="modal" data-target="#quickview"
+                                                               class="text-white fs-sm ft-medium">
+                                                                <i class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- =======================single Item====================== -->
-                            <div class="single_itesm">
-                                <div class="product_grid card b-0 mb-0">
-                                    <div class="badge bg-info text-white position-absolute ft-regular ab-right  text-upper">
-                                        جدید
-                                    </div>
-                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                                            class="far fa-heart"></i></button>
-                                    <div class="card-body p-0">
-                                        <div class="shop_thumb position-relative">
-                                            <a class="card-img-top d-block overflow-hidden"
-                                               href="shop-single-v1.html"><img class="card-img-top"
-                                                                               src="{% static 'img/product/17.png' %}"
-                                                                               alt="..."></a>
-                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
-                                                <div class="edlio"><a href="#" data-toggle="modal"
-                                                                      data-target="#quickview"
-                                                                      class="text-white fs-sm ft-medium"><i
-                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                        <div class="text-left">
-                                            <div class="text-center">
-                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                        href="shop-single-v1.html">
-                                                    مردانه رسمی</a></h5>
-                                                <div class="elis_rty"><span
-                                                        class="text-muted ft-medium line-through ml-2">129000 تومان</span><span
-                                                        class="ft-bold theme-cl fs-md">79000 تومان</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- =======================single Item====================== -->
-                            <div class="single_itesm">
-                                <div class="product_grid card b-0 mb-0">
-                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                                            class="far fa-heart"></i></button>
-                                    <div class="card-body p-0">
-                                        <div class="shop_thumb position-relative">
-                                            <a class="card-img-top d-block overflow-hidden"
-                                               href="shop-single-v1.html"><img class="card-img-top"
-                                                                               src="{% static 'img/product/18.png' %}"
-                                                                               alt="..."></a>
-                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
-                                                <div class="edlio"><a href="#" data-toggle="modal"
-                                                                      data-target="#quickview"
-                                                                      class="text-white fs-sm ft-medium"><i
-                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                        <div class="text-left">
-                                            <div class="text-center">
-                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                        href="shop-single-v1.html">لباس دویدن نیمه</a></h5>
-                                                <div class="elis_rty"><span
-                                                        class="ft-bold fs-md text-dark">80000 تومان</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- =======================single Item====================== -->
-                            <div class="single_itesm">
-                                <div class="product_grid card b-0 mb-0">
-                                    <div class="badge bg-warning text-white position-absolute ft-regular ab-right  text-upper">
-                                        پرطرفدار
-                                    </div>
-                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                                            class="far fa-heart"></i></button>
-                                    <div class="card-body p-0">
-                                        <div class="shop_thumb position-relative">
-                                            <a class="card-img-top d-block overflow-hidden"
-                                               href="shop-single-v1.html"><img class="card-img-top"
-                                                                               src="{% static 'img/product/19.png' %}"
-                                                                               alt="..."></a>
-                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
-                                                <div class="edlio"><a href="#" data-toggle="modal"
-                                                                      data-target="#quickview"
-                                                                      class="text-white fs-sm ft-medium"><i
-                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                        <div class="text-left">
-                                            <div class="text-center">
-                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                        href="shop-single-v1.html">لباس زنانه نیمه فانتزی</a></h5>
-                                                <div class="elis_rty"><span
-                                                        class="text-muted ft-medium line-through ml-2">149000 تومان</span><span
-                                                        class="ft-bold theme-cl fs-md">110000 تومان</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- =======================single Item====================== -->
-                            <div class="single_itesm">
-                                <div class="product_grid card b-0 mb-0">
-                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                                            class="far fa-heart"></i></button>
-                                    <div class="card-body p-0">
-                                        <div class="shop_thumb position-relative">
-                                            <a class="card-img-top d-block overflow-hidden"
-                                               href="shop-single-v1.html"><img class="card-img-top"
-                                                                               src="{% static 'img/product/20.png' %}"
-                                                                               alt="..."></a>
-                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
-                                                <div class="edlio"><a href="#" data-toggle="modal"
-                                                                      data-target="#quickview"
-                                                                      class="text-white fs-sm ft-medium"><i
-                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                        <div class="text-left">
-                                            <div class="text-center">
-                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                        href="shop-single-v1.html">شلوار جین فلیکس فلوکس</a></h5>
-                                                <div class="elis_rty"><span
-                                                        class="text-muted ft-medium line-through ml-2">90000 تومان</span><span
-                                                        class="ft-bold theme-cl fs-md">49000 تومان</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- =======================single Item====================== -->
-                            <div class="single_itesm">
-                                <div class="product_grid card b-0 mb-0">
-                                    <div class="badge bg-danger text-white position-absolute ft-regular ab-right  text-upper">
-                                        پرطرفدار
-                                    </div>
-                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                                            class="far fa-heart"></i></button>
-                                    <div class="card-body p-0">
-                                        <div class="shop_thumb position-relative">
-                                            <a class="card-img-top d-block overflow-hidden"
-                                               href="shop-single-v1.html"><img class="card-img-top"
-                                                                               src="{% static 'img/product/21.png' %}"
-                                                                               alt="..."></a>
-                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
-                                                <div class="edlio"><a href="#" data-toggle="modal"
-                                                                      data-target="#quickview"
-                                                                      class="text-white fs-sm ft-medium"><i
-                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                        <div class="text-left">
-                                            <div class="text-center">
-                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                        href="shop-single-v1.html">کت و شلوار سالوار فانتزی</a></h5>
-                                                <div class="elis_rty"><span
-                                                        class="ft-bold fs-md text-dark">114000 تومان</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- =======================single Item====================== -->
-                            <div class="single_itesm">
-                                <div class="product_grid card b-0 mb-0">
-                                    <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
-                                        پرفروش
-                                    </div>
-                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                                            class="far fa-heart"></i></button>
-                                    <div class="card-body p-0">
-                                        <div class="shop_thumb position-relative">
-                                            <a class="card-img-top d-block overflow-hidden"
-                                               href="shop-single-v1.html"><img class="card-img-top"
-                                                                               src="{% static 'img/product/22.png' %}"
-                                                                               alt="..."></a>
-                                            <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
-                                                <div class="edlio"><a href="#" data-toggle="modal"
-                                                                      data-target="#quickview"
-                                                                      class="text-white fs-sm ft-medium"><i
-                                                        class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
-                                        <div class="text-left">
-                                            <div class="text-center">
-                                                <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                        href="shop-single-v1.html">لباس کامل</a></h5>
-                                                <div class="elis_rty"><span class="ft-bold theme-cl fs-md text-dark">112000 تومان</span>
+                                            <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center">
+                                                <div class="text-left">
+                                                    <div class="text-center">
+                                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                                href="shop-single-v1.html">{{ product.title }}</a></h5>
+                                                        <div class="elis_rty"><span
+                                                                class="ft-bold fs-md text-dark">{{ product.price|three_digits_currency }}</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                {% endfor %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

@@ -52,6 +52,8 @@ class ProductDetailView(DetailView):
         galleries = list(ProductGallery.objects.filter(product_id=loaded_product.id).all())
         galleries.insert(0, loaded_product)
         context['product_galleries_group'] = group_list(galleries, 6)
+        context['related_products'] = group_list(list(Product.objects.filter(brand_id=loaded_product.brand_id).exclude
+                                                      (pk=loaded_product.id).all()[:12]), 4)
         # Object is the key of the product value
         product: Product = kwargs.get('object')
         # This code shows us that when the parent is None, it is the original comment, not the reply
