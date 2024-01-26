@@ -30,7 +30,7 @@
                         {% for group in product_galleries_group %}
                             <div class="sp-wrap mb-3 {% if forloop.first %}active{% endif %}">
                                 {% for gallery in group %}
-                                    {% thumbnail gallery.image "600x750" quality=90 crop='center' as im %}
+                                    {% thumbnail gallery.image "620x780" quality=90 crop='center' as im %}
                                         <a href="{{ gallery.image.url }}">
                                             <img src="{{ im.url }}" alt="{{ product.title }}">
                                         </a>
