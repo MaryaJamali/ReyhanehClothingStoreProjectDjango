@@ -22,8 +22,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <div class="sp-loading"><img src="{% static 'img/product/15.png' %}" alt=""><br>
-                            در حال بارگذاری تصاویر
+                        <div class="sp-loading">
+                            <img src="{% static 'img/product/default-product.jpg' %}" alt="{{ product.title }}">
+                            <br>                            در حال بارگذاری تصاویر
                         </div>
                         <div class="sp-wrap mb-3">
                             <a href="{% static 'img/product/16.png' %}"><img src="{% static 'img/product/16.png' %}"
