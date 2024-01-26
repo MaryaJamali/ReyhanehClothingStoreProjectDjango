@@ -1,5 +1,6 @@
 {% extends 'shared/layout.html' %}
 {% load static %}
+{% load thumbnail %}
 {% load poll_extras %}
 {% load date_time_tags %}
 <!-- =======================Start Content Page============================= -->
@@ -24,22 +25,19 @@
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="sp-loading">
                             <img src="{% static 'img/product/default-product.jpg' %}" alt="{{ product.title }}">
-                            <br>                            در حال بارگذاری تصاویر
+                            <br> در حال بارگذاری تصاویر
                         </div>
-                        <div class="sp-wrap mb-3">
-                            <a href="{% static 'img/product/16.png' %}"><img src="{% static 'img/product/16.png' %}"
-                                                                             alt=""></a>
-                            <a href="{% static 'img/product/17.png' %}"><img src="{% static 'img/product/17.png' %}"
-                                                                             alt=""></a>
-                            <a href="{% static 'img/product/18.png' %}"><img src="{% static 'img/product/18.png' %}"
-                                                                             alt=""></a>
-                            <a href="{% static 'img/product/19.png' %}"><img src="{% static 'img/product/19.png' %}"
-                                                                             alt=""></a>
-                            <a href="{% static 'img/product/20.png' %}"><img src="{% static 'img/product/20.png' %}"
-                                                                             alt=""></a>
-                            <a href="{% static 'img/product/21.png' %}"><img src="{% static 'img/product/21.png' %}"
-                                                                             alt=""></a>
-                        </div>
+                        {% for group in product_galleries_group %}
+                            <div class="sp-wrap mb-3 {% if forloop.first %}active{% endif %}">
+                                {% for gallery in group %}
+                                    {% thumbnail gallery.image "600x700" quality=90 crop='center' as im %}
+                                        <a href="{{ gallery.image.url }}">
+                                            <img src="{{ im.url }}" alt="{{ product.title }}">
+                                        </a>
+                                    {% endthumbnail %}
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="prd_details">
@@ -234,7 +232,8 @@
                                                     <span class="small">{{ comment.create_date | to_date_string_format }}</span>
                                                     <p>{{ comment.text }}</p>
                                                     <a class=" btn single_capt_right ft-medium small text-warning 
-                                                    bg-light-warning rounded px-3 py-1" onclick="fillParentId({{ comment.id }})">
+                                                    bg-light-warning rounded px-3 py-1"
+                                                       onclick="fillParentId({{ comment.id }})">
                                                         <i class="fa fa-reply"></i>پاسـخ</a>
                                                 </div>
                                                 <div class="single_capt_right">

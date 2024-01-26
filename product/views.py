@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from django.db.models import Count
+from utils.convertors import group_list
 from django.views.generic import ListView, DetailView
-from .models import Product, ProductCategory, ProductBrand, ProductComment
+from .models import Product, ProductCategory, ProductBrand, ProductComment, ProductGallery
 
 
 # Class_base_List_View for Product page
@@ -45,7 +46,12 @@ class ProductDetailView(DetailView):
     model = Product
 
     def get_context_data(self, **kwargs):
+        # retrieves the initial context data from the parent class of ProductDetailView.
         context = super(ProductDetailView, self).get_context_data()
+        loaded_product = self.object
+        galleries = list(ProductGallery.objects.filter(product_id=loaded_product.id).all())
+        galleries.insert(0, loaded_product)
+        context['product_galleries_group'] = group_list(galleries, 6)
         # Object is the key of the product value
         product: Product = kwargs.get('object')
         # This code shows us that when the parent is None, it is the original comment, not the reply
