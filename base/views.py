@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpRequest
+from utils.convertors import group_list
 from django.views.generic.base import TemplateView
+from product.models import Product
 from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox
 
 
@@ -10,8 +12,12 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
+        context['main_product'] = Product.objects.all()
         slider = Slider.objects.filter(is_active=True)
         context['sliders'] = slider
+        # Fetching from the database as the latest products
+        latest_products = Product.objects.filter(is_active=True, is_delete=False).order_by('-id')[:4]
+        context['latest_products'] = group_list(latest_products)
         return context
 
 
