@@ -4,6 +4,7 @@ from django.db.models import Count
 from utils.convertors import group_list
 from django.views.generic.base import TemplateView
 from product.models import Product
+from article.models import Article
 from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox
 
 
@@ -19,6 +20,9 @@ class HomeView(TemplateView):
         # Fetching from the database as the latest products
         latest_products = Product.objects.filter(is_active=True, is_delete=False).order_by('-id')[:4]
         context['latest_products'] = group_list(latest_products)
+        # Fetching from the database as the latest article
+        latest_articles = Article.objects.filter(is_active=True).order_by('create_date')[:3]
+        context['latest_articles'] = group_list(latest_articles)
         # Fetching from the database as the most visit products
         most_visit_products = Product.objects.filter(is_active=True, is_delete=False).annotate(
             visit_count=Count('productvisit')).order_by('-visit_count')[:4]

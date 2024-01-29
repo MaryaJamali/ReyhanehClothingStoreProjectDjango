@@ -1,5 +1,6 @@
 {% extends 'shared/layout.html' %}
 {% load poll_extras %}
+{% load date_time_tags %}
 {% load thumbnail %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
@@ -249,53 +250,43 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <div class="_blog_wrap">
-                        <div class="_blog_thumb mb-2">
-                            <a href="#" class="d-block"><img src="{% static 'img/bl-1.png' %}" class="img-fluid rounded"
-                                                             alt=""/></a>
+            {% for group in latest_articles %}
+                <div class="row">
+                    {% for article in group %}
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="_blog_wrap">
+                                <div class="_blog_thumb mb-2">
+                                    {% if article.image %}
+                                        {% thumbnail article.image "550x367" quality=90 crop='center' as im %}
+                                            <img class="img-fluid rounded" src="{{ im.url }}" alt="{{ article.title }}">
+                                        {% endthumbnail %}
+                                    {% else %}
+                                        <img class="card-img-top" src="{% static 'img/default-blog.png' %}"
+                                             alt="{{ article.title }}">
+                                    {% endif %}
+                                </div>
+                                <div class="_blog_caption">
+                                    <span class="text-muted">{{ article.create_date|to_date_string_format }}</span>
+                                    <h5 class="bl_title"><a href="{% url 'articles_detail_page_view' pk=article.pk %}">
+                                        {{ article.title }}</a>
+                                    </h5>
+                                    <p class="text-secondary">{{ article.short_description }}
+                                        <span>
+                                        {% if article.author is not None %}
+                                            <p class="text-dark"> نویسنده:{{ article.author }}</p>
+                                        {% endif %}
+                                    </span>
+                                    </p>
+                                    <span>
+                                    <a href="{% url 'articles_detail_page_view' pk=article.id %}"
+                                       class="text-dark fs-sm">ادامه مطلب...</a>
+                                </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="_blog_caption">
-                            <span class="text-muted">26 دی 1400</span>
-                            <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
-                            <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <div class="_blog_wrap">
-                        <div class="_blog_thumb mb-2">
-                            <a href="#" class="d-block"><img src="{% static 'img/bl-2.png' %}" class="img-fluid rounded"
-                                                             alt=""/></a>
-                        </div>
-                        <div class="_blog_caption">
-                            <span class="text-muted">17 دی 1400</span>
-                            <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
-                            <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <div class="_blog_wrap">
-                        <div class="_blog_thumb mb-2">
-                            <a href="#" class="d-block"><img src="{% static 'img/bl-3.png' %}" class="img-fluid rounded"
-                                                             alt=""/></a>
-                        </div>
-                        <div class="_blog_caption">
-                            <span class="text-muted">10 دی 1400</span>
-                            <h5 class="bl_title"><a href="#">بیایید شروع به فروش در این تعطیلات تابستانی کنیم.</a></h5>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
-                            <a href="#" class="text-dark fs-sm">ادامه مطلب...</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <!-- ======================= Blog End ============================ -->
