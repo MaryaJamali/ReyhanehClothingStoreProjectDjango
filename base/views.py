@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.db.models import Count
 from utils.convertors import group_list
 from django.views.generic.base import TemplateView
 from product.models import Product
@@ -18,6 +19,10 @@ class HomeView(TemplateView):
         # Fetching from the database as the latest products
         latest_products = Product.objects.filter(is_active=True, is_delete=False).order_by('-id')[:4]
         context['latest_products'] = group_list(latest_products)
+        # Fetching from the database as the most visit products
+        most_visit_products = Product.objects.filter(is_active=True, is_delete=False).annotate(
+            visit_count=Count('productvisit')).order_by('-visit_count')[:4]
+        context['most_visit_products'] = group_list(most_visit_products)
         return context
 
 

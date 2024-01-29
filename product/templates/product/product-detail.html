@@ -361,8 +361,8 @@
                                             <div class="card-body p-0">
                                                 <div class="shop_thumb position-relative">
                                                     <a class="card-img-top d-block overflow-hidden"
-                                                       href="shop-single-v1.html">
-                                                        {% thumbnail product.front_image "295x420" quality=90 crop='center' as im %}
+                                                       href="{% url 'product_detail_page_view' slug=product.slug %}">
+                                                        {% thumbnail product.front_image "420x550" quality=90 crop='center' as im %}
                                                             <img class="card-img-top" src="{{ im.url }}"
                                                                  alt="{{ product.title }}">
                                                         {% endthumbnail %}
@@ -380,7 +380,7 @@
                                                 <div class="text-left">
                                                     <div class="text-center">
                                                         <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                                href="shop-single-v1.html">{{ product.title }}</a></h5>
+                                                                href="{% url 'product_detail_page_view' slug=product.slug %}">{{ product.title }}</a></h5>
                                                         <div class="elis_rty"><span
                                                                 class="ft-bold fs-md text-dark">{{ product.price|three_digits_currency }}</span>
                                                         </div>

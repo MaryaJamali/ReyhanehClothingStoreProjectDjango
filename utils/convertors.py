@@ -1,3 +1,4 @@
+# Function to fetch the latest products
 def group_list(custom_list, size=4):
     grouped_list = []
     for i in range(0, len(custom_list), size):

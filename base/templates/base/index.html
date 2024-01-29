@@ -39,7 +39,6 @@
             </div>
         {% endfor %}
     </div>
-    <!-- ============================ Hero Banner End ================================== -->
     <!-- =======================Start Category Style ======================== -->
     <section class="p-0">
         <div class="container">
@@ -95,8 +94,7 @@
             </div>
         </div>
     </section>
-    <!-- =======================End Category Style ======================== -->
-    <!-- ======================= Product List ======================== -->
+    <!-- ======================= Latest Products ======================== -->
     <section class="middle">
         <div class="container">
             <div class="row justify-content-center">
@@ -121,9 +119,70 @@
                                     <div class="shop_thumb position-relative">
                                         <a class="card-img-top d-block overflow-hidden"
                                            href="{% url 'product_detail_page_view' slug=product.slug %}">
-                                            <img class="card-img-top" src="{{ product.front_image.url }}"
-                                                 alt="{{ product.title }}">
+                                            {% thumbnail product.front_image "265x396" quality=90 crop='center' as im %}
+                                                <img class="card-img-top" src="{{ product.front_image.url }}"
+                                                     alt="{{ product.title }}">
+                                            {% endthumbnail %}
                                         </a>
+                                        <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                            <div class="edlio">
+                                                <a href="#"
+                                                   data-toggle="modal" data-target="#{{ product.slug }}"
+                                                   class="text-white fs-sm ft-medium">
+                                                    <i class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                                    <div class="text-left">
+                                        <div class="text-center">
+                                            <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                    href="{% url 'product_detail_page_view' slug=product.slug %}">{{ product.title }}</a>
+                                            </h5>
+                                            <div class="elis_rty"><span
+                                                    class="ft-bold fs-md text-dark">{{ product.price | three_digits_currency }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- ======================= The most visited products ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="sec_title position-relative text-center">
+                        <h2 class="off_title">پربازدیدترین محصولات</h2>
+                        <h3 class="ft-bold pt-3">پربازدیدترین محصولات ما</h3>
+                    </div>
+                </div>
+            </div>
+            {% for group in most_visit_products %}
+                <div class="row align-items-center rows-products">
+                    {% for product in group %}
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                            <div class="product_grid card b-0">
+                                <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
+                                    جدیدترین
+                                </div>
+                                <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
+                                        class="far fa-heart"></i></button>
+                                <div class="card-body p-0">
+                                    <div class="shop_thumb position-relative">
+                                            {% thumbnail product.front_image "265x396" quality=90 crop='center' as im %}
+                                                <a class="card-img-top d-block overflow-hidden"
+                                           href="{% url 'product_detail_page_view' slug=product.slug %}">
+                                                <img class="card-img-top" src="{{ product.front_image.url }}"
+                                                     alt="{{ product.title }}"></a>
+                                            {% endthumbnail %}
+                                  
                                         <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
                                             <div class="edlio">
                                                 <a href="#"
@@ -155,132 +214,133 @@
     </section>
     <!-- ======================= Product View Modal ======================== -->
     {% for product in main_product %}
-<div class="modal fade lg-modal" id="{{ product.slug }}" tabindex="-1" role="dialog" aria-labelledby="quickviewmodal"
-     aria-hidden="true">
-    <div class="modal-dialog modal-xl login-pop-form" role="document">
-        <div class="modal-content" id="{{ product.slug }}">
-            <div class="modal-headers">
-                <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="ti-close"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="quick_view_wrap">
-                    <div class="quick_view_thmb">
-                        <div class="quick_view_slide">
-                            <div class="single_view_slide">
-                                {% if product.front_image %}
-                                    {% thumbnail product.front_image "420x550" quality=90 crop='center' as im %}
-                                        <img class="img-fluid" src="{{ im.url }}" alt="{{ product.title }}">
-                                    {% endthumbnail %}
-                                {% else %}
-                                    <img class="img-fluid" src="{% static 'img/product/default-product.jpg' %}"
-                                         alt="{{ product.title }}">
-                                {% endif %}
-                            </div>
-                            <div class="single_view_slide">
-                                {% if product.back_image %}
-                                    {% thumbnail product.back_image "420x550" quality=90 crop='center' as im %}
-                                        <img class="img-fluid" src="{{ im.url }}" alt="{{ product.title }}">
-                                    {% endthumbnail %}
-                                {% else %}
-                                    <img class="img-fluid" src="{% static 'img/product/default-product.jpg' %}"
-                                         alt="{{ product.title }}">
-                                {% endif %}
-                            </div>
-                        </div>
+        <div class="modal fade lg-modal" id="{{ product.slug }}" tabindex="-1" role="dialog"
+             aria-labelledby="quickviewmodal"
+             aria-hidden="true">
+            <div class="modal-dialog modal-xl login-pop-form" role="document">
+                <div class="modal-content" id="{{ product.slug }}">
+                    <div class="modal-headers">
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="ti-close"></span>
+                        </button>
                     </div>
-                    <div class="quick_view_capt">
-                        <div class="prd_details">
-                            <div class="prt_01 mb-1">
-                                <span class="text-light bg-info rounded px-2 py-1">لباس</span></div>
-                            <div class="prt_02 mb-2">
-                                <h4 class="ft-bold mb-1">{{ product.title }}</h4>
-                                <div class="text-left">
-                                    <div class="elis_rty text-right"><span
-                                            class="ft-bold theme-cl fs-lg ml-2">قیمت: {{ product.price | three_digits_currency }}</span><span
-                                            class="ft-regular text-danger bg-light-danger py-1 px-2 fs-sm"> تمام شده </span>
+                    <div class="modal-body">
+                        <div class="quick_view_wrap">
+                            <div class="quick_view_thmb">
+                                <div class="quick_view_slide">
+                                    <div class="single_view_slide">
+                                        {% if product.front_image %}
+                                            {% thumbnail product.front_image "420x550" quality=90 crop='center' as im %}
+                                                <img class="img-fluid" src="{{ im.url }}" alt="{{ product.title }}">
+                                            {% endthumbnail %}
+                                        {% else %}
+                                            <img class="img-fluid" src="{% static 'img/product/default-product.jpg' %}"
+                                                 alt="{{ product.title }}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="single_view_slide">
+                                        {% if product.back_image %}
+                                            {% thumbnail product.back_image "420x550" quality=90 crop='center' as im %}
+                                                <img class="img-fluid" src="{{ im.url }}" alt="{{ product.title }}">
+                                            {% endthumbnail %}
+                                        {% else %}
+                                            <img class="img-fluid" src="{% static 'img/product/default-product.jpg' %}"
+                                                 alt="{{ product.title }}">
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            <div class="prt_03 mb-3">
-                                <h5>توضیحات : </h5>
-                                <p>{{ product.description }}</p>
-                            </div>
-                            <div class="prt_02 mb-2">
-                                <div class="text-left">
-                                    <div class="elis_rty text-right">
-                                        <span class="theme-cl text-dark fs-lg ml-2">برند: </span>
-                                        <span class="ft-bold text-secondary  py-1 px-2 fs-sm">
+                            <div class="quick_view_capt">
+                                <div class="prd_details">
+                                    <div class="prt_01 mb-1">
+                                        <span class="text-light bg-info rounded px-2 py-1">لباس</span></div>
+                                    <div class="prt_02 mb-2">
+                                        <h4 class="ft-bold mb-1">{{ product.title }}</h4>
+                                        <div class="text-left">
+                                            <div class="elis_rty text-right"><span
+                                                    class="ft-bold theme-cl fs-lg ml-2">قیمت: {{ product.price | three_digits_currency }}</span><span
+                                                    class="ft-regular text-danger bg-light-danger py-1 px-2 fs-sm"> تمام شده </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="prt_03 mb-3">
+                                        <h5>توضیحات : </h5>
+                                        <p>{{ product.description }}</p>
+                                    </div>
+                                    <div class="prt_02 mb-2">
+                                        <div class="text-left">
+                                            <div class="elis_rty text-right">
+                                                <span class="theme-cl text-dark fs-lg ml-2">برند: </span>
+                                                <span class="ft-bold text-secondary  py-1 px-2 fs-sm">
                                             {{ product.brand }}
                                         </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="prt_02 mb-2">
-                                <div class="text-left">
-                                    <div class="elis_rty text-right">
-                                        <span class="theme-cl text-dark fs-lg ml-2">رنگ: </span>
-                                        <span class="ft-bold text-secondary py-1 px-2 fs-sm">
+                                    <div class="prt_02 mb-2">
+                                        <div class="text-left">
+                                            <div class="elis_rty text-right">
+                                                <span class="theme-cl text-dark fs-lg ml-2">رنگ: </span>
+                                                <span class="ft-bold text-secondary py-1 px-2 fs-sm">
                                             {{ product.color }}
                                         </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="prt_02 mb-2">
-                                <div class="text-left">
-                                    <div class="elis_rty text-right">
-                                        <span class="theme-cl text-dark fs-lg ml-2">سایز: </span>
-                                        <span class="ft-bold text-secondary  py-1 px-2 fs-sm">
+                                    <div class="prt_02 mb-2">
+                                        <div class="text-left">
+                                            <div class="elis_rty text-right">
+                                                <span class="theme-cl text-dark fs-lg ml-2">سایز: </span>
+                                                <span class="ft-bold text-secondary  py-1 px-2 fs-sm">
                                             {{ product.size }}
                                         </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="prt_05 mb-4">
+                                        <div class="form-row mb-7">
+                                            <div class="col-12 col-lg-auto">
+                                                <!-- ========================Quantity================== -->
+                                                <select class="mb-2 custom-select">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-lg">
+                                                <!-- ==================Submit================ -->
+                                                <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
+                                                    <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="prt_06">
+                                        <p class="mb-0 d-flex align-items-center">
+                                            <span class="ml-4">اشتراک گذاری:</span>
+                                            <a class="d-inline-flex align-items-center justify-content-center p-3 gray circle fs-sm text-muted ml-2"
+                                               href="#!">
+                                                <i class="fab fa-twitter position-absolute"></i>
+                                            </a>
+                                            <a class="d-inline-flex align-items-center justify-content-center p-3 gray circle fs-sm text-muted ml-2"
+                                               href="#!">
+                                                <i class="fab fa-facebook-f position-absolute"></i>
+                                            </a>
+                                            <a class="d-inline-flex align-items-center justify-content-center p-3 gray circle fs-sm text-muted"
+                                               href="#!">
+                                                <i class="fab fa-pinterest-p position-absolute"></i>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="prt_05 mb-4">
-                                <div class="form-row mb-7">
-                                    <div class="col-12 col-lg-auto">
-                                        <!-- ========================Quantity================== -->
-                                        <select class="mb-2 custom-select">
-                                            <option value="1" selected="">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12 col-lg">
-                                        <!-- ==================Submit================ -->
-                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
-                                            <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="prt_06">
-                                <p class="mb-0 d-flex align-items-center">
-                                    <span class="ml-4">اشتراک گذاری:</span>
-                                    <a class="d-inline-flex align-items-center justify-content-center p-3 gray circle fs-sm text-muted ml-2"
-                                       href="#!">
-                                        <i class="fab fa-twitter position-absolute"></i>
-                                    </a>
-                                    <a class="d-inline-flex align-items-center justify-content-center p-3 gray circle fs-sm text-muted ml-2"
-                                       href="#!">
-                                        <i class="fab fa-facebook-f position-absolute"></i>
-                                    </a>
-                                    <a class="d-inline-flex align-items-center justify-content-center p-3 gray circle fs-sm text-muted"
-                                       href="#!">
-                                        <i class="fab fa-pinterest-p position-absolute"></i>
-                                    </a>
-                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
     {% endfor %}
     <!-- =======================Start Deals of The Day ====================== -->
     <section class="bg-cover" style="background:url({% static 'img/banner-i.jpg' %}) no-repeat;" data-overlay="5">

@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from django.db.models import Count
 from utils.convertors import group_list
+from utils.http_service import get_client_ip
 from django.views.generic import ListView, DetailView
-from .models import Product, ProductCategory, ProductBrand, ProductComment, ProductGallery
+from .models import Product, ProductCategory, ProductBrand, ProductComment, ProductGallery, ProductVisit
 
 
 # Class_base_List_View for Product page
@@ -61,6 +62,16 @@ class ProductDetailView(DetailView):
         context['comments'] = (ProductComment.objects.filter(product_id=product.id, parent=None).order_by
                                ('-create_date').prefetch_related('productcomment_set'))
         context['comments_count'] = ProductComment.objects.filter(product_id=product.id).count()
+        # Obtaining the user's IP address and ID in the database
+        user_ip = get_client_ip(self.request)
+        user_id = None
+        if self.request.user.is_authenticated:
+            user_id = self.request.user.id
+        # Checking whether the user has already seen the product with his IP or not
+        has_been_visited = ProductVisit.objects.filter(ip__iexact=user_ip, product_id=loaded_product.id).exists()
+        if not has_been_visited:
+            new_visit = ProductVisit(ip=user_ip, user_id=user_id, product_id=loaded_product.id)
+            new_visit.save()
         return context
 
 
