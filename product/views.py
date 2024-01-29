@@ -49,6 +49,7 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         # retrieves the initial context data from the parent class of ProductDetailView.
         context = super(ProductDetailView, self).get_context_data()
+        context['main_product'] = Product.objects.all()
         loaded_product = self.object
         galleries = list(ProductGallery.objects.filter(product_id=loaded_product.id).all())
         galleries.insert(0, loaded_product)
