@@ -160,7 +160,7 @@
                                 <a class="nav-link" href="#information" id="information-tab" data-toggle="tab"
                                    role="tab" aria-controls="information" aria-selected="false">اطلاعات تکمیلی</a>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" id="comments_area">
                                 <a class="nav-link" href="#reviews" id="reviews-tab" data-toggle="tab" role="tab"
                                    aria-controls="reviews" aria-selected="false">دیدگاه ها({{ comments_count }})</a>
                             </li>
@@ -250,7 +250,7 @@
                                         {% for sub_comment in comment.productcomment_set.all %}
                                             <div class="single_rev d-flex align-items-start br-bottom py-3">
                                                 <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
-                                                                                   class="img-fluid circle" width="90"
+                                                                                   class="img-fluid circle" width="75"
                                                                                    alt=""/>
                                                 </div>
                                                 <div class="single_rev_caption d-flex align-items-start pr-3">

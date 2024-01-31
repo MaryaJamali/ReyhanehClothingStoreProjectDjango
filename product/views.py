@@ -90,5 +90,5 @@ def add_product_comment(request: HttpRequest):
                 '-create_date').prefetch_related('productcomment_set'),
             'comments_count': ProductComment.objects.filter(product_id=product_id, confirmation=True).count()
         }
-        return render(request, 'product/product-detail.html', context=context)
+        return render(request, 'product/include/product-comments-component.html', context=context)
     return HttpResponse('response')

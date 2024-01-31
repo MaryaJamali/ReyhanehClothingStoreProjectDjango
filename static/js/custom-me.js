@@ -7,9 +7,9 @@ function sendProductComment(productId) {
         product_id: productId,
         parent_id: parentId
     }).then(res => {
+        $('#comments_area').html(res);
         $('#commentText').val('');
         $('#parent_id').val('');
-        location.reload();
 
         if (parentId !== null && parentId !== '') {
             document.getElementById('single_comment_box_' + parentId).scrollIntoView({behavior: "smooth"});
