@@ -60,9 +60,9 @@ class ProductDetailView(DetailView):
         product: Product = kwargs.get('object')
         # This code shows us that when the parent is None, it is the original comment, not the reply
         # prefetch_related : To avoid additional queries and retrieve information with one query
-        context['comments'] = (ProductComment.objects.filter(product_id=product.id, parent=None).order_by
+        context['comments'] = (ProductComment.objects.filter(product_id=product.id, parent=None, confirmation=True).order_by
                                ('-create_date').prefetch_related('productcomment_set'))
-        context['comments_count'] = ProductComment.objects.filter(product_id=product.id).count()
+        context['comments_count'] = ProductComment.objects.filter(product_id=product.id, confirmation=True).count()
         # Obtaining the user's IP address and ID in the database
         user_ip = get_client_ip(self.request)
         user_id = None
@@ -86,9 +86,9 @@ def add_product_comment(request: HttpRequest):
         new_comment = ProductComment(product_id=product_id, text=product_comment, user_id=request.user.id, parent_id=parent_id)
         new_comment.save()
         context = {
-            'comments': ProductComment.objects.filter(product_id=product_id, parent=None).order_by(
+            'comments': ProductComment.objects.filter(product_id=product_id, parent=None, confirmation=True).order_by(
                 '-create_date').prefetch_related('productcomment_set'),
-            'comments_count': ProductComment.objects.filter(product_id=product_id).count()
+            'comments_count': ProductComment.objects.filter(product_id=product_id, confirmation=True).count()
         }
         return render(request, 'product/include/product-comments-component.html', context=context)
     return HttpResponse('response')
