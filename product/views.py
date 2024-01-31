@@ -80,6 +80,8 @@ class ProductDetailView(DetailView):
 def add_product_comment(request: HttpRequest):
     if request.user.is_authenticated:
         product_id = request.GET.get('product_id')
+        product_slug = request.GET.get('product_slug')
+        print(product_slug)
         product_comment = request.GET.get('product_comment')
         parent_id = request.GET.get('parent_id')
         # Fill in the desired fields and save
