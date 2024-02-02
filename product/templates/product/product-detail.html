@@ -248,7 +248,7 @@
                                             </div>
                                         </div>
                                         {% for sub_comment in comment.productcomment_set.all %}
-                                            <div class="single_rev d-flex align-items-start br-bottom py-3">
+                                            <div class="single_rev d-flex align-items-start br-bottom py-3" id="single_comment_box_{{ comment.id }}">
                                                 <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
                                                                                    class="img-fluid circle" width="75"
                                                                                    alt=""/>
