@@ -83,12 +83,13 @@ def add_product_comment(request: HttpRequest):
         product_comment = request.GET.get('product_comment')
         parent_id = request.GET.get('parent_id')
         # Fill in the desired fields and save
-        new_comment = ProductComment(product_id=product_id, text=product_comment, user_id=request.user.id, parent_id=parent_id)
+        new_comment = ProductComment(product_id=product_id, text=product_comment,
+                                     user_id=request.user.id, parent_id=parent_id)
         new_comment.save()
         context = {
             'comments': ProductComment.objects.filter(product_id=product_id, parent=None, confirmation=True).order_by(
                 '-create_date').prefetch_related('productcomment_set'),
-            'comments_count': ProductComment.objects.filter(product_id=product_id, confirmation=True).count()
+            'comments_count': ProductComment.objects.filter(product_id=product_id, confirmation=True).count(),
         }
         return render(request, 'product/include/product-comments-component.html', context=context)
     return HttpResponse('response')

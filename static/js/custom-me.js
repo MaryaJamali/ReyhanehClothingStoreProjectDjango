@@ -5,7 +5,7 @@ function sendProductComment(productId) {
     $.get('/products/add-product-comment', {
         product_comment: comment,
         product_id: productId,
-        parent_id: parentId
+        parent_id: parentId,
     }).then(res => {
         $('#comments_area').html(res);
         $('#commentText').val('');

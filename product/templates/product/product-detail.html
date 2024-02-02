@@ -238,17 +238,16 @@
                                                 </div>
                                                 <div class="single_capt_right">
                                                     <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                                        <i class="fas fa-star filled"></i>
-                                                        <i class="fas fa-star filled"></i>
-                                                        <i class="fas fa-star filled"></i>
-                                                        <i class="fas fa-star filled"></i>
-                                                        <i class="fas fa-star filled"></i>
+                                                        {% for score in comments %}
+                                                            <i class="fas fa-star filled"></i>
+                                                        {% endfor %}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         {% for sub_comment in comment.productcomment_set.all %}
-                                            <div class="single_rev d-flex align-items-start br-bottom py-3" id="single_comment_box_{{ comment.id }}">
+                                            <div class="single_rev d-flex align-items-start br-bottom py-3"
+                                                 id="single_comment_box_{{ comment.id }}">
                                                 <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
                                                                                    class="img-fluid circle" width="75"
                                                                                    alt=""/>
@@ -273,7 +272,7 @@
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <div class="revie_stars d-flex align-items-center justify-content-between px-2 py-2 gray rounded mb-2 mt-1">
                                                     <div class="srt_013">
-                                                        <div class="submit-rating">
+                                                        <div class="submit-rating" id="productScore">
                                                             <input id="star-5" type="radio" name="rating"
                                                                    value="star-5"/>
                                                             <label for="star-5" title="5 stars">
@@ -369,7 +368,8 @@
                                                     </a>
                                                     <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
                                                         <div class="edlio">
-                                                            <a href="#" data-toggle="modal" data-target="#{{ product.slug }}"
+                                                            <a href="#" data-toggle="modal"
+                                                               data-target="#{{ product.slug }}"
                                                                class="text-white fs-sm ft-medium">
                                                                 <i class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a>
                                                         </div>
@@ -380,7 +380,8 @@
                                                 <div class="text-left">
                                                     <div class="text-center">
                                                         <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
-                                                                href="{% url 'product_detail_page_view' slug=product.slug %}">{{ product.title }}</a></h5>
+                                                                href="{% url 'product_detail_page_view' slug=product.slug %}">{{ product.title }}</a>
+                                                        </h5>
                                                         <div class="elis_rty"><span
                                                                 class="ft-bold fs-md text-dark">{{ product.price|three_digits_currency }}</span>
                                                         </div>
@@ -396,10 +397,10 @@
                 </div>
             </div>
         </section>
-<!-- ======================= Product View Modal ======================== -->
-    {% for product in main_product %}
-        {% include 'shared/modal-product.html' with product=product %}
-    {% endfor %}
+        <!-- ======================= Product View Modal ======================== -->
+        {% for product in main_product %}
+            {% include 'shared/modal-product.html' with product=product %}
+        {% endfor %}
     </div>
     </body>
     </html>

@@ -95,17 +95,16 @@
                                         </div>
                                         <div class="single_capt_right">
                                             <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
+                                                {% for score in comments %}
+                                                    <i class="fas fa-star filled"></i>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 {% for sub_comment in comment.productcomment_set.all %}
-                                    <div class="single_rev d-flex align-items-start br-bottom py-3" id="single_comment_box_{{ comment.id }}">
+                                    <div class="single_rev d-flex align-items-start br-bottom py-3"
+                                         id="single_comment_box_{{ comment.id }}">
                                         <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
                                                                            class="img-fluid circle" width="75"
                                                                            alt=""/>
@@ -130,7 +129,7 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <div class="revie_stars d-flex align-items-center justify-content-between px-2 py-2 gray rounded mb-2 mt-1">
                                             <div class="srt_013">
-                                                <div class="submit-rating">
+                                                <div class="submit-rating" id="productScore">
                                                     <input id="star-5" type="radio" name="rating"
                                                            value="star-5"/>
                                                     <label for="star-5" title="5 stars">
