@@ -22,7 +22,9 @@
                     <nav aria-label="breadcrumb text-right">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">پنل کاربری</li>
+                            <li class="breadcrumb-item"><a href="{% url 'user_panel_dashboard_page_view' %}">حساب
+                                کاربری</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">ویرایش اطلاعات پروفایل</li>
                         </ol>
                     </nav>
                 </div>
@@ -37,6 +39,12 @@
                 {% render_partial 'user_panel.views.user_panel_menu_component' %}
                 <div class="col-12 col-md-12 col-lg-8 col-xl-8">
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <p class="card-header-flex text-center bg-light-info text-info border-bold">
+                                لطفا در هنگام ویرایش اطلاعات خود دقت کافی را داشته باشید.
+                                تمامی محصولات درخواستی شما با اطلاعاتی که شما در این بخش ثبت میکنید ارسال می گردد.
+                            </p>
+                        </div>
                         <div class="row align-items-center">
                             <form class="row m-0">
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
