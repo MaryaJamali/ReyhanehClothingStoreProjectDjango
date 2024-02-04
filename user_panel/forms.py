@@ -44,21 +44,6 @@ class EditProfileModelForm(forms.ModelForm):
                 'placeholder': 'در مورد من',
                 'rows': 6,
             }),
-            'current_password': forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'کلمه عبور فعلی',
-                'rows': 6,
-            }),
-            'password': forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'کلمه عبور',
-                'rows': 6,
-            }),
-            'confirm_password': forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'تکرار کلمه عبور',
-                'rows': 6,
-            })
         }
 
         labels = {
@@ -69,9 +54,6 @@ class EditProfileModelForm(forms.ModelForm):
             'postal_code': 'کد پستی *',
             'address': 'آدرس *',
             'about_user': 'درباره شخص *',
-            'current_password': 'کلمه عبور فعلی *',
-            'password': 'کلمه عبور *',
-            'confirm_password': 'تکرار کلمه عبور *',
         }
         # error_messages={} : Managing the error text
         # required : It can be used to specify that an input field in the form must be completed.
@@ -94,38 +76,11 @@ class EditProfileModelForm(forms.ModelForm):
             'address': {
                 'required': 'برای ارسال محصول نیاز است لطفا آدرس را دقیق وارد کنید'
             },
-            'current_password': {
-                'required': 'فیلد مورد نظر اجباری می باشد. لطفا وارد کنید'
-            },
-            'password': {
-                'required': 'فیلد مورد نظر اجباری می باشد. لطفا وارد کنید'
-            },
-            'confirm_password': {
-                'required': 'فیلد مورد نظر اجباری می باشد. لطفا وارد کنید'
-            },
         }
         validators = {
-            'current_password': [
-                validators.MaxLengthValidator(100),
-            ],
-            'password': [
-                validators.MaxLengthValidator(100),
-            ],
-            'confirm_password': [
-                validators.MaxLengthValidator(100),
-            ],
             'phone_number': [RegexValidator(
                 regex=r'^\d{11}$',
                 message='شماره موبایل باید 11 رقمی و شامل اعداد باشد.',
                 code='invalid_phone_number'
             )]
         }
-
-    def clean_confirm_password(self):
-        password = self.cleaned_data.get('password')
-        confirm_password = self.cleaned_data.get('confirm_password')
-
-        if password == confirm_password:
-            return confirm_password
-
-        raise ValidationError('کلمه عبور و تکرار کلمه عبور مغایرت دارند')
