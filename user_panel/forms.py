@@ -105,15 +105,15 @@ class EditProfileModelForm(forms.ModelForm):
             },
         }
         validators = {
-            'current_password': {
+            'current_password': [
                 validators.MaxLengthValidator(100),
-            },
-            'password': {
+            ],
+            'password': [
                 validators.MaxLengthValidator(100),
-            },
-            'confirm_password': {
+            ],
+            'confirm_password': [
                 validators.MaxLengthValidator(100),
-            },
+            ],
             'phone_number': [RegexValidator(
                 regex=r'^\d{11}$',
                 message='شماره موبایل باید 11 رقمی و شامل اعداد باشد.',
