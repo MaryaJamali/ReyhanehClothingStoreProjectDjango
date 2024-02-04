@@ -10,6 +10,7 @@ class User(AbstractUser):
     avatar = models.ImageField(upload_to='images/avatar', null=True, blank=True, verbose_name='تصویر آواتار')
     email_active_code = models.CharField(max_length=100, verbose_name='کد فعالسازی ایمیل')
     about_user = models.TextField(null=True, blank=True, verbose_name='درباره شخص')
+    postal_code = models.CharField(max_length=20, null=True, blank=True,  verbose_name='کد پستی')
     address = models.TextField(null=True, blank=True, verbose_name='آدرس')
 
     def __str__(self):
