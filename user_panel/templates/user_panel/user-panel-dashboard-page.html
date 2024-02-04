@@ -38,16 +38,40 @@
                 <div class="col-12 col-md-12 col-lg-8 col-xl-8 text-center">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="card-wrap gray rounded mb-4">
-                            <div class="p-4 d-inline-flex align-items-center justify-content-center circle bg-light-success text-danger mx-auto mb-4">
-                                <i class="lni lni-heart-filled fs-lg"></i>
+                            <div class="card-wrap-header px-3 py-2 br-bottom d-flex align-items-center justify-content-between">
+                                <div class="card-header-flex">
+                                    <h4 class="fs-md ft-bold mb-1">نمایش اطلاعات {{ user.get_full_name }}</h4>
+                                </div>
+                                <div class="card-head-last-flex">
+                                    <button class="border bg-white text-danger p-3 circle text-dark d-inline-flex align-items-center justify-content-center">
+                                        <i class="lni lni-heart-filled fs-lg"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="card-wrap-body px-3 py-3">
                                 <div class="pay-card mb-3">
-                                    <h5 class="fs-sm ft-bold mb-0">{{ request.user.get_full_name }} عزیز</h5>
-                                    <p>به پنل کاربری خود در فروشگاه لباس ریحانه خوش آمدید</p>
+                                    <h5 class="fs-sm ft-bold mb-0">نام و نام خانوادگی </h5>
+                                    <p>{{ user.get_full_name }}</p>
                                 </div>
                                 <div class="pay-card mb-3">
-                                    <p class="fs-sm ft-bold mb-0 text-dark">مشتری عزیز، فروشگاه  ما هر روز برای ارائه خدمات بهتر به شما تلاش می کند، امیدواریم در آینده
+                                    <h5 class="fs-sm ft-bold mb-0">ایمیل</h5>
+                                    <p>{{ user.email }}</p>
+                                </div>
+                                <div class="pay-card mb-3">
+                                    <h5 class="fs-sm ft-bold mb-0">تلفن همراه</h5>
+                                    <p>{{ user.phone_number }}</p>
+                                </div>
+                                {% if user.address %}
+                                    <div class="pay-card mb-3">
+                                        <h5 class="fs-sm ft-bold mb-0">آدرس</h5>
+                                        <p>{{ user.address }}</p>
+                                    </div>
+                                {% else %}
+                                    <div class="pay-card mb-3"></div>
+                                {% endif %}
+                                <div class="pay-card mb-3">
+                                    <p class="fs-sm ft-bold mb-0 text-success">مشتری عزیز، فروشگاه ما هر روز برای ارائه
+                                        خدمات بهتر به شما تلاش می کند، امیدواریم در آینده
                                         نیز از بازدید شما لذت ببریم تا بتوانیم دوباره آن را به شما ثابت کنیم.</p>
                                 </div>
                             </div>

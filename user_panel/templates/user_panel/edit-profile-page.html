@@ -1,0 +1,94 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Themezhub"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>صفحه پنل کاربری</title>
+    </head>
+    <body>
+    <!-- ============Preloader - style you can find in spinners.css============ -->
+    <div class="preloader"></div>
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <div class="gray py-3">
+        <div class="container">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12">
+                    <nav aria-label="breadcrumb text-right">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">پنل کاربری</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <!-- ======================= Dashboard Detail ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row align-items-start justify-content-between">
+                {% render_partial 'user_panel.views.user_panel_menu_component' %}
+                <div class="col-12 col-md-12 col-lg-8 col-xl-8">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row align-items-center">
+                            <form class="row m-0">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="small text-dark ft-medium">نام *</label>
+                                        <input type="text" class="form-control" value="رضا"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="small text-dark ft-medium">نام خانوادگی *</label>
+                                        <input type="text" class="form-control" value="حسنی"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="small text-dark ft-medium">ایمیل *</label>
+                                        <input type="text" class="form-control" value="reza.hasani111@gmail.com"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="small text-dark ft-medium">درباره من *</label>
+                                        <textarea class="form-control ht-80">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="small text-dark ft-medium">رمزعبور قبلی *</label>
+                                        <input type="text" class="form-control" value="رمزعبور قبلی"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="small text-dark ft-medium">رمزعبور جدید *</label>
+                                        <input type="text" class="form-control" value="رمزعبور جدید"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-dark">ذخیره تغییرات</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================= Dashboard Detail End ======================== -->
+    </body>
+    </html>
+{% endblock %}
+<!-- =======================Start Content Page============================= -->

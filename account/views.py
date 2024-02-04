@@ -171,7 +171,7 @@ class ResetPasswordView(View):
         return render(request, 'account/reset-password.html', context=context)
 
 
-# Class_base_View for Login page
+# Class_base_View for logout
 class LogoutView(View):
     def get(self, request: HttpRequest):
         logout(request)

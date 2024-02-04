@@ -1,30 +1,42 @@
 {% load static %}
+{% load date_time_tags %}
+{% load thumbnail %}
 <!-- ======================= Dashboard Detail ======================== -->
 <div class="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods mb-3 mb-lg-0">
     <div class="d-block border rounded">
         <div class="dashboard_author px-2 py-5">
             <div class="dash_auth_thumb circle p-1 border d-inline-flex mx-auto mb-2">
-                <img src="{% static 'img/team-1.jpg' %}" class="img-fluid circle" width="100" alt=""/>
+                {% if user.avatar %}
+                    {% thumbnail user.avatar "90x90" quality=90 crop='center' as im %}
+                        <img class="img-fluid circle" src="{{ im.url }}" alt="{{ user.email }}">
+                    {% endthumbnail %}
+                {% else %}
+                    <img class="img-fluid circle" width="100" src="{% static 'img/default-blog.png' %}"
+                         alt="{{ user.email }}">
+                {% endif %}
             </div>
             <div class="dash_caption">
-                <h4 class="fs-md ft-medium mb-0 lh-1">رضا حسنی</h4>
-                <span class="text-muted smalls">تهران</span>
+                <h4 class="fs-md ft-medium mb-0 lh-1">{{ user.get_full_name }}
+                    <span><i class="lni lni-heart-filled fs-lg text-danger"></i></span>
+                </h4>
+                <span class="text-muted smalls">عضویت: {{ user.date_joined|to_date_string_format }}</span>
             </div>
         </div>
 
         <div class="dashboard_author">
-            <h4 class="px-3 py-2 mb-0 lh-2 gray fs-sm ft-medium text-muted text-uppercase text-right">
-                پنل کاربری</h4>
+            <h4 class="px-3 py-2 mb-0 lh-2 gray fs-sm ft-medium text-muted text-uppercase text-right">پنل کاربری</h4>
             <ul class="dahs_navbar">
-                <li><a href="my-orders.html" class="active"><i class="lni lni-shopping-basket ml-2"></i>سفارش
-                    های من</a></li>
+                <li><a href="{% url 'user_panel_dashboard_page_view' %}"><i class="lni lni-user ml-2"></i>داشبورد</a>
+                </li>
+                <li><a href="my-orders.html" class="active"><i class="lni lni-shopping-basket ml-2"></i>سفارش های من</a>
+                </li>
                 <li><a href="wishlist.html"><i class="lni lni-heart ml-2"></i>لیست علاقه مندی ها</a>
                 </li>
-                <li><a href="profile-info.html"><i class="lni lni-user ml-2"></i>اطلاعات پروفایل</a>
+                <li><a href="{% url 'edit_profile_page_view' %}"><i class="lni lni-user ml-2"></i>ویرایش اطلاعات پروفایل</a>
                 </li>
                 <li><a href="payment-methode.html"><i class="lni lni-mastercard ml-2"></i>روش های پرداخت</a>
                 </li>
-                <li><a href="login.html"><i class="lni lni-power-switch ml-2"></i>خروج</a></li>
+                <li><a href="{% url 'logout_page_view' %}"><i class="lni lni-power-switch ml-2"></i>خروج</a></li>
             </ul>
         </div>
     </div>
