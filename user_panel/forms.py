@@ -1,6 +1,7 @@
 from django import forms
 from account.models import User
 from django.core import validators
+from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 
@@ -119,3 +120,12 @@ class EditProfileModelForm(forms.ModelForm):
                 code='invalid_phone_number'
             )]
         }
+
+    def clean_confirm_password(self):
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+
+        if password == confirm_password:
+            return confirm_password
+
+        raise ValidationError('کلمه عبور و تکرار کلمه عبور مغایرت دارند')
