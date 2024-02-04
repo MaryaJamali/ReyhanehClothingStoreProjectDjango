@@ -58,11 +58,14 @@
                             <a href="{% url 'logout_page_view' %}" class="text-muted medium">خروج</a>
                         </div>
                         <div class="currency-selector dropdown js-dropdown ml-3">
-                            <a href="#" class="text-muted medium">{{ request.user.get_full_name }} عزیز، خوش آمدید</a>
+                            <a href="{% url 'user_panel_dashboard_page_view' %}" class="text-muted medium">پنل کاربری</a>
+                        </div>
+                        <div class="currency-selector dropdown js-dropdown ml-3">
+                            <span class="text-muted medium">{{ request.user.get_full_name }} عزیز، خوش آمدید</span>
                         </div>
                     {% else %}
                         <div class="currency-selector dropdown js-dropdown ml-3">
-                            <a href="#" class="text-muted medium">به فروشگاه ریحانه خوش آمدید</a>
+                            <a href="{% url 'about_us_page_view' %}" class="text-muted medium">به فروشگاه ریحانه خوش آمدید</a>
                         </div>
                     {% endif %}
                 </div>
