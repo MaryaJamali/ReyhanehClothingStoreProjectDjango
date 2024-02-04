@@ -17,5 +17,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', name='view'),
+    path('', views.UserPanelDashboardPage.as_view(), name='user_panel_dashboard_page_view'),
 ]
