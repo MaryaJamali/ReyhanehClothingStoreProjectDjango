@@ -1,5 +1,7 @@
 from django import forms
 from account.models import User
+from django.core import validators
+from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 
@@ -82,3 +84,63 @@ class EditProfileModelForm(forms.ModelForm):
                 code='invalid_phone_number'
             )]
         }
+
+
+class ChangePasswordForm(forms.Form):
+    current_password = forms.CharField(
+        label='کلمه عبور فعلی *',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'کلمه عبور فعلی',
+                'autocomplete': 'off',
+            }
+        ),
+        error_messages={
+            'required': 'پر کردن این فیلد الزامی است',
+        },
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
+    password = forms.CharField(
+        label='کلمه عبور جدید *',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'کلمه عبور جدید',
+                'autocomplete': 'off',
+            }
+        ),
+        error_messages={
+            'required': 'پر کردن این فیلد الزامی است',
+        },
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
+    confirm_password = forms.CharField(
+        label='تکرار کلمه عبور جدید *',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'تکرار کلمه عبور جدید',
+                'autocomplete': 'off',
+            }
+        ),
+        error_messages={
+            'required': 'پر کردن این فیلد الزامی است',
+        },
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
+
+    def clean_confirm_password(self):
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+
+        if password == confirm_password:
+            return confirm_password
+
+        raise ValidationError('کلمه عبور و تکرار کلمه عبور مغایرت دارند')
