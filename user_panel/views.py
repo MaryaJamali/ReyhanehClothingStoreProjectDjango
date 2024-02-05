@@ -15,24 +15,27 @@ class UserPanelDashboardPage(TemplateView):
 class EditUserProfilePage(View):
     def get(self, request: HttpRequest):
         current_user = User.objects.filter(id=request.user.id).first()
+        # Fetch current user's information
         edit_form = EditProfileModelForm(instance=current_user)
         context = {
             'form': edit_form,
             'current_user': current_user
         }
-        return render(request, 'user_panel/edit-profile.html', context)
+        return render(request, 'user_panel/edit-profile.html', context=context)
 
     def post(self, request: HttpRequest):
         current_user = User.objects.filter(id=request.user.id).first()
+        # With the "instance" field, the program understands the purpose of the edit
         edit_form = EditProfileModelForm(request.POST, request.FILES, instance=current_user)
         if edit_form.is_valid():
+            # It is stored directly on the database
             edit_form.save(commit=True)
 
         context = {
             'form': edit_form,
             'current_user': current_user
         }
-        return render(request, 'user_panel/edit-profile.html', context)
+        return render(request, 'user_panel/edit-profile.html', context=context)
 
 
 # Function_base_View for User_panel_menu
