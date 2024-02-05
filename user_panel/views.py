@@ -28,9 +28,12 @@ class EditUserProfilePage(View):
         # With the "instance" field, the program understands the purpose of the edit
         edit_form = EditProfileModelForm(request.POST, request.FILES, instance=current_user)
         if edit_form.is_valid():
-            # It is stored directly on the database
-            edit_form.save(commit=True)
-
+            phone_number = edit_form.cleaned_data['phone_number']
+            if not str(phone_number).isdigit() or len(str(phone_number)) != 11:
+                edit_form.add_error('phone_number', 'شماره موبایل باید 11 رقمی و  شامل اعداد باشد')
+            else:
+                # It is stored directly on the database
+                edit_form.save(commit=True)
         context = {
             'form': edit_form,
             'current_user': current_user

@@ -1,7 +1,5 @@
 from django import forms
 from account.models import User
-from django.core import validators
-from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 
