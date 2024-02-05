@@ -59,10 +59,9 @@ class ChangePasswordPage(View):
                 current_user.set_password(form.cleaned_data.get('password'))
                 current_user.save()
                 logout(request)
-                return redirect(reverse('login_page'))
+                return redirect(reverse('login_page_view'))
             else:
                 form.add_error('password', 'کلمه عبور وارد شده اشتباه می باشد')
-
         context = {
             'form': form
         }

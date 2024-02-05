@@ -100,7 +100,7 @@ class LoginView(View):
                     if is_password_correct:
                         # User login and setting cookies
                         login(request, user)
-                        return redirect(reverse('home_page_view'))
+                        return redirect(reverse('user_panel_dashboard_page_view'))
                     else:
                         login_form.add_error('email', 'کاربری با مشخصات وارد شده یافت نشد')
             else:
