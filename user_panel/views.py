@@ -8,7 +8,7 @@ from .forms import EditProfileModelForm
 
 # Class_base_Template_View for UserPanelDashboard Page
 class UserPanelDashboardPage(TemplateView):
-    template_name = 'user_panel/user-panel-dashboard-page.html'
+    template_name = 'user_panel/user-panel-dashboard.html'
 
 
 # Class_base_View for EditUserProfile Page
@@ -20,7 +20,7 @@ class EditUserProfilePage(View):
             'form': edit_form,
             'current_user': current_user
         }
-        return render(request, 'user_panel/edit-profile-page.html', context)
+        return render(request, 'user_panel/edit-profile.html', context)
 
     def post(self, request: HttpRequest):
         current_user = User.objects.filter(id=request.user.id).first()
@@ -32,7 +32,7 @@ class EditUserProfilePage(View):
             'form': edit_form,
             'current_user': current_user
         }
-        return render(request, 'user_panel/edit-profile-page.html', context)
+        return render(request, 'user_panel/edit-profile.html', context)
 
 
 # Function_base_View for User_panel_menu
