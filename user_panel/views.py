@@ -5,6 +5,7 @@ from django.views import View
 from django.views.generic import TemplateView
 from account.models import User
 from django.contrib.auth import logout
+from cart.models import Order
 from .forms import EditProfileModelForm, ChangePasswordForm
 
 
@@ -71,3 +72,15 @@ class ChangePasswordPage(View):
 # Function_base_View for User_panel_menu
 def user_panel_menu_component(request: HttpRequest):
     return render(request, 'user_panel/include/user-panel-menu-component.html')
+
+
+# Function_base_View for user_basket
+def user_basket(request: HttpRequest):
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    total_amount = current_order.calculate_total_price()
+
+    context = {
+        'cart': current_order,
+        'sum': total_amount
+    }
+    return render(request, 'user_panel/user-cart.html', context)
