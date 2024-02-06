@@ -4,7 +4,7 @@ from product.models import Product
 from .models import Order, OrderDetail
 
 
-# Function_base_View for Articles page
+# Function_base_View for add_product_to_order
 def add_product_to_order(request: HttpRequest):
     product_id = int(request.GET.get('product_id'))
     count = int(request.GET.get('count'))
