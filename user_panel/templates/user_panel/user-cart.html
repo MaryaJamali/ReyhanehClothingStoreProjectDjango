@@ -1,5 +1,7 @@
 {% extends 'shared/layout.html' %}
 {% load render_partial %}
+{% load poll_extras %}
+{% load thumbnail %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
     {% load static %}
@@ -42,87 +44,115 @@
                     <div class="ord_list_wrap border mb-4 mfliud">
                         <div class="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">
                             <div class="olh_flex">
-                                <p class="m-0 p-0"><span class="text-muted">شماره سفارش</span></p>
-                                <h6 class="mb-0 ft-medium">#1250004123</h6>
+                                <p class="m-0 p-0"><span class="text-muted">لیست سفارشات</span></p>
                             </div>
                             <div class="olh_flex">
                                 <a href="javascript:void(0);" class="btn btn-sm btn-dark">پیگیری سفارش</a>
                             </div>
                         </div>
                         <div class="ord_list_body text-right">
-                            <!-- ======================= First Product ======================== -->
-                            <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
-                                <div class="col-xl-5 col-lg-5 col-md-5 col-12">
-                                    <div class="cart_single d-flex align-items-startmfliud-bot">
-                                        <div class="cart_selected_single_thumb">
-                                            <a href="#"><img src="{% static '/img/product/8.jpg' %}" width="75"
-                                                             class="img-fluid rounded" alt=""></a>
-                                        </div>
-                                        <div class="cart_single_caption pr-3">
-                                            <p class="mb-0"><span class="text-muted small">پسرانه</span></p>
-                                            <h4 class="product_title fs-sm ft-medium mb-1 lh-1">سویشرت پسرانه</h4>
-                                            <p class="mb-2"><span class="text-dark medium">سایز : 36</span>, <span
-                                                    class="text-dark medium">رنگ : قرمز</span></p>
-                                            <h4 class="fs-sm ft-bold mb-0 lh-1">129000 تومان</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-6">
-                                    <p class="mb-1 p-0"><span class="text-muted">وضعیت</span></p>
-                                    <div class="delv_status"><span
-                                            class="ft-medium small text-success bg-light-success rounded px-3 py-1">کامل شده</span>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-6">
-                                    <p class="mb-1 p-0"><span class="text-muted">تاریخ انتظار تا :</span></p>
-                                    <h6 class="mb-0 ft-medium fs-sm">22 بهمن 1400</h6>
-                                </div>
-                            </div>
-                            <!-- ======================= First Product ======================== -->
-                            <div class="row align-items-center justify-content-center m-0 py-4">
-                                <div class="col-xl-5 col-lg-5 col-md-5 col-12">
-                                    <div class="cart_single d-flex align-items-start mfliud-bot">
-                                        <div class="cart_selected_single_thumb">
-                                            <a href="#"><img src="{% static '/img/product/8.jpg' %}" width="75"
-                                                             class="img-fluid rounded" alt=""></a>
-                                        </div>
-                                        <div class="cart_single_caption pr-3">
-                                            <p class="mb-0"><span class="text-muted small">مردانه</span></p>
-                                            <h4 class="product_title fs-sm ft-medium mb-1 lh-1">چاپ مستقیم</h4>
-                                            <p class="mb-2"><span class="text-dark medium">سایز : 36</span>, <span
-                                                    class="text-dark medium">رنگ : قرمز</span></p>
-                                            <h4 class="fs-sm ft-bold mb-0 lh-1">129000 تومان</h4>
+                            {% for detail in order.orderdetail_set.all %}
+                                <!-- ======================= First Product ======================== -->
+                                <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-12">
+                                        <div class="cart_single d-flex align-items-startmfliud-bot">
+                                            <div class="cart_selected_single_thumb">
+                                                <a href="#">
+                                                    {% thumbnail detail.product.front_image "75x100" quality=90 crop='center' as im %}
+                                                        <img class="img-fluid rounded" src="{{ im.url }}"
+                                                             alt="{{ detail.product.title }}">
+                                                    {% endthumbnail %}
+                                                </a>
+                                            </div>
+                                            <div class="cart_single_caption pr-3">
+                                                <p class="mb-0">
+                                                    <span class="text-secondary small">{{ detail.product.title }}</span><br>
+                                                    <span class="text-dark small">شناسـه : {{ detail.product.id }}#</span>
+                                                </p>
+                                                <p class="mb-2">
+                                                    <span class="text-dark small">سایز : {{ detail.product.size }}</span><br>
+                                                    <span class="text-dark small">رنگ : {{ detail.product.color }}</span><br>
+                                                    <span class="text-danger small">قیمت تک : {{ detail.product.price|three_digits_currency }}</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-6">
-                                    <p class="mb-1 p-0"><span class="text-muted">وضعیت</span></p>
-                                    <div class="delv_status"><span
-                                            class="ft-medium small text-danger bg-light-danger rounded px-3 py-1">در انتظار</span>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                                        <p class="mb-1 p-0 text-center">
+                                            <span class="text-muted">تعداد محصول</span>
+                                        </p>
+                                        <div class="delv_status text-center">
+                                            <a class="ft-medium small text-success bg-light-success rounded px-3 py-1"
+                                               href="#">+</a>
+                                            <input class="form-check-label text-center align-items-center" type="text"
+                                                   name="quantity"
+                                                   value="{{ detail.count }}" autocomplete="off" size="1">
+                                            <a class="ft-medium small text-danger bg-light-danger rounded px-3 py-1"
+                                               href="#">-</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">تاریخ انتظار تا</span></p>
+                                        <h6 class="mb-0 ft-medium fs-sm">22 بهمن 1400</h6>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">قیمت براساس تعداد</span></p>
+                                        <h6 class="mb-0 ft-medium fs-sm">22 بهمن 1400</h6>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-6">
-                                    <p class="mb-1 p-0"><span class="text-muted">تاریخ انتظار تا :</span></p>
-                                    <h6 class="mb-0 ft-medium fs-sm">22 بهمن 1400</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ord_list_footer d-flex align-items-center justify-content-between br-top px-3">
-                            <div class="col-xl-3 col-lg-3 col-md-4 olf_flex text-right px-0 py-2 br-left"><a
-                                    href="javascript:void(0);" class="ft-medium fs-sm"><i class="ti-close ml-2"></i>لغو
-                                سفارش</a></div>
-                            <div class="col-xl-9 col-lg-9 col-md-8 pl-0 py-2 olf_flex d-flex align-items-center justify-content-between">
-                                <div class="olf_flex_inner hide_mob">
-                                    <p class="m-0 p-0"><span
-                                            class="text-muted medium">با کارت 6472 پرداخت شده است</span></p>
-                                </div>
-                                <div class="olf_inner_right">
-                                    <h5 class="mb-0 fs-sm ft-bold">جمع : 387000 تومان</h5>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <!-- ======================= End Order List ======================== -->
+                    <div class="row align-items-end justify-content-between mb-10 mb-md-0">
+                        <div class="col-12 col-md-6">
+                            <!-- ======================= Coupon ======================== -->
+                            <form class="mb-7 mb-md-0">
+                                <div class="row form-row">
+                                    <div class="col">
+                                        <input class="form-control" type="text" placeholder="کد تخفیف را وارد کنید">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-dark hts-100" type="submit">بررسی</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row align-items-end justify-content-between mb-10 mb-md-0">
+                        <div class="col-12 col-md-12 col-lg-8 col-xl-8">
+                            <div class="card mb-4 gray mfliud">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x p-0">
+                                        <li class="list-group-item d-flex text-dark fs-sm ft-regular">
+                                            <span>جمع خرید</span> <span
+                                                class="mr-auto text-dark ft-medium">258000 تومان</span>
+                                        </li>
+                                        <li class="list-group-item d-flex text-dark fs-sm ft-regular">
+                                            <span>هزینه حمل و نقل</span> <span
+                                                class="mr-auto text-dark ft-medium">رایگان</span>
+                                        </li>
+                                        <li class="list-group-item d-flex text-dark fs-sm ft-regular">
+                                            <span>جمع کل</span> <span
+                                                class="mr-auto text-dark ft-medium">{{ sum|three_digits_currency }}</span>
+                                        </li>
+                                        <li class="list-group-item fs-sm text-center">
+                                            * {{ user.get_full_name }} عزیز از خرید شما متشکریم *
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <a class="btn btn-block btn-dark mb-3" href="checkout.html">پرداخت</a>
+
+                            <a class="btn-link text-dark ft-medium" href="{% url 'product_list_page_view' %}">
+                                <i class="ti-back-left mr-2"></i> ادامه خرید
+                            </a>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
         </div>
