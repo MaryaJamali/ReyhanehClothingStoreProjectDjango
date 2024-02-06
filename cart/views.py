@@ -8,8 +8,8 @@ from .models import Order, OrderDetail
 def add_product_to_order(request: HttpRequest):
     product_id = int(request.GET.get('product_id'))
     count = int(request.GET.get('count'))
+    # Avoid entering negative numbers and zeros
     if count < 1:
-        # count = 1
         return JsonResponse({
             'status': 'invalid_count',
             'text': 'مقدار وارد شده معتبر نمی باشد',
@@ -19,8 +19,11 @@ def add_product_to_order(request: HttpRequest):
 
     if request.user.is_authenticated:
         product = Product.objects.filter(id=product_id, is_active=True, is_delete=False).first()
+        # Product availability
         if product is not None:
+            # If the shopping cart is available, bring it, if not, make it
             current_order, created = Order.objects.get_or_create(is_paid=False, user_id=request.user.id)
+            # Is the selected product in the order or not?
             current_order_detail = current_order.orderdetail_set.filter(product_id=product_id).first()
             if current_order_detail is not None:
                 current_order_detail.count += count
@@ -32,14 +35,14 @@ def add_product_to_order(request: HttpRequest):
             return JsonResponse({
                 'status': 'success',
                 'text': 'محصول مورد نظر با موفقیت به سبد خرید شما اضافه شد',
-                'confirm_button_text': 'باشه ممنونم',
+                'confirm_button_text': 'ممنونم',
                 'icon': 'success'
             })
         else:
             return JsonResponse({
                 'status': 'not_found',
                 'text': 'محصول مورد نظر یافت نشد',
-                'confirm_button_text': 'مرسییییی',
+                'confirm_button_text': 'ممنونم',
                 'icon': 'error'
             })
     else:
