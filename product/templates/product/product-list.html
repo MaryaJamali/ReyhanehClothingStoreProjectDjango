@@ -217,6 +217,7 @@
                 <div class="row align-items-center rows-products">
                     {% for product in products %}
                         {% include 'product/include/products-item-component.html' with product=product %}
+                        {% include 'shared/modal-product.html' with product=product %}
                     {% endfor %}
                     <!-- =============================Row============================= -->
                     <div class="row center">
@@ -239,6 +240,26 @@
             </div>
         </section>
     </div>
+    <!-- =========================SweetAlert Jquery========================== -->
+    <script>
+        function addProductToOrder(productId) {
+            const productCount = $('#product-count').val();
+            $.get('/cart/add-to-cart?product_id=' + productId + '&count=' + productCount).then(res => {
+                Swal.fire({
+                    title: 'اعلان',
+                    text: res.text,
+                    icon: res.icon,
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: res.confirm_button_text
+                }).then((result) => {
+                    if (result.isConfirmed && res.status === 'not_auth') {
+                        window.location.href = '/login';
+                    }
+                });
+            });
+        }
+    </script>
     </body>
     </html>
 {% endblock %}
