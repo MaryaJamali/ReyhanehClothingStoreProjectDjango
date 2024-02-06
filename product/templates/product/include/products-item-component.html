@@ -11,7 +11,7 @@
                 class="far fa-heart"></i></button>
         <div class="card-body p-0">
             <div class="shop_thumb position-relative">
-                <a class="card-img-top d-block overflow-hidden ovr-hide" 
+                <a class="card-img-top d-block overflow-hidden ovr-hide"
                    href="{% url 'product_detail_page_view' slug=product.slug %}">
                     {% if product.front_image %}
                         {% thumbnail product.front_image "265x396" quality=90 crop='center' as im %}
@@ -21,7 +21,7 @@
                         <img class="card-img-top" src="{% static 'img/product/default-product.jpg' %}"
                              alt="{{ product.title }}"></a>
                     {% endif %}
-                <a class="card-img-top d-block overflow-hidden ovr-show" 
+                <a class="card-img-top d-block overflow-hidden ovr-show"
                    href="{% url 'product_detail_page_view' slug=product.slug %}">
                     {% if product.back_image %}
                         {% thumbnail product.back_image "265x396" quality=90 crop='center' as im %}
@@ -187,4 +187,3 @@
         </div>
     </div>
 </div>
-

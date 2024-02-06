@@ -116,18 +116,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- ========================Quantity================== -->
                             <div class="prt_04 mb-4">
                                 <div class="text-right pb-0 pt-2">
                                     <label class="text-dark">تعداد محصول:</label>
-                                    <input type="number" min="1" value="1" class="form-option-label"
-                                           id="product-count">
+                                    <input type="number" min="1" value="1" class="form-option-label" id="product-count">
                                 </div>
                             </div>
                             <div class="prt_05 mb-4">
                                 <div class="form-row mb-7">
                                     <div class="col-12 col-lg">
                                         <!-- ======================= Submit ===================== -->
-                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2" 
+                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2"
                                                 onclick="addProductToOrder({{ product.id }})">
                                             <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
                                         </button>
@@ -397,6 +397,26 @@
             {% include 'shared/modal-product.html' with product=product %}
         {% endfor %}
     </div>
+    <!-- =========================SweetAlert Jquery========================== -->
+    <script>
+        function addProductToOrder(productId) {
+            const productCount = $('#product-count').val();
+            $.get('/cart/add-to-cart?product_id=' + productId + '&count=' + productCount).then(res => {
+                Swal.fire({
+                    title: 'اعلان',
+                    text: res.text,
+                    icon: res.icon,
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: res.confirm_button_text
+                }).then((result) => {
+                    if (result.isConfirmed && res.status === 'not_auth') {
+                        window.location.href = '/login';
+                    }
+                });
+            });
+        }
+    </script>
     </body>
     </html>
 {% endblock %}
