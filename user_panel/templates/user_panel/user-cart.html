@@ -95,13 +95,23 @@
                                         <p class="mb-1 p-0 text-center">
                                             <span class="text-muted">تاریخ انتظار تا</span>
                                         </p>
-                                        <h6 class="mb-0 ft-medium fs-sm bg-light-warning text-warning rounded px-2 py-1">22 بهمن 1400</h6>
+                                        <h6 class="mb-0 ft-medium fs-sm bg-light-warning text-warning rounded px-2 py-1">
+                                            22 بهمن 1400</h6>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                                         <p class="mb-1 p-0 text-center">
                                             <span class="text-muted">قیمت براساس تعداد</span>
                                         </p>
-                                        <h6 class="mb-0 ft-medium fs-sm bg-light-info text-dark text-center rounded px-2 py-1">104,000 تومان</h6>
+                                        <h6 class="mb-0 ft-medium fs-sm bg-light-info text-dark text-center rounded px-2 py-1">
+                                            {% multiply detail.count detail.product.price %}</h6>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-12">
+                                        <a href="#"
+                                           class="mb-0 ft-medium fs-sm bg-light-danger text-danger rounded px-2 py-1">
+                                            حذف محصول با شناسه {{ detail.product.id }}#
+                                        </a>
                                     </div>
                                 </div>
                             {% endfor %}

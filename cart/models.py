@@ -13,6 +13,7 @@ class Order(models.Model):
     def __str__(self):
         return str(self.user)
 
+    # Multiply the price of a single product by its number
     def calculate_total_price(self):
         total_amount = 0
         if self.is_paid:
