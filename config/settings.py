@@ -43,13 +43,14 @@ INSTALLED_APPS = [
     "django_render_partial",
     # Internal App
     "base",
+    "cart",
     "account",
     "product",
-    "contact_us",
     "article",
     "user_panel",
-    "site_setting",
+    "contact_us",
     "polls",
+    "site_setting",
 ]
 
 MIDDLEWARE = [
