@@ -20,4 +20,5 @@ urlpatterns = [
     path('', views.UserPanelDashboardPage.as_view(), name='user_panel_dashboard_page_view'),
     path('edit-profile', views.EditUserProfilePage.as_view(), name='edit_profile_page_view'),
     path('change-pass', views.ChangePasswordPage.as_view(), name='change_password_page_view'),
+    path('user-cart', views.user_basket, name='user_basket_page_view'),
 ]
