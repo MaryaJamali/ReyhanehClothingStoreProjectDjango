@@ -24,3 +24,21 @@ function fillParentId(parentId) {
     // Click "answer" to come to the text section
     document.getElementById('comment_form').scrollIntoView({behavior: "smooth"});
 }
+
+function addProductToOrder(productId) {
+    const productCount = $('#product-count').val();
+    $.get('/cart/add-to-cart?product_id=' + productId + '&count=' + productCount).then(res => {
+        Swal.fire({
+            title: 'اعلان',
+            text: res.text,
+            icon: res.icon,
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: res.confirm_button_text
+        }).then((result) => {
+            if (result.isConfirmed && res.status === 'not_auth') {
+                window.location.href = '/login';
+            }
+        });
+    });
+}
