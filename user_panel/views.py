@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, JsonResponse
 from django.urls import reverse
@@ -12,11 +13,13 @@ from .forms import EditProfileModelForm, ChangePasswordForm
 
 
 # Class_base_Template_View for UserPanelDashboard Page
+@method_decorator(login_required, name='dispatch')
 class UserPanelDashboardPage(TemplateView):
     template_name = 'user_panel/user-panel-dashboard.html'
 
 
 # Class_base_View for EditUserProfile Page
+@method_decorator(login_required, name='dispatch')
 class EditUserProfilePage(View):
     def get(self, request: HttpRequest):
         current_user = User.objects.filter(id=request.user.id).first()
@@ -47,6 +50,7 @@ class EditUserProfilePage(View):
 
 
 # Class_base_View for ChangePassword Page
+@method_decorator(login_required, name='dispatch')
 class ChangePasswordPage(View):
     def get(self, request: HttpRequest):
         context = {
