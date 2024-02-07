@@ -42,11 +42,71 @@
                 <div class="col-12 col-md-12 col-lg-8 col-xl-8 text-center">
                     <!-- ======================= Single Order List ======================== -->
                     {% include 'user_panel/include/user-cart-content.html' %}
+                    <!-- ======================= End Order List ======================== -->
+                    <div class="row align-items-end justify-content-between mb-10 mb-md-0">
+                        <div class="col-12 col-md-6">
+                            <!-- ======================= Coupon ======================== -->
+                            <form class="mb-7 mb-md-0">
+                                <div class="row form-row">
+                                    <div class="col">
+                                        <input class="form-control" type="text" placeholder="کد تخفیف را وارد کنید">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-dark hts-100" type="submit">بررسی</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row align-items-end justify-content-between mb-10 mb-md-0">
+                        <div class="col-12 col-md-12 col-lg-8 col-xl-8">
+                            <div class="card mb-4 gray mfliud">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x p-0">
+                                        <li class="list-group-item d-flex text-dark fs-sm ft-regular">
+                                            <span>جمع خرید</span> <span
+                                                class="mr-auto text-dark ft-medium">258000 تومان</span>
+                                        </li>
+                                        <li class="list-group-item d-flex text-dark fs-sm ft-regular">
+                                            <span>هزینه حمل و نقل</span> <span
+                                                class="mr-auto text-dark ft-medium">رایگان</span>
+                                        </li>
+                                        <li class="list-group-item d-flex text-dark fs-sm ft-regular">
+                                            <span>جمع کل</span> <span
+                                                class="mr-auto text-dark ft-medium">{{ sum|three_digits_currency }}</span>
+                                        </li>
+                                        <li class="list-group-item fs-sm text-center">
+                                            * {{ user.get_full_name }} عزیز از خرید شما متشکریم *
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <a class="btn btn-block btn-dark mb-3" href="checkout.html">پرداخت</a>
+
+                            <a class="btn-link text-dark ft-medium" href="{% url 'product_list_page_view' %}">
+                                <i class="ti-back-left mr-2"></i> ادامه خرید
+                            </a>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- ======================= Dashboard Detail End ======================== -->
+    <!-- =========================SweetAlert Jquery========================== -->
+    <script>
+        function removeOrderDetail(detailId) {
+            $.get('/user/remove-cart-detail?detail_id=' + detailId).then(res => {
+                if (res.status === 'success') {
+                    $('#order-detail-content').html(res.body);
+                }
+            });
+        }
+    </script>
     </body>
     </html>
 {% endblock %}
