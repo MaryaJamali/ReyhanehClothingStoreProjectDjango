@@ -37,6 +37,7 @@ class OrderDetail(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='محصول')
     final_price = models.IntegerField(null=True, blank=True, verbose_name='قیمت نهایی تکی محصول')
     count = models.IntegerField(verbose_name='تعداد')
+    create_date = models.DateTimeField(auto_now_add=True, editable=False, null=True, blank=True, verbose_name='تاریخ ثبت')
 
     def get_total_price(self):
         return self.count * self.product.price
