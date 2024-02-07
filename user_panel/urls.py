@@ -21,4 +21,6 @@ urlpatterns = [
     path('edit-profile', views.EditUserProfilePage.as_view(), name='edit_profile_page_view'),
     path('change-pass', views.ChangePasswordPage.as_view(), name='change_password_page_view'),
     path('user-cart', views.user_basket, name='user_basket_page_view'),
+    path('remove-cart-detail', views.remove_order_detail, name='remove_order_detail_ajax'),
+
 ]

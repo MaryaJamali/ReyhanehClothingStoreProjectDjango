@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
+from django.http import HttpRequest, JsonResponse
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
 from account.models import User
 from django.contrib.auth import logout
-from cart.models import Order
+from cart.models import Order, OrderDetail
+from django.template.loader import render_to_string
 from .forms import EditProfileModelForm, ChangePasswordForm
 
 
@@ -83,3 +84,31 @@ def user_basket(request: HttpRequest):
         'sum': total_amount
     }
     return render(request, 'user_panel/user-cart.html', context=context)
+
+
+# Function_base_View for remove_order_detail
+def remove_order_detail(request):
+    detail_id = request.GET.get('detail_id')
+    if detail_id is None:
+        return JsonResponse({
+            'status': 'not_found_detail_id'
+        })
+
+    deleted_count, deleted_dict = OrderDetail.objects.filter(id=detail_id, order__is_paid=False, order__user_id=request.user.id).delete()
+
+    if deleted_count == 0:
+        return JsonResponse({
+            'status': 'detail_not_found'
+        })
+
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    total_amount = current_order.calculate_total_price()
+
+    context = {
+        'order': current_order,
+        'sum': total_amount
+    }
+    return JsonResponse({
+        'status': 'success',
+        'body': render_to_string('user_panel/include/user-cart-content.html', context=context)
+    })
