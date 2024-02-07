@@ -13,12 +13,14 @@ class Order(models.Model):
     def __str__(self):
         return str(self.user)
 
-    # Multiply the price of a single product by its number
+    # Product price calculation
     def calculate_total_price(self):
         total_amount = 0
+        # If paid --> calculated with the final price
         if self.is_paid:
             for order_detail in self.orderdetail_set.all():
                 total_amount += order_detail.final_price * order_detail.count
+        # In case of non-payment --> calculation with the price of the product
         else:
             for order_detail in self.orderdetail_set.all():
                 total_amount += order_detail.product.price * order_detail.count

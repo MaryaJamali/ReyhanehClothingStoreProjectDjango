@@ -77,7 +77,9 @@ def user_panel_menu_component(request: HttpRequest):
 
 # Function_base_View for user_basket
 def user_basket(request: HttpRequest):
-    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,
+                                                                                             user_id=request.user.id)
+    # Product price calculation
     total_amount = current_order.calculate_total_price()
     context = {
         'order': current_order,
@@ -93,15 +95,17 @@ def remove_order_detail(request):
         return JsonResponse({
             'status': 'not_found_detail_id'
         })
-
-    deleted_count, deleted_dict = OrderDetail.objects.filter(id=detail_id, order__is_paid=False, order__user_id=request.user.id).delete()
+    # Product removal operation
+    deleted_count, deleted_dict = OrderDetail.objects.filter(id=detail_id, order__is_paid=False,
+                                                             order__user_id=request.user.id).delete()
 
     if deleted_count == 0:
         return JsonResponse({
             'status': 'detail_not_found'
         })
 
-    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,
+                                                                                             user_id=request.user.id)
     total_amount = current_order.calculate_total_price()
 
     context = {
