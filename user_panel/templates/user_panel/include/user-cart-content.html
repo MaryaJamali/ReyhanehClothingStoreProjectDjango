@@ -2,7 +2,8 @@
 {% load poll_extras %}
 {% load thumbnail %}
 {% load static %}
-
+{% load date_time_tags %}
+{% load date_convertor %}
 {% if order.orderdetail_set.all %}
     <!-- ======================= Single Order List ======================== -->
     <div class="ord_list_wrap border mb-4 mfliud" id="order-detail-content">
@@ -57,10 +58,10 @@
                     </div>
                     <div class="col-xl-2 col-lg-2 col-md-2 col-6">
                         <p class="mb-1 p-0 text-center">
-                            <span class="text-muted">تاریخ انتظار تا</span>
+                            <span class="text-muted">تاریخ ثبت</span>
                         </p>
-                        <h6 class="mb-0 ft-medium fs-sm bg-light-warning text-warning rounded px-2 py-1">
-                            22 بهمن 1400</h6>
+                        <h6 class="mb-0 ft-medium fs-sm bg-light-warning text-warning text-center rounded px-2 py-1">
+                            {{ detail.create_date | to_date_format }}</h6>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                         <p class="mb-1 p-0 text-center">

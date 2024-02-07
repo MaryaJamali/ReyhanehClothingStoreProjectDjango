@@ -1,6 +1,8 @@
 {% extends 'shared/layout.html' %}
 {% load render_partial %}
 {% load poll_extras %}
+{% load date_time_tags %}
+{% load date_convertor %}
 {% load thumbnail %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
@@ -66,7 +68,7 @@
                                     <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x p-0">
                                         <li class="list-group-item d-flex text-dark fs-sm ft-regular">
                                             <span>جمع خرید</span> <span
-                                                class="mr-auto text-dark ft-medium">258000 تومان</span>
+                                                class="mr-auto text-dark ft-medium">{{ sum|three_digits_currency }}</span>
                                         </li>
                                         <li class="list-group-item d-flex text-dark fs-sm ft-regular">
                                             <span>هزینه حمل و نقل</span> <span
