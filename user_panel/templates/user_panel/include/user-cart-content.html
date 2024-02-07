@@ -47,13 +47,12 @@
                             <span class="text-muted">تعداد محصول</span>
                         </p>
                         <div class="delv_status text-center">
-                            <a class="ft-medium small text-success bg-light-success rounded px-3 py-1"
-                               href="#">+</a>
+                            <a class="ft-medium small text-success bg-light-success cursor-pointer rounded px-3 py-1"
+                              onclick="changeOrderDetailCount({{ detail.id }}, 'increase')">+</a>
                             <input class="form-check-label text-center align-items-center" type="text"
-                                   name="quantity"
-                                   value="{{ detail.count }}" autocomplete="off" size="1">
-                            <a class="ft-medium small text-danger bg-light-danger rounded px-3 py-1"
-                               href="#">-</a>
+                                   name="quantity" value="{{ detail.count }}" autocomplete="off" size="1">
+                            <a class="ft-medium small text-danger bg-light-danger cursor-pointer rounded px-3 py-1"
+                               onclick="changeOrderDetailCount({{ detail.id }}, 'decrease')">-</a>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-2 col-md-2 col-6">
