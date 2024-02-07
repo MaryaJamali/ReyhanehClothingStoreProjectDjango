@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, JsonResponse
 from django.urls import reverse
@@ -71,11 +72,13 @@ class ChangePasswordPage(View):
 
 
 # Function_base_View for User_panel_menu
+@login_required
 def user_panel_menu_component(request: HttpRequest):
     return render(request, 'user_panel/include/user-panel-menu-component.html')
 
 
 # Function_base_View for user_basket
+@login_required
 def user_basket(request: HttpRequest):
     current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,
                                                                                              user_id=request.user.id)
@@ -89,6 +92,7 @@ def user_basket(request: HttpRequest):
 
 
 # Function_base_View for remove_order_detail
+@login_required
 def remove_order_detail(request):
     detail_id = request.GET.get('detail_id')
     if detail_id is None:
@@ -119,6 +123,7 @@ def remove_order_detail(request):
 
 
 # Function_base_View for change_order_detail_count
+@login_required
 def change_order_detail_count(request: HttpRequest):
     detail_id = request.GET.get('detail_id')
     state = request.GET.get('state')

@@ -89,6 +89,8 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 # Returning the original user model that is defined
 AUTH_USER_MODEL = 'account.User'
+# Defining the command path "@login_required"
+LOGIN_URL = '/login'
 
 DATABASES = {
     "default": {
