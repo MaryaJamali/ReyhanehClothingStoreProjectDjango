@@ -3,80 +3,94 @@
 {% load thumbnail %}
 {% load static %}
 
-<!-- ======================= Single Order List ======================== -->
-<div class="ord_list_wrap border mb-4 mfliud" id="order-detail-content">
-    <div class="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">
-        <div class="olh_flex">
-            <p class="m-0 p-0"><span class="text-muted">لیست سفارشات</span></p>
+{% if order.orderdetail_set.all %}
+    <!-- ======================= Single Order List ======================== -->
+    <div class="ord_list_wrap border mb-4 mfliud" id="order-detail-content">
+        <div class="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">
+            <div class="olh_flex">
+                <p class="m-0 p-0"><span class="text-muted">لیست سفارشات</span></p>
+            </div>
+            <div class="olh_flex">
+                <a href="javascript:void(0);" class="btn btn-sm btn-dark">پیگیری سفارش</a>
+            </div>
         </div>
-        <div class="olh_flex">
-            <a href="javascript:void(0);" class="btn btn-sm btn-dark">پیگیری سفارش</a>
-        </div>
-    </div>
-    <div class="ord_list_body text-right">
-        {% for detail in order.orderdetail_set.all %}
-            <!-- ======================= First Product ======================== -->
-            <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-12">
-                    <div class="cart_single d-flex align-items-startmfliud-bot">
-                        <div class="cart_selected_single_thumb">
-                            <a href="#">
-                                {% thumbnail detail.product.front_image "75x100" quality=90 crop='center' as im %}
-                                    <img class="img-fluid rounded" src="{{ im.url }}"
-                                         alt="{{ detail.product.title }}">
-                                {% endthumbnail %}
-                            </a>
-                        </div>
-                        <div class="cart_single_caption pr-3">
-                            <p class="mb-0">
-                                <span class="text-secondary small">{{ detail.product.title }}</span><br>
-                                <span class="text-dark small">شناسـه : {{ detail.product.id }}#</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="text-dark small">سایز : {{ detail.product.size }}</span><br>
-                                <span class="text-dark small">رنگ : {{ detail.product.color }}</span><br>
-                                <span class="text-danger small">قیمت تک : {{ detail.product.price|three_digits_currency }}</span>
-                            </p>
+        <div class="ord_list_body text-right">
+            {% for detail in order.orderdetail_set.all %}
+                <!-- ======================= First Product ======================== -->
+                <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-12">
+                        <div class="cart_single d-flex align-items-startmfliud-bot">
+                            <div class="cart_selected_single_thumb">
+                                <a href="#">
+                                    {% thumbnail detail.product.front_image "75x100" quality=90 crop='center' as im %}
+                                        <img class="img-fluid rounded" src="{{ im.url }}"
+                                             alt="{{ detail.product.title }}">
+                                    {% endthumbnail %}
+                                </a>
+                            </div>
+                            <div class="cart_single_caption pr-3">
+                                <p class="mb-0">
+                                    <span class="text-secondary small">{{ detail.product.title }}</span><br>
+                                    <span class="text-dark small">شناسـه : {{ detail.product.id }}#</span>
+                                </p>
+                                <p class="mb-2">
+                                    <span class="text-dark small">سایز : {{ detail.product.size }}</span><br>
+                                    <span class="text-dark small">رنگ : {{ detail.product.color }}</span><br>
+                                    <span class="text-danger small">قیمت تک : {{ detail.product.price|three_digits_currency }}</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-6">
-                    <p class="mb-1 p-0 text-center">
-                        <span class="text-muted">تعداد محصول</span>
-                    </p>
-                    <div class="delv_status text-center">
-                        <a class="ft-medium small text-success bg-light-success rounded px-3 py-1"
-                           href="#">+</a>
-                        <input class="form-check-label text-center align-items-center" type="text"
-                               name="quantity"
-                               value="{{ detail.count }}" autocomplete="off" size="1">
-                        <a class="ft-medium small text-danger bg-light-danger rounded px-3 py-1"
-                           href="#">-</a>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                        <p class="mb-1 p-0 text-center">
+                            <span class="text-muted">تعداد محصول</span>
+                        </p>
+                        <div class="delv_status text-center">
+                            <a class="ft-medium small text-success bg-light-success rounded px-3 py-1"
+                               href="#">+</a>
+                            <input class="form-check-label text-center align-items-center" type="text"
+                                   name="quantity"
+                                   value="{{ detail.count }}" autocomplete="off" size="1">
+                            <a class="ft-medium small text-danger bg-light-danger rounded px-3 py-1"
+                               href="#">-</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <p class="mb-1 p-0 text-center">
+                            <span class="text-muted">تاریخ انتظار تا</span>
+                        </p>
+                        <h6 class="mb-0 ft-medium fs-sm bg-light-warning text-warning rounded px-2 py-1">
+                            22 بهمن 1400</h6>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                        <p class="mb-1 p-0 text-center">
+                            <span class="text-muted">قیمت براساس تعداد</span>
+                        </p>
+                        <h6 class="mb-0 ft-medium fs-sm bg-light-info text-dark text-center rounded px-2 py-1">
+                            {% multiply detail.count detail.product.price %}</h6>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                    <p class="mb-1 p-0 text-center">
-                        <span class="text-muted">تاریخ انتظار تا</span>
-                    </p>
-                    <h6 class="mb-0 ft-medium fs-sm bg-light-warning text-warning rounded px-2 py-1">
-                        22 بهمن 1400</h6>
+                <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-12">
+                        <a href="#" onclick="removeOrderDetail({{ detail.id }})"
+                           class="mb-0 ft-medium fs-sm bg-light-danger text-danger rounded px-2 py-1">
+                            حذف محصول با شناسه {{ detail.product.id }}#
+                        </a>
+                    </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-6">
-                    <p class="mb-1 p-0 text-center">
-                        <span class="text-muted">قیمت براساس تعداد</span>
-                    </p>
-                    <h6 class="mb-0 ft-medium fs-sm bg-light-info text-dark text-center rounded px-2 py-1">
-                        {% multiply detail.count detail.product.price %}</h6>
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-12">
-                    <a href="#" onclick="removeOrderDetail({{ detail.id }})"
-                       class="mb-0 ft-medium fs-sm bg-light-danger text-danger rounded px-2 py-1">
-                        حذف محصول با شناسه {{ detail.product.id }}#
-                    </a>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
+{% else %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                    <p class="text-dark">
+                        سبد خرید شما <span class="text-warning">خالی</span> می باشد
+                        <span><i class="lni lni-heart-filled fs-lg text-warning"></i></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
