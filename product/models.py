@@ -128,6 +128,8 @@ class ProductVisit(models.Model):
 
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='محصول')
+    size = models.ForeignKey(ProductSize, on_delete=models.CASCADE, null=True, blank=True, verbose_name=' سایز محصول')
+    color = models.ForeignKey(ProductColor, on_delete=models.CASCADE, null=True, blank=True, verbose_name=' رنگ محصول')
     image = models.ImageField(upload_to='images/product_gallery', verbose_name='تصویر')
 
     def __str__(self):
