@@ -358,7 +358,7 @@
                                                 <div class="shop_thumb position-relative">
                                                     <a class="card-img-top d-block overflow-hidden"
                                                        href="{% url 'product_detail_page_view' slug=product.slug %}">
-                                                        {% thumbnail product.front_image "420x550" quality=90 crop='center' as im %}
+                                                        {% thumbnail product.front_image "265x390" quality=90 crop='center' as im %}
                                                             <img class="card-img-top" src="{{ im.url }}"
                                                                  alt="{{ product.title }}">
                                                         {% endthumbnail %}

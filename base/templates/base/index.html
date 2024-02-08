@@ -65,8 +65,8 @@
                                     <div class="shop_thumb position-relative">
                                         <a class="card-img-top d-block overflow-hidden"
                                            href="{% url 'product_detail_page_view' slug=product.slug %}">
-                                            {% thumbnail product.front_image "265x396" quality=90 crop='center' as im %}
-                                                <img class="card-img-top" src="{{ product.front_image.url }}"
+                                            {% thumbnail product.front_image "265x390" quality=90 crop='center' as im %}
+                                                <img class="card-img-top" src="{{ im.url }}"
                                                      alt="{{ product.title }}">
                                             {% endthumbnail %}
                                         </a>
@@ -116,7 +116,7 @@
                         <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                             <div class="product_grid card b-0">
                                 <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
-                                    جدیدترین
+                                    پربازدیدترین
                                 </div>
                                 <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
                                         class="far fa-heart"></i></button>
@@ -125,10 +125,9 @@
                                         {% thumbnail product.front_image "265x396" quality=90 crop='center' as im %}
                                             <a class="card-img-top d-block overflow-hidden"
                                                href="{% url 'product_detail_page_view' slug=product.slug %}">
-                                                <img class="card-img-top" src="{{ product.front_image.url }}"
+                                                <img class="card-img-top" src="{{ im.url }}"
                                                      alt="{{ product.title }}"></a>
                                         {% endthumbnail %}
-
                                         <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
                                             <div class="edlio">
                                                 <a href="#"
