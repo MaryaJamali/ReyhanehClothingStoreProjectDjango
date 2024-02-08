@@ -37,8 +37,8 @@
                            class="prd_btn_square"><i class="ti-fullscreen"></i></a>
                         <a href="javascript:void(0);" class="prd_btn_square" data-toggle="tooltip"
                            data-placement="top" title="علاقه مندی"><i class="lni lni-heart"></i></a>
-                        <a href="javascript:void(0);" class="prd_btn_square" data-toggle="tooltip"
-                           data-placement="top" title="افزودن به سبد خرید"><i
+                        <a href="{% url 'user_basket_page_view' %}" class="prd_btn_square" data-toggle="tooltip"
+                           data-placement="top" title="افزودن به سبد خرید" onclick="addProductToOrder({{ product.id }})"><i
                                 class="lni lni-shopping-basket"></i></a>
                         <a href="javascript:void(0);" class="prd_btn_square" data-toggle="tooltip"
                            data-placement="top" title="مقایسه"><i class="lni lni-shuffle"></i></a>
