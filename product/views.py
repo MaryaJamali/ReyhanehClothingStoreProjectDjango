@@ -4,7 +4,7 @@ from django.db.models import Count
 from utils.convertors import group_list
 from utils.http_service import get_client_ip
 from django.views.generic import ListView, DetailView
-from .models import Product, ProductCategory, ProductBrand, ProductComment, ProductGallery, ProductVisit
+from .models import Product, ProductCategory, ProductBrand, ProductSize, ProductColor, ProductComment, ProductGallery, ProductVisit
 
 
 # Class_base_List_View for Product page
@@ -22,22 +22,22 @@ class ProductListView(ListView):
         # annotate : Ability to add calculated values to an existing query set
         context['brand_categories'] = (
             ProductBrand.objects.annotate(products_count=Count('product')).filter(is_active=True))
-        product: Product = query.order_by('-price').first()
-        db_max_price = product.price if product is not None else 0
-        context['db_max_price'] = db_max_price
-        context['start_price'] = self.request.GET.get('start_price') or 0
-        context['end_price'] = self.request.GET.get('end_price') or db_max_price
+        context['size_categories'] = (
+            ProductSize.objects.annotate(products_count=Count('product')).filter(is_active=True))
         context['product'] = query
         return context
 
     def get_queryset(self):
         query = super(ProductListView, self).get_queryset()
         category_name = self.kwargs.get('category')
+        if category_name is not None:
+            query = query.filter(category__url_title__iexact=category_name)
         brand_name = self.kwargs.get('brand')
         if brand_name is not None:
             query = query.filter(brand__url_title__iexact=brand_name)
-        if category_name is not None:
-            query = query.filter(category__url_title__iexact=category_name)
+        size_number = self.kwargs.get('size')
+        if size_number is not None:
+            query = query.filter(size__url_title__iexact=size_number)
         return query
 
 

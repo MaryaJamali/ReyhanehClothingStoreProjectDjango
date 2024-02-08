@@ -20,6 +20,7 @@ urlpatterns = [
     path('', views.ProductListView.as_view(), name='product_list_page_view'),
     path('cat/<str:category>', views.ProductListView.as_view(), name='product_list_by_category'),
     path('brand/<str:brand>', views.ProductListView.as_view(), name='product_list_by_brands'),
+    path('size/<int:size>', views.ProductListView.as_view(), name='product_list_by_size'),
     # Slug is the dynamic and changeable part ---> Domain name/posts/slug
     path('<slug:slug>/', views.ProductDetailView.as_view(), name='product_detail_page_view'),
     path('add-product-comment', views.add_product_comment, name='add_product_comment')
