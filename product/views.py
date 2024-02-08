@@ -24,6 +24,8 @@ class ProductListView(ListView):
             ProductBrand.objects.annotate(products_count=Count('product')).filter(is_active=True))
         context['size_categories'] = (
             ProductSize.objects.annotate(products_count=Count('product')).filter(is_active=True))
+        context['color_categories'] = (
+            ProductColor.objects.annotate(products_count=Count('product')).filter(is_active=True))
         context['product'] = query
         return context
 
@@ -38,6 +40,9 @@ class ProductListView(ListView):
         size_number = self.kwargs.get('size')
         if size_number is not None:
             query = query.filter(size__url_title__iexact=size_number)
+        color_name = self.kwargs.get('color')
+        if color_name is not None:
+            query = query.filter(color__url_title__iexact=color_name)
         return query
 
 

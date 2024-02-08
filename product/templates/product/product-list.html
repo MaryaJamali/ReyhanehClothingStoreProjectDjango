@@ -127,56 +127,17 @@
                                         <div class="single_filter_title mb-2">
                                             <h6 class="mb-0 fs-sm ft-medium text-muted">انتخاب رنگ</h6>
                                         </div>
-                                        <div class="text-right">
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8"
-                                                       id="whitea8">
-                                                <label class="form-option-label rounded-circle" for="whitea8"><span
-                                                        class="form-option-color rounded-circle blc7"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8" id="bluea8">
-                                                <label class="form-option-label rounded-circle" for="bluea8"><span
-                                                        class="form-option-color rounded-circle blc2"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8"
-                                                       id="yellowa8">
-                                                <label class="form-option-label rounded-circle" for="yellowa8"><span
-                                                        class="form-option-color rounded-circle blc5"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8" id="pinka8">
-                                                <label class="form-option-label rounded-circle" for="pink8"><span
-                                                        class="form-option-color rounded-circle blc3"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8" id="ared">
-                                                <label class="form-option-label rounded-circle" for="red"><span
-                                                        class="form-option-color rounded-circle blc4"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8" id="agreen">
-                                                <label class="form-option-label rounded-circle" for="agreen"><span
-                                                        class="form-option-color rounded-circle blc6"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8"
-                                                       id="askypet">
-                                                <label class="form-option-label rounded-circle" for="askypet"><span
-                                                        class="form-option-color rounded-circle blc9"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8"
-                                                       id="aphilips">
-                                                <label class="form-option-label rounded-circle" for="aphilips"><span
-                                                        class="form-option-color rounded-circle blc8"></span></label>
-                                            </div>
-                                            <div class="form-check form-option form-check-inline mb-1">
-                                                <input class="form-check-input" type="radio" name="colora8" id="aelio">
-                                                <label class="form-option-label rounded-circle" for="aelio"><span
-                                                        class="form-option-color rounded-circle blc1"></span></label>
-                                            </div>
+                                        <div class="text-center">
+                                            {% for color in color_categories %}
+                                                <div class="form-check form-option form-check-inline mb-1">
+                                                    <a href="{% url 'product_list_by_color' color=color.url_title %}">
+                                                        <input class="form-check-input" type="radio" name="colora8">
+                                                        <label class="form-option-label rounded-circle">
+                                                            <span class="form-option-color small">{{ color.title }}</span>
+                                                        </label>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     <!-- =======================Choose Category======================= -->
