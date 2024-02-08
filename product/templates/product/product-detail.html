@@ -32,7 +32,7 @@
                                 {% for gallery in group %}
                                     {% thumbnail gallery.image "620x780" quality=90 crop='center' as im %}
                                         <a href="{{ gallery.image.url }}">
-                                            <img src="{{ im.url }}" alt="{{ product.title }}">
+                                            <img src="{{ im.url }}" alt="{{ gallery.product.title }}">
                                         </a>
                                     {% endthumbnail %}
                                 {% endfor %}
@@ -60,59 +60,19 @@
                                 <p class="d-flex align-items-center mb-0 text-dark ft-medium">رنگ :</p>
                                 <div class="text-right">
                                     <div class="form-check form-option form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="color8" id="white8">
-                                        <label class="form-option-label rounded-circle" for="white8"><span
-                                                class="form-option-color rounded-circle blc7"></span></label>
-                                    </div>
-                                    <div class="form-check form-option form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="color8" id="blue8">
-                                        <label class="form-option-label rounded-circle" for="blue8"><span
-                                                class="form-option-color rounded-circle blc2"></span></label>
-                                    </div>
-                                    <div class="form-check form-option form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="color8" id="yellow8">
-                                        <label class="form-option-label rounded-circle" for="yellow8"><span
-                                                class="form-option-color rounded-circle blc5"></span></label>
-                                    </div>
-                                    <div class="form-check form-option form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="color8" id="pink8">
-                                        <label class="form-option-label rounded-circle" for="pink8"><span
-                                                class="form-option-color rounded-circle blc3"></span></label>
-                                    </div>
-                                    <div class="form-check form-option form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="color8" id="red">
-                                        <label class="form-option-label rounded-circle" for="red"><span
-                                                class="form-option-color rounded-circle blc4"></span></label>
-                                    </div>
-                                    <div class="form-check form-option form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="color8" id="green">
-                                        <label class="form-option-label rounded-circle" for="green"><span
-                                                class="form-option-color rounded-circle blc6"></span></label>
+                                        <input class="form-check-input" type="radio" name="colora8">
+                                        <label class="form-option-label rounded-circle btn btn-outline-secondary">
+                                            <span class="form-option-color small">{{ product.color }}</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="prt_04 mb-4">
                                 <p class="d-flex align-items-center mb-0 text-dark ft-medium">سایز :</p>
                                 <div class="text-right pb-0 pt-2">
-                                    <div class="form-check size-option form-option form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="28" checked="">
-                                        <label class="form-option-label" for="28">28</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="32">
-                                        <label class="form-option-label" for="32">32</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="36">
-                                        <label class="form-option-label" for="36">36</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="42">
-                                        <label class="form-option-label" for="42">42</label>
-                                    </div>
-                                    <div class="form-check form-option size-option  form-check-inline mb-2">
-                                        <input class="form-check-input" type="radio" name="size" id="44">
-                                        <label class="form-option-label" for="44">44</label>
+                                    <div class="form-check size-option form-option form-check-inline mb-2 active">
+                                        <input class="form-check-input" type="radio" name="size" checked="">
+                                        <label class="form-option-label">{{ product.size }}</label>
                                     </div>
                                 </div>
                             </div>

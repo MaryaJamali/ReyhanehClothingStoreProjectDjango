@@ -4,7 +4,8 @@ from django.db.models import Count
 from utils.convertors import group_list
 from utils.http_service import get_client_ip
 from django.views.generic import ListView, DetailView
-from .models import Product, ProductCategory, ProductBrand, ProductSize, ProductColor, ProductComment, ProductGallery, ProductVisit
+from .models import (Product, ProductCategory, ProductBrand, ProductSize, ProductColor,
+                     ProductComment, ProductGallery, ProductVisit)
 
 
 # Class_base_List_View for Product page
@@ -65,8 +66,9 @@ class ProductDetailView(DetailView):
         product: Product = kwargs.get('object')
         # This code shows us that when the parent is None, it is the original comment, not the reply
         # prefetch_related : To avoid additional queries and retrieve information with one query
-        context['comments'] = (ProductComment.objects.filter(product_id=product.id, parent=None, confirmation=True).order_by
-                               ('-create_date').prefetch_related('productcomment_set'))
+        context['comments'] = (
+            ProductComment.objects.filter(product_id=product.id, parent=None, confirmation=True).order_by
+            ('-create_date').prefetch_related('productcomment_set'))
         context['comments_count'] = ProductComment.objects.filter(product_id=product.id, confirmation=True).count()
         # Obtaining the user's IP address and ID in the database
         user_ip = get_client_ip(self.request)
