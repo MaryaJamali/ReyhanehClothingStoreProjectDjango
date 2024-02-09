@@ -1,8 +1,19 @@
 {% load layout_items %}
 {% load render_partial %}
 {% load static %}
-<!-- =====================Custom CSS============================ -->
-<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Themezhub"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- =====================Custom CSS============================ -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+<!-- ============Preloader - style you can find in spinners.css============ -->
+<div class="preloader"></div>
 <!-- =====================Start Header============================ -->
 {% render_partial 'base.views.site_header_component' %}
 <!-- =======================Start Content Page============================= -->
@@ -17,3 +28,5 @@
 {% render_partial 'base.views.site_footer_component' %}
 <!-- ============================All Jquery================================= -->
 {% include 'shared/footer-references.html' %}
+</body>
+</html>

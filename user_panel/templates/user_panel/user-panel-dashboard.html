@@ -1,19 +1,9 @@
 {% extends 'shared/layout.html' %}
 {% load render_partial %}
+{% load static %}
+{% block title %}پنل کاربری{% endblock %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    {% load static %}
-    <!DOCTYPE html>
-    <html lang="fa" dir="rtl">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="author" content="Themezhub"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>پنل کاربری</title>
-    </head>
-    <body>
-    <!-- ============Preloader - style you can find in spinners.css============ -->
-    <div class="preloader"></div>
     <!-- ======================= Top Breadcrubms ======================== -->
     <div class="gray py-3">
         <div class="container">
@@ -82,7 +72,5 @@
         </div>
     </section>
     <!-- ======================= Dashboard Detail End ======================== -->
-    </body>
-    </html>
 {% endblock %}
 <!-- =======================Start Content Page============================= -->

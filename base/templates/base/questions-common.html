@@ -1,18 +1,8 @@
 {% extends 'shared/layout.html' %}
 {% load static %}
+{% block title %}سوالات متداول{% endblock %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    <!DOCTYPE html>
-    <html lang="fa" dir="rtl">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="author" content="Themezhub"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>صفحه سوالات متداول</title>
-    </head>
-    <body>
-    <!-- ============Preloader - style you can find in spinners.css============ -->
-    <div class="preloader"></div>
     <!-- ======================= Top Breadcrubms ======================== -->
     <div class="gray py-3">
         <div class="container">
@@ -29,165 +19,218 @@
         </div>
     </div>
     <!-- ======================= Top Breadcrubms ======================== -->
-        <!-- ======================= FAQ's Detail ======================== -->
-        <section class="middle">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="sec_title position-relative text-center">
-                            <h2 class="off_title">بخش پرسش و پاسخ</h2>
-                            <h3 class="ft-bold pt-3">سوالات متداول</h3>
-                        </div>
+    <!-- ======================= FAQ's Detail ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="sec_title position-relative text-center">
+                        <h2 class="off_title">بخش پرسش و پاسخ</h2>
+                        <h3 class="ft-bold pt-3">سوالات متداول</h3>
                     </div>
                 </div>
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-xl-10 col-lg-11 col-md-12 col-sm-12">
-                        <div class="d-block position-relative border rounded py-3 px-3 mb-4">
-                            <h4 class="ft-medium">سفارشات :</h4>
-                            <div id="accordion" class="accordion">
-                                <div class="card">
-                                    <div class="card-header" id="h1">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#ord1" aria-expanded="true" aria-controls="ord1">
-												آیا می توانم کالای سفارش خود را پیگیری کنم؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord1" class="collapse show" aria-labelledby="h1" data-parent="#accordion">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-xl-10 col-lg-11 col-md-12 col-sm-12">
+                    <div class="d-block position-relative border rounded py-3 px-3 mb-4">
+                        <h4 class="ft-medium">سفارشات :</h4>
+                        <div id="accordion" class="accordion">
+                            <div class="card">
+                                <div class="card-header" id="h1">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#ord1"
+                                                aria-expanded="true" aria-controls="ord1">
+                                            آیا می توانم کالای سفارش خود را پیگیری کنم؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord1" class="collapse show" aria-labelledby="h1" data-parent="#accordion">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header" id="h2">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#ord2" aria-expanded="false" aria-controls="ord2">
-												هزینه پست برگشت را چه کسی پرداخت می کند؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord2" class="collapse" aria-labelledby="h2" data-parent="#accordion">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="h2">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                data-target="#ord2" aria-expanded="false" aria-controls="ord2">
+                                            هزینه پست برگشت را چه کسی پرداخت می کند؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord2" class="collapse" aria-labelledby="h2" data-parent="#accordion">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header" id="h3">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#ord3" aria-expanded="false" aria-controls="ord3">
-												چگونه یک کد تخفیف اعمال کنم؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord3" class="collapse" aria-labelledby="h3" data-parent="#accordion">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="h3">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                data-target="#ord3" aria-expanded="false" aria-controls="ord3">
+                                            چگونه یک کد تخفیف اعمال کنم؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord3" class="collapse" aria-labelledby="h3" data-parent="#accordion">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-block position-relative border rounded py-3 px-3 mb-4">
-                            <h4 class="ft-medium">ارسال و بازگردانی :</h4>
-                            <div id="accordion1" class="accordion">
-                                <div class="card">
-                                    <div class="card-header" id="h4">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#ord4" aria-expanded="true" aria-controls="ord4">
-												تحویل درب منزل چقدر طول می کشد؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord4" class="collapse show" aria-labelledby="h4" data-parent="#accordion1">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                    </div>
+                    <div class="d-block position-relative border rounded py-3 px-3 mb-4">
+                        <h4 class="ft-medium">ارسال و بازگردانی :</h4>
+                        <div id="accordion1" class="accordion">
+                            <div class="card">
+                                <div class="card-header" id="h4">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#ord4"
+                                                aria-expanded="true" aria-controls="ord4">
+                                            تحویل درب منزل چقدر طول می کشد؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord4" class="collapse show" aria-labelledby="h4" data-parent="#accordion1">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header" id="h5">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#ord5" aria-expanded="false" aria-controls="ord5">
-												برای ارسال از چه پیکی استفاده می کنید؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord5" class="collapse" aria-labelledby="h5" data-parent="#accordion1">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="h5">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                data-target="#ord5" aria-expanded="false" aria-controls="ord5">
+                                            برای ارسال از چه پیکی استفاده می کنید؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord5" class="collapse" aria-labelledby="h5" data-parent="#accordion1">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header" id="h6">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#ord6" aria-expanded="false" aria-controls="ord6">
-												آیا می توانم از یک فروشگاه محلی دریافت کنم؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord6" class="collapse" aria-labelledby="h6" data-parent="#accordion1">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="h6">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                data-target="#ord6" aria-expanded="false" aria-controls="ord6">
+                                            آیا می توانم از یک فروشگاه محلی دریافت کنم؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord6" class="collapse" aria-labelledby="h6" data-parent="#accordion1">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-block position-relative border rounded py-3 px-3">
-                            <h4 class="ft-medium">پرداخت :</h4>
-                            <div id="accordion2" class="accordion">
-                                <div class="card">
-                                    <div class="card-header" id="h7">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#ord7" aria-expanded="true" aria-controls="ord7">
-												آیا به مشتریان غیر اتحادیه اروپا تخفیف مالیات بر ارزش افزوده ارائه می دهید؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord7" class="collapse show" aria-labelledby="h7" data-parent="#accordion2">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                    </div>
+                    <div class="d-block position-relative border rounded py-3 px-3">
+                        <h4 class="ft-medium">پرداخت :</h4>
+                        <div id="accordion2" class="accordion">
+                            <div class="card">
+                                <div class="card-header" id="h7">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#ord7"
+                                                aria-expanded="true" aria-controls="ord7">
+                                            آیا به مشتریان غیر اتحادیه اروپا تخفیف مالیات بر ارزش افزوده ارائه می دهید؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord7" class="collapse show" aria-labelledby="h7" data-parent="#accordion2">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header" id="h8">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#ord8" aria-expanded="false" aria-controls="ord8">
-												چرا هزینه تحویل اصلی را پس نداده اید؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord8" class="collapse" aria-labelledby="h8" data-parent="#accordion2">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="h8">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                data-target="#ord8" aria-expanded="false" aria-controls="ord8">
+                                            چرا هزینه تحویل اصلی را پس نداده اید؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord8" class="collapse" aria-labelledby="h8" data-parent="#accordion2">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header" id="h9">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#ord9" aria-expanded="false" aria-controls="ord9">
-												آیا به مشتریان غیر اتحادیه اروپا تخفیف مالیات بر ارزش افزوده ارائه می دهید؟
-											</button>
-                                        </h5>
-                                    </div>
-                                    <div id="ord9" class="collapse" aria-labelledby="h9" data-parent="#accordion2">
-                                        <div class="card-body">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                        </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="h9">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                data-target="#ord9" aria-expanded="false" aria-controls="ord9">
+                                            آیا به مشتریان غیر اتحادیه اروپا تخفیف مالیات بر ارزش افزوده ارائه می دهید؟
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="ord9" class="collapse" aria-labelledby="h9" data-parent="#accordion2">
+                                    <div class="card-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                        کاربردی می باشد.
+                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                        را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                        طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                                     </div>
                                 </div>
                             </div>
@@ -195,8 +238,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- ======================= FAQ's End ======================== -->
-</body>
-</html>
+        </div>
+    </section>
+    <!-- ======================= FAQ's End ======================== -->
 {% endblock %}

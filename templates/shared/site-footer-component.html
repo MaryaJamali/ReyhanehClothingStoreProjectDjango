@@ -1,5 +1,4 @@
 {% load static %}
-<!-- ============================Start Footer ================================== -->
 <footer class="dark-footer skin-dark-footer">
     <div class="footer-middle">
         <div class="container">
@@ -36,7 +35,7 @@
                             <h4 class="widget_title">{{ footer_link_box.title }}</h4>
                             <ul class="footer-menu">
                                 {% for link in footer_link_box.footerlink_set.all %}
-                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>

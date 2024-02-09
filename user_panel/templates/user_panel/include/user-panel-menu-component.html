@@ -32,7 +32,7 @@
                         <i class="lni lni-user ml-2"></i>داشبورد</a>
                 </li>
                 <li>
-                    <a href="{% url 'user_basket_page_view' %}" 
+                    <a href="{% url 'user_basket_page_view' %}"
                        class="{% if request.resolver_match.url_name == 'user_basket_page_view' %}active{% endif %}">
                         <i class="lni lni-shopping-basket ml-2"></i>سبد خرید من</a>
                 </li>
@@ -40,12 +40,12 @@
                     <a href="wishlist.html"><i class="lni lni-heart ml-2"></i>لیست علاقه مندی ها</a>
                 </li>
                 <li>
-                    <a href="{% url 'edit_profile_page_view' %}" 
+                    <a href="{% url 'edit_profile_page_view' %}"
                        class="{% if request.resolver_match.url_name == 'edit_profile_page_view' %}active{% endif %}">
                         <i class="lni lni-pencil ml-2"></i>ویرایش اطلاعات پروفایل</a>
                 </li>
                 <li>
-                    <a href="{% url 'change_password_page_view' %}" 
+                    <a href="{% url 'change_password_page_view' %}"
                        class="{% if request.resolver_match.url_name == 'change_password_page_view' %}active{% endif %}">
                         <i class="lni lni-reload ml-2"></i>تغییر رمز عبور</a>
                 </li>

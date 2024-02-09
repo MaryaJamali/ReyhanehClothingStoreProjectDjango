@@ -1,18 +1,8 @@
 {% extends 'shared/layout.html' %}
 {% load static %}
+{% block title %}تماس با ما{% endblock %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    <!DOCTYPE html>
-    <html lang="fa" dir="rtl">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="author" content="Themezhub"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>صفحه تماس با ما</title>
-    </head>
-    <body>
-    <!-- =============Preloader - style you can find in spinners.css================== -->
-    <div class="preloader"></div>
     <!-- =============Main wrapper - style you can find in pages.scss=================== -->
     <div id="main-wrapper">
         <div class="clearfix"></div>
@@ -70,8 +60,10 @@
                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                         <div class="card-wrap-body mb-4">
                             <h4 class="ft-medium mb-3 theme-cl">تماس بگیرید</h4>
-                            <p class="lh-1"><span class="text-dark ft-medium"> آدرس :</span>{{ site_setting.address }}</p>
-                            <p class="lh-1"><span class="text-dark ft-medium"> ایمیل :</span>{{ site_setting.email }}</p>
+                            <p class="lh-1"><span class="text-dark ft-medium"> آدرس :</span>{{ site_setting.address }}
+                            </p>
+                            <p class="lh-1"><span class="text-dark ft-medium"> ایمیل :</span>{{ site_setting.email }}
+                            </p>
                         </div>
                         <div class="card-wrap-body mb-3">
                             <h4 class="ft-medium mb-3 theme-cl">تماس بگیرید</h4>
@@ -143,6 +135,4 @@
         </section>
         <!-- =======================End Contact Page ======================== -->
     </div>
-    </body>
-    </html>
 {% endblock %}

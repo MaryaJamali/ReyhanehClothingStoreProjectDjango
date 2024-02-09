@@ -1,19 +1,9 @@
 {% extends 'shared/layout.html' %}
 {% load render_partial %}
+{% load static %}
+{% block title %}ویرایش اطلاعات پروفایل{% endblock %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    {% load static %}
-    <!DOCTYPE html>
-    <html lang="fa" dir="rtl">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="author" content="Themezhub"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ویرایش اطلاعات پروفایل</title>
-    </head>
-    <body>
-    <!-- ============Preloader - style you can find in spinners.css============ -->
-    <div class="preloader"></div>
     <!-- ======================= Top Breadcrubms ======================== -->
     <div class="gray py-3">
         <div class="container">
@@ -47,7 +37,8 @@
                         </div>
                         <br>
                         <div class="row align-items-center">
-                            <form class="row m-0" enctype="multipart/form-data" action="{% url 'edit_profile_page_view' %}" method="post">
+                            <form class="row m-0" enctype="multipart/form-data"
+                                  action="{% url 'edit_profile_page_view' %}" method="post">
                                 {% csrf_token %}
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                     <div class="form-group {% if form.first_name.errors %} text-danger{% endif %}">
@@ -111,7 +102,5 @@
         </div>
     </section>
     <!-- ======================= Dashboard Detail End ======================== -->
-    </body>
-    </html>
 {% endblock %}
 <!-- =======================Start Content Page============================= -->

@@ -1,21 +1,11 @@
 {% extends 'shared/layout.html' %}
+{% load static %}
 {% load poll_extras %}
 {% load date_time_tags %}
 {% load thumbnail %}
+{% block title %}فروشگاه لباس ریحانه{% endblock %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    {% load static %}
-    <!DOCTYPE html>
-    <html lang="fa" dir="rtl">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="author" content="Themezhub"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>فروشگاه لباس ریحانه</title>
-    </head>
-    <body>
-    <!-- ============Preloader - style you can find in spinners.css============ -->
-    <div class="preloader"></div>
     <!-- ============================ Hero Banner  Start================================== -->
     <div class="home-slider hide-navigation margin-bottom-0">
         <!-- ============================Slide================================== -->
@@ -215,12 +205,9 @@
                                         {{ article.title }}</a>
                                     </h5>
                                     <p class="text-secondary">{{ article.short_description }}
-                                        <span>
                                         {% if article.author is not None %}
                                             <p class="text-dark"> نویسنده:{{ article.author }}</p>
                                         {% endif %}
-                                    </span>
-                                    </p>
                                     <span>
                                     <a href="{% url 'articles_detail_page_view' pk=article.id %}"
                                        class="text-dark fs-sm">ادامه مطلب...</a>
@@ -334,7 +321,5 @@
             });
         }
     </script>
-    </body>
-    </html>
 {% endblock %}
 <!-- =======================End Content Page============================= -->

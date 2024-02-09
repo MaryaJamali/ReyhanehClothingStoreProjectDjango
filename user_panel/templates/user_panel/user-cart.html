@@ -4,20 +4,10 @@
 {% load date_time_tags %}
 {% load date_convertor %}
 {% load thumbnail %}
+{% load static %}
+{% block title %}سبد خرید من{% endblock %}
 <!-- =======================Start Content Page============================= -->
 {% block content %}
-    {% load static %}
-    <!DOCTYPE html>
-    <html lang="fa" dir="rtl">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="author" content="Themezhub"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>سبد خرید</title>
-    </head>
-    <body>
-    <!-- ============Preloader - style you can find in spinners.css============ -->
-    <div class="preloader"></div>
     <!-- ======================= Top Breadcrubms ======================== -->
     <div class="gray py-3">
         <div class="container">
@@ -28,7 +18,7 @@
                             <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
                             <li class="breadcrumb-item"><a href="{% url 'user_panel_dashboard_page_view' %}">پنل
                                 کاربری</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">سبد خرید</li>
+                            <li class="breadcrumb-item active" aria-current="page">سبد خرید من</li>
                         </ol>
                     </nav>
                 </div>
@@ -61,14 +51,12 @@
     </script>
     <script>
         function changeOrderDetailCount(detailId, state) {
-    $.get('/user/change-cart-detail?detail_id=' + detailId + '&state=' + state).then(res => {
-        if (res.status === 'success') {
-            $('#order-detail-content').html(res.body);
+            $.get('/user/change-cart-detail?detail_id=' + detailId + '&state=' + state).then(res => {
+                if (res.status === 'success') {
+                    $('#order-detail-content').html(res.body);
+                }
+            });
         }
-    });
-}
     </script>
-    </body>
-    </html>
 {% endblock %}
 <!-- =======================Start Content Page============================= -->
