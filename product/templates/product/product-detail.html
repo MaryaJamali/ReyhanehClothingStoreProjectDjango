@@ -76,13 +76,11 @@
                             <div class="prt_05 mb-4">
                                 <div class="form-row mb-7">
                                     <div class="col-12 col-lg">
-                                        <a href="{% url 'user_basket_page_view' %}">
-                                            <!-- ======================= Submit ===================== -->
-                                            <button type="submit" class="btn btn-block custom-height bg-dark mb-2"
-                                                    onclick="addProductToOrder({{ product.id }})">
-                                                <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
-                                            </button>
-                                        </a>
+                                        <!-- ======================= Submit ===================== -->
+                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2"
+                                                onclick="addProductToOrder({{ product.id }})">
+                                            <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -349,26 +347,4 @@
             {% include 'shared/modal-product.html' with product=product %}
         {% endfor %}
     </div>
-{% endblock %}
-{% block jquery %}
-    <!-- =========================SweetAlert Jquery========================== -->
-    <script>
-        function addProductToOrder(productId) {
-            const productCount = $('#product-count').val();
-            $.get('/cart/add-to-cart?product_id=' + productId + '&count=' + productCount).then(res => {
-                Swal.fire({
-                    title: 'اعلان',
-                    text: res.text,
-                    icon: res.icon,
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: res.confirm_button_text
-                }).then((result) => {
-                    if (result.isConfirmed && res.status === 'not_auth') {
-                        window.location.href = '/login';
-                    }
-                });
-            });
-        }
-    </script>
 {% endblock %}
