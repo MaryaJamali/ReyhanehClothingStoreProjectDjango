@@ -39,24 +39,4 @@
         </div>
     </section>
     <!-- ======================= Dashboard Detail End ======================== -->
-    <!-- =========================SweetAlert Jquery========================== -->
-    <script>
-        function removeOrderDetail(detailId) {
-            $.get('/user/remove-cart-detail?detail_id=' + detailId).then(res => {
-                if (res.status === 'success') {
-                    $('#order-detail-content').html(res.body);
-                }
-            });
-        }
-    </script>
-    <script>
-        function changeOrderDetailCount(detailId, state) {
-            $.get('/user/change-cart-detail?detail_id=' + detailId + '&state=' + state).then(res => {
-                if (res.status === 'success') {
-                    $('#order-detail-content').html(res.body);
-                }
-            });
-        }
-    </script>
 {% endblock %}
-<!-- =======================Start Content Page============================= -->

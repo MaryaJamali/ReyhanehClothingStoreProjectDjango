@@ -349,6 +349,8 @@
             {% include 'shared/modal-product.html' with product=product %}
         {% endfor %}
     </div>
+{% endblock %}
+{% block jquery %}
     <!-- =========================SweetAlert Jquery========================== -->
     <script>
         function addProductToOrder(productId) {
