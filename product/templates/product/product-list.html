@@ -45,18 +45,13 @@
                                     <option value="1" selected="">مرتب سازی پیش فرض</option>
                                     <option value="2">مرتب سازی براساس قیمت صعودی</option>
                                     <option value="3">مرتب سازی براساس قیمت نزولی</option>
-                                    <option value="4">مرتب سازی براساس جدیدترین ها</option>
-                                    <option value="5">مرتب سازی براساس محبوبیت</option>
-                                    <option value="6">مرتب سازی براساس میزان تخفیف</option>
-                                    <option value="7">بصورت تصادفی</option>
+                                    <option value="4"> مرتب سازی براساس جدیدترین ها</option>
+                                    <option value="5">مرتب سازی براساس پرفروش ترین ها</option>
+                                    <option value="6">بصورت تصادفی</option>
                                 </select>
                             </div>
                             <div class="single_fitres">
-                                <a href="shop-list-sidebar.html" class="simple-button active"><i
-                                        class="ti-view-list"></i></a>
-                                <a href="shop-grid-3.html" class="simple-button mr-1"><i
-                                        class="ti-layout-grid2"></i></a>
-                                <a href="shop-style-4.html" class="simple-button mr-1"><i
+                                <a href="{% url 'product_list_page_view' %}" class="simple-button mr-1 active"><i
                                         class="ti-layout-grid3"></i></a>
                             </div>
                         </div>
