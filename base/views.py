@@ -82,6 +82,7 @@ def site_footer_component(request: HttpRequest):
     for item in footer_link_boxes:
         # It refers to the set of category links
         item.footerlink_set
+
     context = {
         'site_setting': setting,
         'footer_link_boxes': footer_link_boxes
