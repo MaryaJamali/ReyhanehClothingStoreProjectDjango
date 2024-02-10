@@ -7,8 +7,11 @@
         <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
             {{ product.brand }}
         </div>
-        <button class="snackbar-wishlist btn btn_love position-absolute ab-left"><i
-                class="far fa-heart"></i></button>
+        <a href="#">
+            <button class="snackbar-wishlist btn btn_love position-absolute ab-left">
+                <i class="far fa-heart"></i>
+            </button>
+        </a>
         <div class="card-body p-0">
             <div class="shop_thumb position-relative">
                 <a class="card-img-top d-block overflow-hidden ovr-hide"
@@ -35,12 +38,14 @@
                     <div class="group_btn">
                         <a href="#{{ product.slug }}" data-toggle="modal" data-target="#{{ product.slug }}"
                            class="prd_btn_square"><i class="ti-fullscreen"></i></a>
-                        <a href="javascript:void(0);" class="prd_btn_square" data-toggle="tooltip"
-                           data-placement="top" title="علاقه مندی"><i class="lni lni-heart"></i></a>
+                        <a href="#" class="prd_btn_square"
+                           data-toggle="tooltip"
+                           data-placement="top" title="علاقه مندی">
+                            <i class="lni lni-heart"></i></a>
                         <a href="{% url 'user_basket_page_view' %}" class="prd_btn_square" data-toggle="tooltip"
                            data-placement="top" title="افزودن به سبد خرید"
-                           onclick="addProductToOrder({{ product.id }})"><i
-                                class="lni lni-shopping-basket"></i></a>
+                           onclick="addProductToOrder({{ product.id }})">
+                            <i class="lni lni-shopping-basket"></i></a>
                         <a href="javascript:void(0);" class="prd_btn_square" data-toggle="tooltip"
                            data-placement="top" title="مقایسه"><i class="lni lni-shuffle"></i></a>
                     </div>

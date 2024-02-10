@@ -126,19 +126,6 @@ class ProductVisit(models.Model):
         verbose_name_plural = 'بازدیدهای محصول'
 
 
-class ProductFavorite(models.Model):
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='نام محصول')
-    ip = models.CharField(max_length=30, verbose_name='آی پی کاربر')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name='کاربر')
-
-    def __str__(self):
-        return f'{self.product.title} / {self.ip}'
-
-    class Meta:
-        verbose_name = 'بازدید محصول'
-        verbose_name_plural = 'بازدیدهای محصول'
-
-
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='محصول')
     image = models.ImageField(upload_to='images/product_gallery', verbose_name='تصویر')

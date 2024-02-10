@@ -136,7 +136,8 @@ def change_order_detail_count(request: HttpRequest):
             'status': 'not_found_detail_or_state'
         })
 
-    order_detail = OrderDetail.objects.filter(id=detail_id, order__user_id=request.user.id, order__is_paid=False).first()
+    order_detail = OrderDetail.objects.filter(id=detail_id, order__user_id=request.user.id,
+                                              order__is_paid=False).first()
 
     if order_detail is None:
         return JsonResponse({
@@ -157,7 +158,8 @@ def change_order_detail_count(request: HttpRequest):
             'status': 'state_invalid'
         })
 
-    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,
+                                                                                             user_id=request.user.id)
     total_amount = current_order.calculate_total_price()
 
     context = {
