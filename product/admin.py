@@ -53,6 +53,12 @@ class ProductVisitAdmin(admin.ModelAdmin):
     list_display = ['user', 'product']
 
 
+# Admin panel customization for the ProductFavorite
+@admin.register(models.ProductFavorite)
+class ProductFavoriteAdmin(admin.ModelAdmin):
+    list_display = ['user', 'product']
+
+
 # Admin panel customization for the ProductGallery
 @admin.register(models.ProductGallery)
 class ProductGalleryAdmin(admin.ModelAdmin):
@@ -64,4 +70,3 @@ class ProductGalleryAdmin(admin.ModelAdmin):
 class ProductCommentAdmin(admin.ModelAdmin):
     list_display = ['product', 'user', 'create_date', 'Score', 'parent', 'confirmation']
     list_editable = ['Score']
-
