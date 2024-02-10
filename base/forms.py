@@ -2,8 +2,8 @@ from django import forms
 from django.core import validators
 
 
-# Class_Form for NewsletterSubscriber Form
-class NewsletterSubscriberForm(forms.Form):
+# Class_Form for NewsletterSubscriptionForm Form
+class NewsletterSubscriptionForm(forms.Form):
     email = forms.EmailField(
         label='ایمیل *',
         # A widget is a simple shortcode that allows you to add features to your website or blog.and we can
