@@ -23,5 +23,5 @@ urlpatterns = [
     path('cooperation', views.Cooperation.as_view(), name='cooperation_page_view'),
     path('404', views.Error404View.as_view(), name='error_404_page_view'),
     # Addressing example for component pages
-    # path('', views.site_header_component, name='site_header_component_view'),
+    path('subscribe/', views.site_footer_component, name='site_footer_component_view'),
 ]

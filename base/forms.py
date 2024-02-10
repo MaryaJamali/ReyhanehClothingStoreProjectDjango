@@ -13,9 +13,9 @@ class NewsletterSubscriptionModelForm(forms.ModelForm):
         # A widget is a simple shortcode that allows you to add features to your website or blog.and we can
         # with widgets manipulate the appearance of Html forms a bit
         widgets = {
-            'email': forms.TextInput(attrs={
+            'email': forms.EmailInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'username@mail.com'
+                'placeholder': 'لطفا ایمیل خود را وارد کنید'
             }),
         }
         labels = {

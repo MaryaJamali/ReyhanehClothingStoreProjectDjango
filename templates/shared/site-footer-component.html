@@ -46,16 +46,19 @@
                         <h4 class="widget_title">عضویت</h4>
                         <p>به‌روزرسانی‌ها، معاملات داغ، تخفیف‌هایی را که روزانه در صندوق ورودی خود ارسال می‌شوند،
                             دریافت کنید</p>
-                        <div class="foot-news-last">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="آدرس ایمیل">
-                                <div class="input-group-append">
-                                    <button type="button" class="input-group-text b-0 text-light">
-                                        <i class="lni lni-arrow-left"></i>
-                                    </button>
+                        <form method="post" action="{% url 'site_footer_component_view' %}">
+                            <div class="foot-news-last">
+                                <div class="input-group">
+                                    {% csrf_token %}
+                                    {{subscription_form.email}}
+                                    <div class="input-group-append">
+                                        <button type="submit" class="input-group-text b-0 text-light">
+                                            <i class="lni lni-arrow-left"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <div class="address mt-3">
                             <h5 class="fs-sm text-light">پرداخت امن</h5>
                             <div class="scr_payment">

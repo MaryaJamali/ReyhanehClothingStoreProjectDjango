@@ -6,6 +6,6 @@ from . import models
 @admin.register(models.NewsletterSubscription)
 class NewsletterSubscriptionAdmin(admin.ModelAdmin):
     # Display fields on the Admin page
-    list_display = ['user', 'email', 'create_date', 'is_active']
+    list_display = ['email', 'create_date', 'is_active']
     # Changing the fields on the Admin page
     list_editable = ['is_active']

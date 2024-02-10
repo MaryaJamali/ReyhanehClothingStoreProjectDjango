@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.db.models import Count
 from utils.convertors import group_list
 from django.views.generic.base import TemplateView
 from product.models import Product
 from article.models import Article
+from base.forms import NewsletterSubscriptionModelForm
 from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox
 
 
@@ -82,9 +83,14 @@ def site_footer_component(request: HttpRequest):
     for item in footer_link_boxes:
         # It refers to the set of category links
         item.footerlink_set
-
+    subscription_form = NewsletterSubscriptionModelForm(request.POST)
+    if request.method == 'POST':
+        if subscription_form.is_valid():
+            subscription_form.save()
+            return redirect('article_list_page_view')
     context = {
         'site_setting': setting,
-        'footer_link_boxes': footer_link_boxes
+        'footer_link_boxes': footer_link_boxes,
+        'subscription_form': subscription_form,
     }
     return render(request, 'shared/site-footer-component.html', context=context)
