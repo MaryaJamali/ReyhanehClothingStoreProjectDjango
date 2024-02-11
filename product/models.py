@@ -127,7 +127,7 @@ class ProductVisit(models.Model):
 
 
 class ProductWishList(models.Model):
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='محصول')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='محصول')
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='کاربر')
 
     def __str__(self):

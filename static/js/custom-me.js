@@ -59,3 +59,11 @@ function changeOrderDetailCount(detailId, state) {
         }
     });
 }
+
+function addProductToWishList(productId) {
+    $.get('/user/add-to-wishlist?product_id=' + productId).then(res => {
+        if (res.status === 'success') {
+            $('#order-detail-content').html(res.body);
+        }
+    });
+}
