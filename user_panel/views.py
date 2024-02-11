@@ -8,6 +8,7 @@ from django.views.generic import TemplateView
 from account.models import User
 from django.contrib.auth import logout
 from cart.models import Order, OrderDetail
+from product.models import Product, ProductWishList
 from django.template.loader import render_to_string
 from .forms import EditProfileModelForm, ChangePasswordForm
 
@@ -170,3 +171,16 @@ def change_order_detail_count(request: HttpRequest):
         'status': 'success',
         'body': render_to_string('user_panel/include/user-cart-content.html', context=context)
     })
+
+
+@login_required
+def add_to_wish_list(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            product_id = request.GET.get('product_id')
+            product: Product = request.objects.get(product_id=product_id)
+            product_wishlist = ProductWishList(user_id=request.user.id, product=product)
+            product_wishlist.save()
+            return JsonResponse({
+                'status': 'success'
+            })
