@@ -126,6 +126,18 @@ class ProductVisit(models.Model):
         verbose_name_plural = 'بازدیدهای محصول'
 
 
+class ProductWishList(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='محصول')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='کاربر')
+
+    def __str__(self):
+        return self.product.title
+
+    class Meta:
+        verbose_name = 'محصول مورد علاقه'
+        verbose_name_plural = 'محصولات مورد علاقه'
+
+
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='محصول')
     image = models.ImageField(upload_to='images/product_gallery', verbose_name='تصویر')

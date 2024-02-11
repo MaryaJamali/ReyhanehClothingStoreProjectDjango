@@ -53,6 +53,12 @@ class ProductVisitAdmin(admin.ModelAdmin):
     list_display = ['user', 'product']
 
 
+# Admin panel customization for the ProductWishList
+@admin.register(models.ProductWishList)
+class ProductWishListAdmin(admin.ModelAdmin):
+    list_display = ['user', 'product']
+
+
 # Admin panel customization for the ProductGallery
 @admin.register(models.ProductGallery)
 class ProductGalleryAdmin(admin.ModelAdmin):
