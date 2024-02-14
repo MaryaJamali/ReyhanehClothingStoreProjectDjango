@@ -68,5 +68,5 @@ class ProductGalleryAdmin(admin.ModelAdmin):
 # Admin panel customization for the ProductComment
 @admin.register(models.ProductComment)
 class ProductCommentAdmin(admin.ModelAdmin):
-    list_display = ['product', 'user', 'create_date', 'Score', 'parent', 'confirmation']
-    list_editable = ['Score']
+    list_display = ['product', 'user', 'create_date', 'score', 'parent', 'confirmation']
+    list_editable = ['score']

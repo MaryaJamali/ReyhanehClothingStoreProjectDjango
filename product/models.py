@@ -156,7 +156,7 @@ class ProductComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='کاربر')
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ثبت')
     text = models.TextField(verbose_name='متن نظر')
-    Score = models.IntegerField(default=1, verbose_name='امتیاز به محصول')
+    score = models.IntegerField(default=1, null=True, blank=True, verbose_name='امتیاز به محصول')
     confirmation = models.BooleanField(default=True, verbose_name='تایید شده/نشده')
 
     def __str__(self):
