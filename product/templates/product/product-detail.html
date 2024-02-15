@@ -167,35 +167,51 @@
                                     {% for comment in comments %}
                                         <!-- ======================= Single Review ===================== -->
                                         <div class="single_rev d-flex align-items-start br-bottom py-3">
-                                            <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
-                                                                               class="img-fluid circle" width="90"
-                                                                               alt=""/>
+                                            <div class="single_rev_thumb">
+                                                {% if comment.user.avatar %}
+                                                    {% thumbnail comment.user.avatar "120x120" quality=90 crop='center' as im %}
+                                                        <img class="img-fluid circle" src="{{ im.url }}"
+                                                             alt="{{ comment.user.email }}">
+                                                    {% endthumbnail %}
+                                                {% else %}
+                                                    <img class="img-fluid circle" width="100"
+                                                         src="{% static 'img/default-blog.png' %}"
+                                                         alt="{{ comment.user.email }}">
+                                                {% endif %}
                                             </div>
                                             <div class="single_rev_caption d-flex align-items-start pr-3">
                                                 <div class="single_capt_left">
                                                     <h5 class="mb-0 fs-md ft-medium lh-1">{{ comment.user }}</h5>
-                                                    <span class="small">{{ comment.create_date | to_date_string_format }}</span>
+                                                    {% for score in comments %}
+                                                        <div class="single_capt_right">
+                                                            <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
+                                                                <span class="small">{{ comment.create_date | to_date_string_format }}</span>
+                                                                <i class="fas fa-star filled"></i>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
                                                     <p>{{ comment.text }}</p>
                                                     <a class=" btn single_capt_right ft-medium small text-warning 
                                                     bg-light-warning rounded px-3 py-1"
                                                        onclick="fillParentId({{ comment.id }})">
                                                         <i class="fa fa-reply"></i>پاسـخ</a>
                                                 </div>
-                                                <div class="single_capt_right">
-                                                    <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                                        {% for score in comments %}
-                                                            <i class="fas fa-star filled"></i>
-                                                        {% endfor %}
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                         {% for sub_comment in comment.productcomment_set.all %}
                                             <div class="single_rev d-flex align-items-start br-bottom py-3"
                                                  id="single_comment_box_{{ comment.id }}">
-                                                <div class="single_rev_thumb"><img src="{% static 'img/team-2.jpg' %}"
-                                                                                   class="img-fluid circle" width="75"
-                                                                                   alt=""/>
+                                                <div class="single_rev_thumb">
+                                                    {% if sub_comment.user.avatar %}
+                                                        {% thumbnail sub_comment.user.avatar "70x70" quality=90 crop='center' as im %}
+                                                            <img class="img-fluid circle" src="{{ im.url }}"
+                                                                 alt="{{ sub_comment.user.email }}">
+                                                        {% endthumbnail %}
+                                                    {% else %}
+                                                        <img class="img-fluid circle" width="100"
+                                                             src="{% static 'img/default-blog.png' %}"
+                                                             alt="{{ sub_comment.user.email }}">
+                                                    {% endif %}
                                                 </div>
                                                 <div class="single_rev_caption d-flex align-items-start pr-3">
                                                     <div class="single_capt_left">
@@ -260,7 +276,7 @@
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group m-0">
                                                     <a class="btn btn-white stretched-link hover-black"
-                                                        onclick="sendProductComment({{ product.id }})">
+                                                       onclick="sendProductComment({{ product.id }})">
                                                         ارسال دیدگاه
                                                     </a>
                                                 </div>

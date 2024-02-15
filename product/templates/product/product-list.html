@@ -155,21 +155,21 @@
                         {% include 'shared/modal-product.html' with product=product %}
                     {% endfor %}
                     <!-- =============================Row============================= -->
-                    <div class="row center">
-                        <div class="col-xl-12 col-lg-12 col-md-12 text-center">
-                            <ul class="pagination">
-                                {% if page_obj.has_next %}
-                                    <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
-                                {% endif %}
-                                {% for pageNumber in paginator.page_range reversed %}
-                                    <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
-                                        <a href="?page={{ pageNumber }}">{{ pageNumber }}</a></li>
-                                {% endfor %}
-                                {% if page_obj.has_previous %}
-                                    <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
+                </div>
+                <div class="row center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 text-center">
+                        <ul class="pagination">
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                            {% endif %}
+                            {% for pageNumber in paginator.page_range reversed %}
+                                <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
+                                    <a href="?page={{ pageNumber }}">{{ pageNumber }}</a></li>
+                            {% endfor %}
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
             </div>
