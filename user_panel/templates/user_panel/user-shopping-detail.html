@@ -1,0 +1,93 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+{% load poll_extras %}
+{% load date_time_tags %}
+{% load static %}
+{% block title %}جزییات خرید{% endblock %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <div class="gray py-3">
+        <div class="container">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12">
+                    <nav aria-label="breadcrumb text-right">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'user_panel_dashboard_page_view' %}">پنل
+                                کاربری</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'user_shopping_page_view' %}">لیست خرید های قبلی
+                                من
+                            </a></li>
+                            <li class="breadcrumb-item active" aria-current="page">جزییات خرید</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <!-- ======================= Dashboard Detail ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row align-items-start justify-content-between">
+                {% render_partial 'user_panel.views.user_panel_menu_component' %}
+                <div class="col-12 col-md-12 col-lg-8 col-xl-8 text-center">
+                    <!-- ======================= Single Order List ======================== -->
+                    <div class="ord_list_wrap border mb-4 mfliud">
+                        <div class="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">
+                            <div class="olh_flex">
+                                <p class="m-0 p-0"><span class="text-muted">جزییات خرید</span></p>
+                            </div>
+                        </div>
+                        <div class="ord_list_body text-right">
+                            {% for detail in order.orderdetail_set.all %}
+                                <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
+                                    <div class="col-xl-5 col-lg-5 col-md-5 col-12">
+                                        <div class="cart_single d-flex align-items-start mfliud-bot">
+                                            <div class="cart_selected_single_thumb">
+                                                {% thumbnail detail.product.front_image "75x120" quality=90 crop='center' as im %}
+                                                    <img class="img-fluid rounded" src="{{ im.url }}"
+                                                         alt="{{ detail.product.title }}">
+                                                {% endthumbnail %}
+                                            </div>
+                                            <div class="cart_single_caption pr-3">
+                                                <p class="mb-0">
+                                                    <span class="text-secondary small">{{ detail.product.title }}</span><br>
+                                                    <span class="text-dark small">شناسـه : {{ detail.id }}#</span>
+                                                </p>
+                                                <p class="mb-2">
+                                                    <span class="text-dark small">سایز : {{ detail.product.size }}</span><br>
+                                                    <span class="text-dark small">رنگ : {{ detail.product.color }}</span><br>
+                                                    <span class="text-dark small">تعداد : {{ detail.count }}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">قیمت نهایی خرید</span></p>
+                                        <div class="delv_status">
+                                            <span class="ft-medium text-danger bg-light-danger rounded px-3 py-1">
+                                               {{ detail.final_price | three_digits_currency }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">تاریخ ثبت</span></p>
+                                        <div class="delv_status">
+                                            <span class="ft-medium text-info bg-light-info rounded px-3 py-1">
+                                               {{ detail.create_date | to_date_format }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================= Dashboard Detail End ======================== -->
+{% endblock %}
