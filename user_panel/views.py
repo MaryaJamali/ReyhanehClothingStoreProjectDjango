@@ -184,3 +184,15 @@ def change_order_detail_count(request: HttpRequest):
         'status': 'success',
         'body': render_to_string('user_panel/include/user-cart-content.html', context=context)
     })
+
+
+# Function_base_View for my_shopping_detail
+@login_required
+def my_shopping_detail(request: HttpRequest, order_id):
+    order = Order.objects.prefetch_related('orderdetail_set').filter(id=order_id, user_id=request.user.id).first()
+    if order is None:
+        return render(request, 'shared/404.html')
+    context = {
+        'order': order
+    }
+    return render(request, 'user_panel/user-shopping-detail.html', context=context)

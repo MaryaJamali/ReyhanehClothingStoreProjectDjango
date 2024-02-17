@@ -1,6 +1,5 @@
 {% extends 'shared/layout.html' %}
 {% load render_partial %}
-{% load thumbnail %}
 {% load poll_extras %}
 {% load date_time_tags %}
 {% load static %}
@@ -74,7 +73,7 @@
                                     <div class="col-xl-2 col-lg-2 col-md-2 col-6">
                                         <p class="mb-1 p-0"><span class="text-dark">نمایش</span></p>
                                         <div class="delv_status">
-                                            <a href="#">
+                                            <a href="{% url 'user_shopping_detail_page_view' order_id=order.id %}">
                                             <span class="ft-medium small text-info bg-light-info border-info rounded px-3 py-1">
                                            جزییات
                                         </span>
