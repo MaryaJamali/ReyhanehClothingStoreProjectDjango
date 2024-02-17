@@ -1,10 +1,12 @@
-from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import HttpRequest, JsonResponse, HttpResponse
 from product.models import Product
 from .models import Order, OrderDetail
 import requests
 import json
-
+import time
 
 # Payment gateway information
 MERCHANT = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
@@ -12,11 +14,11 @@ ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
 ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
 amount = 11000  # Rial / Required
-description = "نهایی کردن خرید شما از سایت ما"  # Required
-email = ''  # Optional
-mobile = ''  # Optional
+description = "نهایی کردن خرید شما از سایت فروشگاه لباس ریحانه"  # Required
+email = 'storereyhaneh@gmail.com'  # Optional
+mobile = '09*********'  # Optional
 # Important: need to edit for realy server.
-CallbackURL = 'http://localhost:8000/order/verify-payment/'
+CallbackURL = 'http://localhost:8000/cart/verify-payment/'
 
 
 # Function_base_View for add_product_to_order
@@ -70,10 +72,15 @@ def add_product_to_order(request: HttpRequest):
 
 
 # Function related to sending payment request
+@login_required
 def request_payment(request: HttpRequest):
+    current_order, created = Order.objects.get_or_create(is_paid=False, user_id=request.user.id)
+    total_price = current_order.calculate_total_price()
+    if total_price == 0:
+        return redirect(reverse('user_basket_page_view'))
     req_data = {
         "merchant_id": MERCHANT,
-        "amount": amount,
+        "amount": total_price * 10,  # Toman to Rial conversion
         "callback_url": CallbackURL,
         "description": description,
         "metadata": {"mobile": mobile, "email": email}
@@ -90,33 +97,48 @@ def request_payment(request: HttpRequest):
 
 
 # The function related to the result of the user's payment
+@login_required
 def verify_payment(request: HttpRequest):
+    current_order, created = Order.objects.get_or_create(is_paid=False, user_id=request.user.id)
+    total_price = current_order.calculate_total_price()
     t_authority = request.GET['Authority']
     if request.GET.get('Status') == 'OK':
         req_header = {"accept": "application/json", "content-type": "application/json'"}
         req_data = {
             "merchant_id": MERCHANT,
-            "amount": amount,
+            "amount": total_price * 10,
             "authority": t_authority
         }
         req = requests.post(url=ZP_API_VERIFY, data=json.dumps(req_data), headers=req_header)
         if len(req.json()['errors']) == 0:
             t_status = req.json()['data']['code']
             if t_status == 100:
-                return HttpResponse('Transaction success.\nRefID: ' + str(
-                    req.json()['data']['ref_id']
-                ))
+                current_order.is_paid = True
+                current_order.payment_date = time.time()
+                current_order.save()
+                ref_str = req.json()['data']['ref_id']
+                return render(request, 'order_module/payment_result.html', {
+                    'success': f'تراکنش شما با کد پیگیری {ref_str} با موفقیت انجام شد'
+                })
             elif t_status == 101:
-                return HttpResponse('Transaction submitted : ' + str(
-                    req.json()['data']['message']
-                ))
+                return render(request, 'order_module/payment_result.html', {
+                    'info': 'این تراکنش قبلا ثبت شده است'
+                })
             else:
-                return HttpResponse('Transaction failed.\nStatus: ' + str(
-                    req.json()['data']['message']
-                ))
+                # return HttpResponse('Transaction failed.\nStatus: ' + str(
+                #     req.json()['data']['message']
+                # ))
+                return render(request, 'order_module/payment_result.html', {
+                    'error': str(req.json()['data']['message'])
+                })
         else:
             e_code = req.json()['errors']['code']
             e_message = req.json()['errors']['message']
-            return HttpResponse(f"Error code: {e_code}, Error Message: {e_message}")
+            # return HttpResponse(f"Error code: {e_code}, Error Message: {e_message}")
+            return render(request, 'order_module/payment_result.html', {
+                'error': e_message
+            })
     else:
-        return HttpResponse('Transaction failed or canceled by user')
+        return render(request, 'order_module/payment_result.html', {
+            'error': 'پرداخت با خطا مواجه شد / کاربر از پرداخت ممانعت کرد'
+        })
