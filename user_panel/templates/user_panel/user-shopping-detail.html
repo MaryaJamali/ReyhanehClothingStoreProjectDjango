@@ -66,15 +66,15 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-3 col-6">
-                                        <p class="mb-1 p-0"><span class="text-muted">قیمت نهایی خرید</span></p>
+                                        <p class="mb-1 p-0"><span class="text-dark">قیمت نهایی خرید</span></p>
                                         <div class="delv_status">
                                             <span class="ft-medium text-danger bg-light-danger rounded px-3 py-1">
-                                               {{ detail.final_price | three_digits_currency }}
+                                               {% multiply detail.count detail.product.price %}
                                             </span>
                                         </div>
                                     </div>
                                     <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                                        <p class="mb-1 p-0"><span class="text-muted">تاریخ ثبت</span></p>
+                                        <p class="mb-1 p-0"><span class="text-dark">تاریخ ثبت</span></p>
                                         <div class="delv_status">
                                             <span class="ft-medium text-info bg-light-info rounded px-3 py-1">
                                                {{ detail.create_date | to_date_format }}
