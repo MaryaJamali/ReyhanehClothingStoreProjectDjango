@@ -113,32 +113,29 @@ def verify_payment(request: HttpRequest):
         if len(req.json()['errors']) == 0:
             t_status = req.json()['data']['code']
             if t_status == 100:
+                # Close the shopping cart
                 current_order.is_paid = True
                 current_order.payment_date = time.time()
                 current_order.save()
+                # Order tracking code
                 ref_str = req.json()['data']['ref_id']
-                return render(request, 'order_module/payment_result.html', {
-                    'success': f'تراکنش شما با کد پیگیری {ref_str} با موفقیت انجام شد'
-                })
+                context = {
+                    'ref_id': ref_str
+                }
+                return render(request, 'cart/payment-result.html', context=context)
             elif t_status == 101:
-                return render(request, 'order_module/payment_result.html', {
-                    'info': 'این تراکنش قبلا ثبت شده است'
-                })
+                return render(request, 'cart/payment-result-info.html')
             else:
-                # return HttpResponse('Transaction failed.\nStatus: ' + str(
-                #     req.json()['data']['message']
-                # ))
-                return render(request, 'order_module/payment_result.html', {
+                return render(request, 'cart/payment-result-error.html', {
                     'error': str(req.json()['data']['message'])
                 })
         else:
             e_code = req.json()['errors']['code']
             e_message = req.json()['errors']['message']
-            # return HttpResponse(f"Error code: {e_code}, Error Message: {e_message}")
-            return render(request, 'order_module/payment_result.html', {
+            return render(request, 'cart/payment-result-error.html', {
                 'error': e_message
             })
     else:
-        return render(request, 'order_module/payment_result.html', {
-            'error': 'پرداخت با خطا مواجه شد / کاربر از پرداخت ممانعت کرد'
+        return render(request, 'cart/payment-result-error.html', {
+            'error': 'پرداخت شما با خطا مواجه شد لطفا بعد از بررسی دوباره اقدام کنید'
         })
