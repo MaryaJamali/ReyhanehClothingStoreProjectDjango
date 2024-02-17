@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, JsonResponse
 from django.urls import reverse
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from account.models import User
 from django.contrib.auth import logout
 from cart.models import Order, OrderDetail
@@ -74,6 +74,19 @@ class ChangePasswordPage(View):
             'form': form
         }
         return render(request, 'user_panel/change-password.html', context=context)
+
+
+# Class_base_View for MyShopping Page
+@method_decorator(login_required, name='dispatch')
+class MyShopping(ListView):
+    model = Order
+    template_name = 'user_panel/user-shopping.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        request: HttpRequest = self.request
+        queryset = queryset.filter(user_id=request.user.id, is_paid=True)
+        return queryset
 
 
 # Function_base_View for User_panel_menu

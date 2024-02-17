@@ -1,0 +1,130 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% load static %}
+{% block title %}لیست خرید های قبلی{% endblock %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+        <!-- ======================= Top Breadcrubms ======================== -->
+        <div class="gray py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="colxl-12 col-lg-12 col-md-12">
+                        <nav aria-label="breadcrumb text-right">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'user_panel_dashboard_page_view' %}">پنل کاربری</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">لیست خرید های قبلی من</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ======================= Top Breadcrubms ======================== -->
+        <!-- ======================= Dashboard Detail ======================== -->
+        <section class="middle">
+            <div class="container">
+                <div class="row align-items-start justify-content-between">
+                {% render_partial 'user_panel.views.user_panel_menu_component' %}
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 text-center">
+                                <!-- ======================= Single Order List ======================== -->
+                        <div class="ord_list_wrap border mb-4 mfliud">
+                            <div class="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">
+                                <div class="olh_flex">
+                                    <p class="m-0 p-0"><span class="text-muted">لیست خرید های قبلی</span></p>
+                                </div>
+                            </div>
+                            <div class="ord_list_body text-right">
+                                <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
+                                    <div class="col-xl-5 col-lg-5 col-md-5 col-12">
+                                        <div class="cart_single d-flex align-items-start mfliud-bot">
+                                            <div class="cart_selected_single_thumb">
+                                                <a href="#"><img src="assets/img/product/4.jpg" width="75" class="img-fluid rounded" alt=""></a>
+                                            </div>
+                                            <div class="cart_single_caption pr-3">
+                                                <p class="mb-0"><span class="text-muted small">لباس</span></p>
+                                                <h4 class="product_title fs-sm ft-medium mb-1 lh-1">پیراهن راه راه زنانه</h4>
+                                                <p class="mb-2"><span class="text-dark medium">سایز : 36</span>, <span class="text-dark medium">رنگ : قرمز</span></p>
+                                                <h4 class="fs-sm ft-bold mb-0 lh-1">129000 تومان</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">وضعیت</span></p>
+                                        <div class="delv_status"><span class="ft-medium small text-warning bg-light-warning rounded px-3 py-1">درحال پردازش</span></div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">تاریخ انتظار تا :</span></p>
+                                        <h6 class="mb-0 ft-medium fs-sm">22 بهمن 1400</h6>
+                                    </div>
+                                </div>
+
+                                <!-- First Product -->
+                                <div class="row align-items-center justify-content-center m-0 py-4 br-bottom">
+                                    <div class="col-xl-5 col-lg-5 col-md-5 col-12">
+                                        <div class="cart_single d-flex align-items-startmfliud-bot">
+                                            <div class="cart_selected_single_thumb">
+                                                <a href="#"><img src="assets/img/product/8.jpg" width="75" class="img-fluid rounded" alt=""></a>
+                                            </div>
+                                            <div class="cart_single_caption pr-3">
+                                                <p class="mb-0"><span class="text-muted small">پسرانه</span></p>
+                                                <h4 class="product_title fs-sm ft-medium mb-1 lh-1">سویشرت پسرانه</h4>
+                                                <p class="mb-2"><span class="text-dark medium">سایز : 36</span>, <span class="text-dark medium">رنگ : قرمز</span></p>
+                                                <h4 class="fs-sm ft-bold mb-0 lh-1">129000 تومان</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">وضعیت</span></p>
+                                        <div class="delv_status"><span class="ft-medium small text-success bg-light-success rounded px-3 py-1">کامل شده</span></div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">تاریخ انتظار تا :</span></p>
+                                        <h6 class="mb-0 ft-medium fs-sm">22 بهمن 1400</h6>
+                                    </div>
+                                </div>
+
+                                <!-- First Product -->
+                                <div class="row align-items-center justify-content-center m-0 py-4">
+                                    <div class="col-xl-5 col-lg-5 col-md-5 col-12">
+                                        <div class="cart_single d-flex align-items-start mfliud-bot">
+                                            <div class="cart_selected_single_thumb">
+                                                <a href="#"><img src="assets/img/product/7.jpg" width="75" class="img-fluid rounded" alt=""></a>
+                                            </div>
+                                            <div class="cart_single_caption pr-3">
+                                                <p class="mb-0"><span class="text-muted small">مردانه</span></p>
+                                                <h4 class="product_title fs-sm ft-medium mb-1 lh-1">چاپ مستقیم</h4>
+                                                <p class="mb-2"><span class="text-dark medium">سایز : 36</span>, <span class="text-dark medium">رنگ : قرمز</span></p>
+                                                <h4 class="fs-sm ft-bold mb-0 lh-1">129000 تومان</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">وضعیت</span></p>
+                                        <div class="delv_status"><span class="ft-medium small text-danger bg-light-danger rounded px-3 py-1">در انتظار</span></div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                                        <p class="mb-1 p-0"><span class="text-muted">تاریخ انتظار تا :</span></p>
+                                        <h6 class="mb-0 ft-medium fs-sm">22 بهمن 1400</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="ord_list_footer d-flex align-items-center justify-content-between br-top px-3">
+                                <div class="col-xl-3 col-lg-3 col-md-4 olf_flex text-right px-0 py-2 br-left"><a href="javascript:void(0);" class="ft-medium fs-sm"><i class="ti-close ml-2"></i>لغو سفارش</a></div>
+                                <div class="col-xl-9 col-lg-9 col-md-8 pl-0 py-2 olf_flex d-flex align-items-center justify-content-between">
+                                    <div class="olf_flex_inner hide_mob">
+                                        <p class="m-0 p-0"><span class="text-muted medium">با کارت 6472 پرداخت شده است</span></p>
+                                    </div>
+                                    <div class="olf_inner_right">
+                                        <h5 class="mb-0 fs-sm ft-bold">جمع : 387000 تومان</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- ======================= Dashboard Detail End ======================== -->
+{% endblock %}

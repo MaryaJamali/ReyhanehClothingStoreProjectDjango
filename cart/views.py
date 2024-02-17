@@ -118,7 +118,7 @@ def verify_payment(request: HttpRequest):
                 current_order.payment_date = time.time()
                 current_order.save()
                 # Order tracking code
-                ref_str = req.json()['data']['ref_id']
+                ref_str = str(req.json()['data']['ref_id'])
                 context = {
                     'ref_id': ref_str
                 }
