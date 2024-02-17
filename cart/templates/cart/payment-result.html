@@ -1,0 +1,38 @@
+{% extends 'shared/layout.html' %}
+{% load static %}
+{% block title %}کامل شدن سفارش{% endblock %}
+<!-- =======================Start Content Page============================= -->
+{% block content %}
+    <!-- ======================= Top Breadcrubms ======================== -->
+    <div class="gray py-3">
+        <div class="container">
+            <div class="row">
+                <div class="colxl-12 col-lg-12 col-md-12">
+                    <nav aria-label="breadcrumb text-right">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home_page_view' %}">صفحه اصلی</a></li>
+                            <li class="breadcrumb-item"><a href="#">پشتیبانی</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">کامل شدن سفارش</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======================= Product Detail ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
+                    <div class="p-4 d-inline-flex align-items-center justify-content-center circle bg-light-success text-success mx-auto mb-4">
+                        <i class="lni lni-heart-filled fs-lg"></i></div>
+                    <h2 class="mb-2 ft-bold">سفارش شما تکمیل شد!</h2>
+                    <p class="ft-regular fs-md mb-5">سفارش شما به شماره <span
+                            class="text-body text-dark">965471202#</span> تکمیل شد. جزئیات سفارش شما در حساب شخصی شما
+                        نشان داده می شود.</p>
+                    <a class="btn btn-dark" href="{% url 'user_basket_page_view' %}">پیگیری سفارشات</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
