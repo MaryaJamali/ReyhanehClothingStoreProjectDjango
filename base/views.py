@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from django.db.models import Count
+from django.db.models import Count, Sum
 from utils.convertors import group_list
 from django.views.generic.base import TemplateView
 from product.models import Product
@@ -28,6 +28,11 @@ class HomeView(TemplateView):
         most_visit_products = Product.objects.filter(is_active=True, is_delete=False).annotate(
             visit_count=Count('productvisit')).order_by('-visit_count')[:4]
         context['most_visit_products'] = group_list(most_visit_products)
+        # Fetching from the database as products that have the best sales
+        most_bought_products = Product.objects.filter(orderdetail__order__is_paid=True).annotate(order_count=Sum(
+            'orderdetail__count'
+        )).order_by('-order_count')[:4]
+        context['most_bought_products'] = group_list(most_bought_products)
         return context
 
 

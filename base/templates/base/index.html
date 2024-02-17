@@ -178,7 +178,68 @@
             </div>
         </div>
     </section>
-    <!-- =======================End Deals of The Day ====================== -->
+    <!-- ======================= The best seller Products ======================== -->
+    <section class="middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="sec_title position-relative text-center">
+                        <h2 class="off_title">پرفروش ترین محصولات</h2>
+                        <h3 class="ft-bold pt-3">پرفروش ترین محصولات ما</h3>
+                    </div>
+                </div>
+            </div>
+            {% for group in most_bought_products %}
+                <div class="row align-items-center rows-products">
+                    {% for product in group %}
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                            <div class="product_grid card b-0">
+                                <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
+                                    پرفروش ترین
+                                </div>
+                                <a href="#">
+                                    <button class="snackbar-wishlist btn btn_love position-absolute ab-left">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </a>
+                                <div class="card-body p-0">
+                                    <div class="shop_thumb position-relative">
+                                        <a class="card-img-top d-block overflow-hidden"
+                                           href="{% url 'product_detail_page_view' slug=product.slug %}">
+                                            {% thumbnail product.front_image "265x390" quality=90 crop='center' as im %}
+                                                <img class="card-img-top" src="{{ im.url }}"
+                                                     alt="{{ product.title }}">
+                                            {% endthumbnail %}
+                                        </a>
+                                        <div class="product-hover-overlay bg-dark d-flex align-items-center justify-content-center">
+                                            <div class="edlio">
+                                                <a href="#"
+                                                   data-toggle="modal" data-target="#{{ product.slug }}"
+                                                   class="text-white fs-sm ft-medium">
+                                                    <i class="fas fa-eye ml-1"></i>مشاهده سریع جزییات</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                                    <div class="text-left">
+                                        <div class="text-center">
+                                            <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a
+                                                    href="{% url 'product_detail_page_view' slug=product.slug %}">{{ product.title }}</a>
+                                            </h5>
+                                            <div class="elis_rty"><span
+                                                    class="ft-bold fs-md text-dark">{{ product.price | three_digits_currency }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
     <!-- ======================= Blog Start ============================ -->
     <section class="space min">
         <div class="container">
