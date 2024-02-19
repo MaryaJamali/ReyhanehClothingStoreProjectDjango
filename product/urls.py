@@ -24,5 +24,5 @@ urlpatterns = [
     path('color/<str:color>/', views.ProductListView.as_view(), name='product_list_by_color'),
     # Slug is the dynamic and changeable part ---> Domain name/posts/slug
     path('<slug:slug>/', views.ProductDetailView.as_view(), name='product_detail_page_view'),
-    path('add-product-comment/', views.add_product_comment, name='add_product_comment')
+    path('add-product-comment', views.add_product_comment, name='add_product_comment')
 ]

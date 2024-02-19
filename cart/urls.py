@@ -17,7 +17,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('add-to-cart/', views.add_product_to_order, name='add_product_to_order_view'),
+    path('add-to-cart', views.add_product_to_order, name='add_product_to_order_view'),
     # Addressing for the payment gateway
     path('request-payment/', views.request_payment, name='request_payment_view'),
     path('verify-payment/', views.verify_payment, name='verify_payment_view'),
