@@ -36,20 +36,10 @@
                              alt="{{ product.title }}">
                         </a>
                     {% endif %}
-                <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                <div class="product-hover-overlay btn d-flex align-items-center justify-content-end">
                     <div class="group_btn">
                         <a href="#{{ product.slug }}" data-toggle="modal" data-target="#{{ product.slug }}"
-                           class="prd_btn_square"><i class="ti-fullscreen"></i></a>
-                        <a href="#" class="prd_btn_square"
-                           data-toggle="tooltip"
-                           data-placement="top" title="علاقه مندی">
-                            <i class="lni lni-heart"></i></a>
-                        <a href="{% url 'user_basket_page_view' %}" class="prd_btn_square" data-toggle="tooltip"
-                           data-placement="top" title="افزودن به سبد خرید"
-                           onclick="addProductToOrder({{ product.id }})">
-                            <i class="lni lni-shopping-basket"></i></a>
-                        <a href="javascript:void(0);" class="prd_btn_square" data-toggle="tooltip"
-                           data-placement="top" title="مقایسه"><i class="lni lni-shuffle"></i></a>
+                           class="prd_btn_square btn ti-fullscreen"></a>
                     </div>
                 </div>
             </div>
