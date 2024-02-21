@@ -103,8 +103,8 @@ class QuestionCommonGroup(models.Model):
 
 class QuestionCommon(models.Model):
     question = models.CharField(max_length=200, verbose_name='سوال')
-    response = models.URLField(max_length=500, verbose_name='پاسخ')
-    question_common_group = models.ForeignKey(to=QuestionCommonGroup, on_delete=models.CASCADE, verbose_name='دسته بندی')
+    response = models.TextField(verbose_name='پاسخ')
+    question_common_group = models.ForeignKey(to=QuestionCommonGroup, null=True, blank=True, on_delete=models.CASCADE, verbose_name='دسته بندی')
     is_active = models.BooleanField(default=True, verbose_name='فعال / غیرفعال')
 
     def __str__(self):
