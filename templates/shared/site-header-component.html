@@ -20,40 +20,6 @@
                 <!-- =====================Right Menu============================ -->
                 <div class="col-xl-4  col-sm-12 d-flex flex-row-reverse justify-content-end justify-content-xl-start">
                     <!-- =====================Choose Language============================ -->
-                    <div class="language-selector-wrapper dropdown js-dropdown ml-3">
-                        <a class="popup-title" href="javascript:void(0)" data-toggle="dropdown" title="Language"
-                           aria-label="Language dropdown">
-                            <span class="hidden-xl-down medium text-muted">زبان :</span>
-                            <span class="iso_code medium text-muted">فارسی</span>
-                            <i class="fa fa-angle-down medium text-muted"></i>
-                        </a>
-                        <ul class="dropdown-menu popup-content link">
-                            <li class="current">
-                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
-                                        src="{% static 'img/1.jpg' %}" alt="en" width="16"
-                                        height="11"/><span>انگلیسی</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
-                                        src="{% static 'img/2.jpg' %}" alt="fr" width="16"
-                                        height="11"/><span>فرانسوی</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
-                                        src="{% static 'img/3.jpg' %}" alt="de" width="16"
-                                        height="11"/><span>آلمانی</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="dropdown-item medium text-muted"><img
-                                        src="{% static 'img/6.jpg' %}" alt="ar" width="16"
-                                        height="11"/><span>عربی</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                     {% if request.user.is_authenticated %}
                         <div class="currency-selector dropdown js-dropdown ml-3">
                             <a href="{% url 'logout_page_view' %}" class="text-muted medium">خروج</a>
