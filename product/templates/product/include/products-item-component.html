@@ -22,7 +22,8 @@
                         {% endthumbnail %}
                     {% else %}
                         <img class="card-img-top" src="{% static 'img/product/default-product.jpg' %}"
-                             alt="{{ product.title }}"></a>
+                             alt="{{ product.title }}">
+                        </a>
                     {% endif %}
                 <a class="card-img-top d-block overflow-hidden ovr-show"
                    href="{% url 'product_detail_page_view' slug=product.slug %}">
@@ -32,7 +33,8 @@
                         {% endthumbnail %}
                     {% else %}
                         <img class="card-img-top" src="{% static 'img/product/default-product.jpg' %}"
-                             alt="{{ product.title }}"></a>
+                             alt="{{ product.title }}">
+                        </a>
                     {% endif %}
                 <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
                     <div class="group_btn">

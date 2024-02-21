@@ -88,11 +88,10 @@
                             <div class="prt_05 mb-4">
                                 <!-- ========================Quantity================== -->
                                 <div class="col-12 col-lg">
-                                    <a href="{% url 'user_basket_page_view' %}">
+                                    <a href="{% url 'product_detail_page_view' slug=product.slug %}">
                                         <!-- ==================Submit================ -->
-                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2"
-                                                onclick="addProductToOrder({{ product.id }})">
-                                            <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
+                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2">
+                                            <i class="lni lni-shopping-basket ml-2"></i>صفحه جزییات محصول
                                         </button>
                                     </a>
                                 </div>

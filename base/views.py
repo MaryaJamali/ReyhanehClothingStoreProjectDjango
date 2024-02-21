@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
+from django.http import HttpRequest, JsonResponse, HttpResponse
 from django.db.models import Count, Sum
 from utils.convertors import group_list
 from django.views.generic.base import TemplateView
 from product.models import Product
 from article.models import Article
+from cart.models import Order, OrderDetail
 from base.forms import NewsletterSubscriptionModelForm
 from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox
 
