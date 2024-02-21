@@ -35,3 +35,13 @@ admin.site.register(models.FooterLinkBox)
 @admin.register(models.FooterLink)
 class FooterLinkAdmin(admin.ModelAdmin):
     list_display = ['title', 'url']
+
+
+# Admin panel customization for the QuestionCommonGroup
+admin.site.register(models.QuestionCommonGroup)
+
+
+# Admin panel customization for the QuestionCommon
+@admin.register(models.QuestionCommon)
+class QuestionCommonAdmin(admin.ModelAdmin):
+    list_display = ['question_common_group', 'question', 'response']

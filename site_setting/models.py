@@ -88,3 +88,27 @@ class FooterLink(models.Model):
     class Meta:
         verbose_name = 'لینک فوتر'
         verbose_name_plural = 'لینک های فوتر'
+
+
+class QuestionCommonGroup(models.Model):
+    title = models.CharField(max_length=200, verbose_name='عنوان')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'دسته بندی سوالات متداول'
+        verbose_name_plural = 'دسته بندی های سوالات متداول'
+
+
+class QuestionCommon(models.Model):
+    question = models.CharField(max_length=200, verbose_name='سوال')
+    response = models.URLField(max_length=500, verbose_name='پاسخ')
+    question_common_group = models.ForeignKey(to=QuestionCommonGroup, on_delete=models.CASCADE, verbose_name='دسته بندی')
+
+    def __str__(self):
+        return self.question
+
+    class Meta:
+        verbose_name = 'سوال متداول'
+        verbose_name_plural = 'سوالات متداول'
