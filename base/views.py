@@ -6,7 +6,7 @@ from django.views.generic.base import TemplateView
 from product.models import Product
 from article.models import Article
 from base.forms import NewsletterSubscriptionModelForm
-from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox
+from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox, QuestionCommonGroup, QuestionCommon
 
 
 # Class_base_templateview for Home page
@@ -50,11 +50,6 @@ class AboutUsView(TemplateView):
 # Class_base_templateview for 404 page
 class Error404View(TemplateView):
     template_name = 'shared/404.html'
-
-
-# Class_base_templateview for QuestionCommon page
-class QuestionCommonView(TemplateView):
-    template_name = 'base/questions-common.html'
 
 
 # Class_base_templateview for Cooperation page
@@ -104,3 +99,12 @@ def site_footer_component(request: HttpRequest):
         'subscription_form': subscription_form,
     }
     return render(request, 'shared/site-footer-component.html', context=context)
+
+
+# Function_base_view for QuestionCommon page
+def question_common_view(request: HttpRequest):
+    question_common_group = QuestionCommonGroup.objects.all()
+    context = {
+        'question_common_group': question_common_group,
+    }
+    return render(request, 'base/questions-common.html', context=context)
