@@ -21,6 +21,7 @@ urlpatterns = [
     path('about-us', views.AboutUsView.as_view(), name='about_us_page_view'),
     path('question-common', views.QuestionCommonView.as_view(), name='question_common_page_view'),
     path('cooperation', views.Cooperation.as_view(), name='cooperation_page_view'),
+    path('size-guide', views.SizeGuide.as_view(), name='size-guide_page_view'),
     path('404', views.Error404View.as_view(), name='error_404_page_view'),
     # Addressing example for component pages
     path('subscribe/', views.site_footer_component, name='site_footer_component_view'),

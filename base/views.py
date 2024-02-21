@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest, JsonResponse, HttpResponse
+from django.http import HttpRequest
 from django.db.models import Count, Sum
 from utils.convertors import group_list
 from django.views.generic.base import TemplateView
 from product.models import Product
 from article.models import Article
-from cart.models import Order, OrderDetail
 from base.forms import NewsletterSubscriptionModelForm
 from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox
 
@@ -61,6 +60,11 @@ class QuestionCommonView(TemplateView):
 # Class_base_templateview for Cooperation page
 class Cooperation(TemplateView):
     template_name = 'base/cooperation.html'
+
+
+# Class_base_templateview for Size-guide page
+class SizeGuide(TemplateView):
+    template_name = 'base/size-guide.html'
 
 
 # Function_base_view for site-header-component page
