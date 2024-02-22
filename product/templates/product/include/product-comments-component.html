@@ -95,33 +95,6 @@
                                         <div class="single_capt_left">
                                             <h5 class="mb-0 fs-md ft-medium lh-1">{{ comment.user }}</h5>
                                             <span class="small">{{ comment.create_date | to_date_string_format }}</span>
-                                            <div class="single_capt_right">
-                                                <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                                    {% for star in comments %}
-                                                        {% if star.score == 5 %}
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                        {% elif star.score == 4 %}
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                        {% elif star.score == 3 %}
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                        {% elif star.score == 2 %}
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                        {% elif star.score == 1 %}
-                                                            <i class="fas fa-star filled"></i>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
                                             <p>{{ comment.text }}</p>
                                             <a class=" btn single_capt_right ft-medium small text-warning 
                                                     bg-light-warning rounded px-3 py-1"
@@ -160,41 +133,9 @@
                             {% if request.user.is_authenticated %}
                                 <form class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                        <h4>ارسال دیدگاه و امتیاز</h4>
-                                    </div>
-                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <div class="revie_stars d-flex align-items-center justify-content-between px-2 py-2 gray rounded mb-2 mt-1">
-                                            <div class="srt_013">
-                                                <div class="submit-rating" id="productScore">
-                                                    <input id="star-5" type="radio" name="rating"
-                                                           value="5"/>
-                                                    <label for="star-5" title="5 stars">
-                                                        <i class="active fa fa-star" aria-hidden="true"></i>
-                                                    </label>
-                                                    <input id="star-4" type="radio" name="rating"
-                                                           value="4"/>
-                                                    <label for="star-4" title="4 stars">
-                                                        <i class="active fa fa-star" aria-hidden="true"></i>
-                                                    </label>
-                                                    <input id="star-3" type="radio" name="rating"
-                                                           value="3"/>
-                                                    <label for="star-3" title="3 stars">
-                                                        <i class="active fa fa-star" aria-hidden="true"></i>
-                                                    </label>
-                                                    <input id="star-2" type="radio" name="rating"
-                                                           value="2"/>
-                                                    <label for="star-2" title="2 stars">
-                                                        <i class="active fa fa-star" aria-hidden="true"></i>
-                                                    </label>
-                                                    <input id="star-1" type="radio" name="rating"
-                                                           value="1"/>
-                                                    <label for="star-1" title="1 star">
-                                                        <i class="active fa fa-star" aria-hidden="true"></i>
-                                                    </label>
-                                                </div>
-                                            </div>
                                             <div class="srt_014">
-                                                <h6 class="mb-0">امتیاز شما به محصول</h6>
+                                                <h4 class="mb-0">ارسال دیدگاه شما به محصول</h4>
                                             </div>
                                         </div>
                                     </div>
