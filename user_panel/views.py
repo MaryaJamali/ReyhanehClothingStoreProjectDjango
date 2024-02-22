@@ -9,6 +9,7 @@ from account.models import User
 from django.contrib.auth import logout
 from cart.models import Order, OrderDetail
 from product.models import Product, ProductWishList
+from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from .forms import EditProfileModelForm, ChangePasswordForm
 
@@ -109,16 +110,6 @@ def user_basket(request: HttpRequest):
     return render(request, 'user_panel/user-cart.html', context=context)
 
 
-# Function_base_View for user_wishlist
-@login_required
-def user_wishlist(request: HttpRequest):
-    wishlist_products = ProductWishList.objects.filter(user_id=request.user.id).select_related('product')
-    context = {
-        'wishlist_products': wishlist_products
-    }
-    return render(request, 'user_panel/wish-list.html', context=context)
-
-
 # Function_base_View for remove_order_detail
 @login_required
 def remove_order_detail(request):
@@ -208,6 +199,16 @@ def my_shopping_detail(request: HttpRequest, order_id):
     return render(request, 'user_panel/user-shopping-detail.html', context=context)
 
 
+# Function_base_View for user_wishlist
+@login_required
+def user_wishlist(request: HttpRequest):
+    wishlist_products = ProductWishList.objects.filter(user_id=request.user.id).select_related('product')
+    context = {
+        'wishlist_products': wishlist_products
+    }
+    return render(request, 'user_panel/wish-list.html', context=context)
+
+
 # Function_base_View for add_product_to_wishlist
 @login_required
 def add_product_to_wishlist(request: HttpRequest):
@@ -245,3 +246,23 @@ def add_product_to_wishlist(request: HttpRequest):
             'confirm_button_text': 'ورود به سایت',
             'icon': 'error'
         })
+
+
+# Function_base_View for remove_wishlist
+@login_required
+def remove_wishlist(request):
+    wishlist_id = request.GET.get('wishlist_id')
+    if wishlist_id is None:
+        return JsonResponse({'status': 'not_found_wishlist_id'})
+    wishlist_product, created = Product.objects.prefetch_related('productwishlist_set').get_or_create(user=request.user)
+    deleted_wishlist_product = wishlist_product.productwishlist_set.filter(id=wishlist_id).first()
+
+    if deleted_wishlist_product is None:
+        return JsonResponse({'status': 'detail_not_found'})
+
+    deleted_wishlist_product.delete()
+    return JsonResponse({
+        'status': 'success',
+        'body': render_to_string('user_panel/include/user-cart-content.html')
+    })
+

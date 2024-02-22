@@ -23,6 +23,7 @@ urlpatterns = [
     path('user-cart', views.user_basket, name='user_basket_page_view'),
     path('user-wishlist', views.user_wishlist, name='user_wish_list_page_view'),
     path('add-to-wishlist/', views.add_product_to_wishlist, name='user_add_wish_list_page_view'),
+    path('remove-wishlist', views.remove_wishlist, name='remove_wishlist_detail_ajax'),
     path('my-shopping/', views.MyShopping.as_view(), name='user_shopping_page_view'),
     path('my-shopping-detail/<order_id>', views.my_shopping_detail, name='user_shopping_detail_page_view'),
     path('remove-cart-detail', views.remove_order_detail, name='remove_order_detail_ajax'),

@@ -76,3 +76,10 @@ function addProductToWishList(productId) {
         });
     });
 }
+function removeWishlist(wishListId) {
+    $.get('/user/remove-wishlist?wishlist_id=' + wishListId).then(res => {
+        if (res.status === 'success') {
+            $('#wishlist-detail-content').html(res.body);
+        }
+    });
+}
