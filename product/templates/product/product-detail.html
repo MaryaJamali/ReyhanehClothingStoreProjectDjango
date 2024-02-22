@@ -75,11 +75,17 @@
                             </div>
                             <div class="prt_05 mb-4">
                                 <div class="form-row mb-7">
-                                    <div class="col-12 col-lg">
+                                    <div class="col-6 col-lg">
                                         <!-- ======================= Submit ===================== -->
-                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2"
+                                        <button type="submit" class="btn btn-block custom-height bg-secondary mb-2"
                                                 onclick="addProductToOrder({{ product.id }})">
                                             <i class="lni lni-shopping-basket ml-2"></i>افزودن به سبد خرید
+                                        </button>
+                                    </div>
+                                    <div class="col-6 col-lg">
+                                        <!-- ======================= Submit ===================== -->
+                                        <button type="submit" class="btn btn-block custom-height bg-danger mb-2">
+                                            <i class="lni lni-heart ml-2"></i>افزودن به علاقه مندی
                                         </button>
                                     </div>
                                 </div>
@@ -278,11 +284,6 @@
                                             <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
                                                 {{ product.brand.title }}
                                             </div>
-                                            <a href="#">
-                                                <button class="snackbar-wishlist btn btn_love position-absolute ab-left">
-                                                    <i class="far fa-heart"></i>
-                                                </button>
-                                            </a>
                                             <div class="card-body p-0">
                                                 <div class="shop_thumb position-relative">
                                                     <a class="card-img-top d-block overflow-hidden"
