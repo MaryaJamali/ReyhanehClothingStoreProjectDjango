@@ -84,7 +84,8 @@
                                     </div>
                                     <div class="col-6 col-lg">
                                         <!-- ======================= Submit ===================== -->
-                                        <button type="submit" class=" snackbar-wishlist ab-left btn btn-block custom-height bg-danger mb-2"
+                                        <button type="submit"
+                                                class=" snackbar-wishlist ab-left btn btn-block custom-height bg-danger mb-2"
                                                 onclick="addProductToWishList({{ product.id }})">
                                             <i class="lni lni-heart ml-2"></i>افزودن به علاقه مندی
                                         </button>
@@ -285,6 +286,9 @@
                                             <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
                                                 {{ product.brand.title }}
                                             </div>
+                                            <button class="snackbar-wishlist btn btn_love position-absolute ab-left"
+                                                    onclick="addProductToWishList({{ product.id }})">
+                                                <i class="far fa-heart"></i></button>
                                             <div class="card-body p-0">
                                                 <div class="shop_thumb position-relative">
                                                     <a class="card-img-top d-block overflow-hidden"

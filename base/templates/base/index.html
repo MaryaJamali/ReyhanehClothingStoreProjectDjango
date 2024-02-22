@@ -49,6 +49,9 @@
                                 <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
                                     جدیدترین
                                 </div>
+                                <button class="snackbar-wishlist btn btn_love position-absolute ab-left"
+                                        onclick="addProductToWishList({{ product.id }})">
+                                    <i class="far fa-heart"></i></button>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
                                         <a class="card-img-top d-block overflow-hidden"
@@ -106,6 +109,9 @@
                                 <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
                                     پربازدیدترین
                                 </div>
+                                <button class="snackbar-wishlist btn btn_love position-absolute ab-left"
+                                        onclick="addProductToWishList({{ product.id }})">
+                                    <i class="far fa-heart"></i></button>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
                                         {% thumbnail product.front_image "265x396" quality=90 crop='center' as im %}
@@ -187,6 +193,9 @@
                                 <div class="badge bg-success text-white position-absolute ft-regular ab-right  text-upper">
                                     پرفروش ترین
                                 </div>
+                                <button class="snackbar-wishlist btn btn_love position-absolute ab-left"
+                                        onclick="addProductToWishList({{ product.id }})">
+                                    <i class="far fa-heart"></i></button>
                                 <div class="card-body p-0">
                                     <div class="shop_thumb position-relative">
                                         <a class="card-img-top d-block overflow-hidden"
