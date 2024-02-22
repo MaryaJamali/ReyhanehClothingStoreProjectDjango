@@ -62,8 +62,17 @@ function changeOrderDetailCount(detailId, state) {
 
 function addProductToWishList(productId) {
     $.get('/user/add-to-wishlist?product_id=' + productId).then(res => {
-        if (res.status === 'success') {
-            $('#order-detail-content').html(res.body);
-        }
+        Swal.fire({
+            title: 'اعلان',
+            text: res.text,
+            icon: res.icon,
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: res.confirm_button_text
+        }).then((result) => {
+            if (result.isConfirmed && res.status === 'not_auth') {
+                window.location.href = '/login';
+            }
+        });
     });
 }

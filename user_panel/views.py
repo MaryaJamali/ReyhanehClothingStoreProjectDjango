@@ -89,17 +89,6 @@ class MyShopping(ListView):
         return queryset
 
 
-# Class_base_View for ChangePassword Page
-@method_decorator(login_required, name='dispatch')
-class ProductWishListView(View):
-    def get(self, request: HttpRequest):
-        wishlist_products = ProductWishList.objects.filter(user_id=request.user.id).select_related('product')
-        context = {
-            'wishlist_products': wishlist_products
-        }
-        return render(request, 'user_panel/wish-list.html', context=context)
-
-
 # Function_base_View for User_panel_menu
 @login_required
 def user_panel_menu_component(request: HttpRequest):
@@ -118,6 +107,16 @@ def user_basket(request: HttpRequest):
         'sum': total_amount
     }
     return render(request, 'user_panel/user-cart.html', context=context)
+
+
+# Function_base_View for user_wishlist
+@login_required
+def user_wishlist(request: HttpRequest):
+    wishlist_products = ProductWishList.objects.filter(user_id=request.user.id).select_related('product')
+    context = {
+        'wishlist_products': wishlist_products
+    }
+    return render(request, 'user_panel/wish-list.html', context=context)
 
 
 # Function_base_View for remove_order_detail
@@ -207,3 +206,42 @@ def my_shopping_detail(request: HttpRequest, order_id):
         'order': order
     }
     return render(request, 'user_panel/user-shopping-detail.html', context=context)
+
+
+# Function_base_View for add_product_to_wishlist
+@login_required
+def add_product_to_wishlist(request: HttpRequest):
+    product_id = request.GET.get('product_id')
+    if request.user.is_authenticated:
+        product = Product.objects.filter(id=product_id, is_active=True, is_delete=False).first()
+        # Product availability
+        if product is not None:
+            wishlist_product, created = ProductWishList.objects.get_or_create(user=request.user, product=product)
+            if created:
+                return JsonResponse({
+                    'status': 'success',
+                    'text': 'محصول مورد نظر لیست علاقه مندی شما اضافه شد',
+                    'confirm_button_text': 'ممنونم',
+                    'icon': 'success'
+                })
+            else:
+                return JsonResponse({
+                    'status': 'already_in_wishlist',
+                    'text': 'محصول مورد نظر قبلاً به لیست علاقه مندی شما اضافه شده است',
+                    'confirm_button_text': 'ممنونم',
+                    'icon': 'info'
+                })
+        else:
+            return JsonResponse({
+                'status': 'not_found',
+                'text': 'محصول مورد نظر یافت نشد',
+                'confirm_button_text': 'ممنونم',
+                'icon': 'error'
+            })
+    else:
+        return JsonResponse({
+            'status': 'not_auth',
+            'text': 'برای افزودن محصول به لیست علاقه مندی خود ابتدا می بایست وارد سایت شوید',
+            'confirm_button_text': 'ورود به سایت',
+            'icon': 'error'
+        })
