@@ -42,8 +42,8 @@
                         <i class="lni lni-shopping-basket ml-2"></i>لیست خریدهای قبلی</a>
                 </li>
                 <li>
-                    <a href="#"
-                       class="">
+                    <a href="{% url 'user_product_wish_list_view_page' %}"
+                       class="{% if request.resolver_match.url_name == 'user_product_wish_list_view_page' %}active{% endif %}">
                         <i class="lni lni-heart ml-2"></i>لیست علاقه مندی ها</a>
                 </li>
                 <li>

@@ -21,6 +21,7 @@ urlpatterns = [
     path('edit-profile/', views.EditUserProfilePage.as_view(), name='edit_profile_page_view'),
     path('change-pass/', views.ChangePasswordPage.as_view(), name='change_password_page_view'),
     path('user-cart', views.user_basket, name='user_basket_page_view'),
+    path('product-wish-list', views.ProductWishListView.as_view(), name='user_product_wish_list_view_page'),
     path('my-shopping/', views.MyShopping.as_view(), name='user_shopping_page_view'),
     path('my-shopping-detail/<order_id>', views.my_shopping_detail, name='user_shopping_detail_page_view'),
     path('remove-cart-detail', views.remove_order_detail, name='remove_order_detail_ajax'),

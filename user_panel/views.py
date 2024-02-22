@@ -89,6 +89,17 @@ class MyShopping(ListView):
         return queryset
 
 
+# Class_base_View for ChangePassword Page
+@method_decorator(login_required, name='dispatch')
+class ProductWishListView(View):
+    def get(self, request: HttpRequest):
+        wishlist_products = ProductWishList.objects.filter(user_id=request.user.id).select_related('product')
+        context = {
+            'wishlist_products': wishlist_products
+        }
+        return render(request, 'user_panel/wish-list.html', context=context)
+
+
 # Function_base_View for User_panel_menu
 @login_required
 def user_panel_menu_component(request: HttpRequest):
