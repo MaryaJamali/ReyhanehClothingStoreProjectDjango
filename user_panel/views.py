@@ -254,16 +254,15 @@ def remove_wishlist(request):
     if wishlist_id is None:
         return JsonResponse({'status': 'not_found_wishlist_id'})
     wishlist_product = ProductWishList.objects.filter(id=wishlist_id, user_id=request.user.id).first()
-
     if wishlist_product is None:
         return JsonResponse({'status': 'detail_not_found'})
-    # Get the remaining wishlist items after deletion
-    remaining_wishlist = ProductWishList.objects.filter(user=request.user).exclude(id=wishlist_id)
     wishlist_product.delete()
-    if remaining_wishlist.exists():
-        body_html = render_to_string('user_panel/include/wish-list-content.html',
-                                     {'wishlist_products': remaining_wishlist})
-        return JsonResponse({
-            'status': 'success',
-            'body': body_html
-        })
+
+    # Get the updateing wishlist items after deletion
+    updated_wishlist = ProductWishList.objects.filter(user=request.user).exclude(id=wishlist_id)
+    wishlist_html = render_to_string('user_panel/include/wish-list-content.html',
+                                     {'wishlist_products': updated_wishlist})
+    return JsonResponse({
+        'status': 'success',
+        'body': wishlist_html
+    })

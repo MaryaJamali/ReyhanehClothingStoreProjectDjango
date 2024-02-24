@@ -6,7 +6,8 @@
 {% load static %}
 {% if wishlist_products %}
     <!-- ======================= Dashboard Detail ======================== -->
-    <div class="row align-items-center" id="wishlist-detail-content">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12 text-center" id="wishlist-detail-content">
+        <div class="row align-items-center">
             <!-- ======================= Single ======================== -->
             {% for wishlist_item in wishlist_products %}
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
@@ -53,6 +54,7 @@
                 </div>
             {% endfor %}
         </div>
+    </div>
 {% else %}
     <section class="middle">
         <div class="container">
