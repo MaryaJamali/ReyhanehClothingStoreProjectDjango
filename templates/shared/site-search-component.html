@@ -7,114 +7,24 @@
             <h4 class="cart_heading fs-md ft-medium mb-0">جستجوی محصول</h4>
             <button onclick="closeSearch()" class="close_slide"><i class="ti-close"></i></button>
         </div>
-        <div class="cart_action px-3 py-4">
+        <div class="cart_action px-3 py-4" id="searchForm">
             <form class="form m-0 p-0">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="کلمه کلیدی محصول..."/>
-                </div>
-                <div class="form-group">
-                    <select class="custom-select">
-                        <option value="1" selected="">انتخاب دسته بندی</option>
-                        <option value="2">فروشگاه مردانه</option>
-                        <option value="3">فروشگاه زنانه</option>
-                        <option value="4">فروشگاه پسرانه</option>
-                        <option value="5">فروشگاه دخترانه</option>
-                    </select>
+                    <input type="text" class="form-control" placeholder="جستجوی محصول"/>
                 </div>
                 <div class="form-group mb-0">
-                    <button type="button" class="btn d-block full-width btn-dark">جستجوی محصول</button>
+                    <button type="submit" class="btn d-block full-width btn-dark">جستجوی محصول</button>
                 </div>
             </form>
         </div>
-        <div class="d-flex align-items-center justify-content-center br-top br-bottom py-2 px-3">
-            <h4 class="cart_heading fs-md mb-0">دسته بندی های محبوب</h4>
-        </div>
-        <div class="cart_action px-3 py-3">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-4 mb-3">
-                    <div class="cats_side_wrap text-center">
-                        <div class="sl_cat_01">
-                            <div class="d-inline-flex align-items-center justify-content-center p-3 circle mb-2 gray">
-                                <a href="javascript:void(0);" class="d-block"><img
-                                        src="{% static 'img/tshirt.png' %}" class="img-fluid" width="40"
-                                        alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="sl_cat_02">
-                            <h6 class="m-0 ft-medium fs-sm"><a href="javascript:void(0);">تیشرت</a></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-4 mb-3">
-                    <div class="cats_side_wrap text-center">
-                        <div class="sl_cat_01">
-                            <div class="d-inline-flex align-items-center justify-content-center p-3 circle mb-2 gray">
-                                <a href="javascript:void(0);" class="d-block"><img src="{% static 'img/pant.png' %}"
-                                                                                   class="img-fluid" width="40"
-                                                                                   alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="sl_cat_02">
-                            <h6 class="m-0 ft-medium fs-sm"><a href="javascript:void(0);">شلوار</a></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-4 mb-3">
-                    <div class="cats_side_wrap text-center">
-                        <div class="sl_cat_01">
-                            <div class="d-inline-flex align-items-center justify-content-center p-3 circle mb-2 gray">
-                                <a href="javascript:void(0);" class="d-block"><img
-                                        src="{% static 'img/fashion.png' %}" class="img-fluid" width="40"
-                                        alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="sl_cat_02">
-                            <h6 class="m-0 ft-medium fs-sm"><a href="javascript:void(0);">پیراهن</a></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-4 mb-3">
-                    <div class="cats_side_wrap text-center">
-                        <div class="sl_cat_01">
-                            <div class="d-inline-flex align-items-center justify-content-center p-3 circle mb-2 gray">
-                                <a href="javascript:void(0);" class="d-block"><img
-                                        src="{% static 'img/sneakers.png' %}" class="img-fluid" width="40" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="sl_cat_02">
-                            <h6 class="m-0 ft-medium fs-sm"><a href="javascript:void(0);">کفش</a></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-4 mb-3">
-                    <div class="cats_side_wrap text-center">
-                        <div class="sl_cat_01">
-                            <div class="d-inline-flex align-items-center justify-content-center p-3 circle mb-2 gray">
-                                <a href="javascript:void(0);" class="d-block"><img
-                                        src="{% static 'img/fashion.png' %}" class="img-fluid" width="40"
-                                        alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="sl_cat_02">
-                            <h6 class="m-0 ft-medium fs-sm"><a href="javascript:void(0);">لباس مجلسی</a></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-4 mb-3">
-                    <div class="cats_side_wrap text-center">
-                        <div class="sl_cat_01">
-                            <div class="d-inline-flex align-items-center justify-content-center p-3 circle mb-2 gray">
-                                <a href="javascript:void(0);" class="d-block"><img
-                                        src="{% static 'img/accessories.png' %}" class="img-fluid" width="40"
-                                        alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="sl_cat_02">
-                            <h6 class="m-0 ft-medium fs-sm"><a href="javascript:void(0);">اکسسوری</a></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="cart_action px-3 py-4">
+            <h4 class="text-center">به فروشگاه لباس ریحانه خوش آمدید!</h4>
+            <p class="text-center">فروشگاه لباس ما یک دنیای جذاب از مد و استایل برای شما فراهم کرده است. با افتخار به عنوان یکی از پیشروهای
+                صنعت لباس، ما به شما تجربه خریدی منحصر به فرد و فوق‌العاده را ارائه می‌دهیم.</p>
+            <h4 class="text-center">محصولات متنوع و با کیفیت</h4>
+            <p class="text-center">در فروشگاه ما، انواع و اقسام لباس‌ها برای هر سلیقه و سبک زندگی در دسترس است. از بروزترین ها گرفته تا
+                کلاسیک‌ ترین طراحی‌ها، همه در اینجا به شما پیشنهاد می‌شود. ما به دنبال ارائه لباس‌های با کیفیت بالا و
+                جذاب برای هر فصل و مناسبت هستیم.</p>
         </div>
     </div>
 </div>
