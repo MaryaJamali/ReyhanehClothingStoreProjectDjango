@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from django.db.models import Count
+from random import shuffle
+from django.db.models import Sum
 from utils.convertors import group_list
 from utils.http_service import get_client_ip
 from django.views.generic import ListView, DetailView
@@ -13,7 +15,6 @@ class ProductListView(ListView):
     template_name = 'product/product-list.html'
     model = Product
     context_object_name = 'products'
-    ordering = ['price']
     paginate_by = 8
 
     def get_context_data(self, *args, object_list=None, **kwargs):
@@ -31,7 +32,7 @@ class ProductListView(ListView):
         return context
 
     def get_queryset(self):
-        query = super(ProductListView, self).get_queryset()
+        query = Product.objects.filter(is_active=True, is_delete=False).all()  # Get all products
         category_name = self.kwargs.get('category')
         if category_name is not None:
             query = query.filter(category__url_title__iexact=category_name)
@@ -44,6 +45,20 @@ class ProductListView(ListView):
         color_name = self.kwargs.get('color')
         if color_name is not None:
             query = query.filter(color__url_title__iexact=color_name)
+        # Handle different sorting options
+        sort_option = self.request.GET.get('sort', '1')  # Sort by default
+        if sort_option == '2':  # Sort by ascending price
+            query = query.order_by('-price')
+        elif sort_option == '3':  # Sort by descending price
+            query = query.order_by('price')
+        elif sort_option == '4':  # Sort by newest
+            query = query.order_by('-id')
+        elif sort_option == '5':  # Sort by best-selling
+            query = query.annotate(order_count=Sum('orderdetail__count')).order_by('-order_count')
+        elif sort_option == '6':  # Random order
+            queryset_list = list(query)
+            shuffle(queryset_list)
+            return queryset_list
         return query
 
 

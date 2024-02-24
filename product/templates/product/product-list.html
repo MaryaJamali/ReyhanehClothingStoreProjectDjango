@@ -41,14 +41,29 @@
                                         class="hide_mob">فیلترها</span></a>
                             </div>
                             <div class="single_fitres ml-2 br-left">
-                                <select class="custom-select simple">
-                                    <option value="1" selected="">مرتب سازی پیش فرض</option>
-                                    <option value="2">مرتب سازی براساس قیمت صعودی</option>
-                                    <option value="3">مرتب سازی براساس قیمت نزولی</option>
-                                    <option value="4"> مرتب سازی براساس جدیدترین ها</option>
-                                    <option value="5">مرتب سازی براساس پرفروش ترین ها</option>
-                                    <option value="6">بصورت تصادفی</option>
-                                </select>
+                                <form method="get">
+                                    <select class="custom-select simple" name="sort">
+                                        <option value="1" {% if request.GET.sort == '1' %}selected{% endif %}>مرتب سازی
+                                            پیش فرض
+                                        </option>
+                                        <option value="2" {% if request.GET.sort == '2' %}selected{% endif %}>مرتب سازی
+                                            براساس قیمت صعودی
+                                        </option>
+                                        <option value="3" {% if request.GET.sort == '3' %}selected{% endif %}>مرتب سازی
+                                            براساس قیمت نزولی
+                                        </option>
+                                        <option value="4" {% if request.GET.sort == '4' %}selected{% endif %}>مرتب سازی
+                                            براساس جدیدترین ها
+                                        </option>
+                                        <option value="5" {% if request.GET.sort == '5' %}selected{% endif %}>مرتب سازی
+                                            براساس پرفروش ترین ها
+                                        </option>
+                                        <option value="6" {% if request.GET.sort == '6' %}selected{% endif %}>بصورت
+                                            تصادفی
+                                        </option>
+                                    </select>
+                                    <input type="submit" value="مرتب کن">
+                                </form>
                             </div>
                             <div class="single_fitres">
                                 <a href="{% url 'product_list_page_view' %}" class="simple-button mr-1 active"><i
