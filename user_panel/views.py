@@ -254,15 +254,14 @@ def remove_wishlist(request):
     wishlist_id = request.GET.get('wishlist_id')
     if wishlist_id is None:
         return JsonResponse({'status': 'not_found_wishlist_id'})
-    wishlist_product, created = Product.objects.prefetch_related('productwishlist_set').get_or_create(user=request.user)
-    deleted_wishlist_product = wishlist_product.productwishlist_set.filter(id=wishlist_id).first()
+    wishlist_product = ProductWishList.objects.filter(id=wishlist_id, user_id=request.user.id).first()
 
-    if deleted_wishlist_product is None:
+    if wishlist_product is None:
         return JsonResponse({'status': 'detail_not_found'})
 
-    deleted_wishlist_product.delete()
+    wishlist_product.delete()
     return JsonResponse({
         'status': 'success',
-        'body': render_to_string('user_panel/include/user-cart-content.html')
+        'body': render_to_string('user_panel/include/wish-list-content.html')
     })
 

@@ -27,6 +27,15 @@
     </div>
     <!-- ======================= Top Breadcrubms ======================== -->
     <!-- ======================= Dashboard Detail ======================== -->
-     {% include 'user_panel/include/wish-list-content.html' %}
+    <section class="middle">
+        <div class="container">
+            <div class="row justify-content-center justify-content-between">
+                {% render_partial 'user_panel.views.user_panel_menu_component' %}
+                <div class="col-12 col-md-12 col-lg-8 col-xl-8 text-center">
+                    {% include 'user_panel/include/wish-list-content.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- ======================= Dashboard Detail End ======================== -->
 {% endblock %}
