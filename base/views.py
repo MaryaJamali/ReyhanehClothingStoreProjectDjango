@@ -6,7 +6,7 @@ from django.views.generic.base import TemplateView
 from product.models import Product
 from article.models import Article
 from base.forms import NewsletterSubscriptionModelForm
-from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox, QuestionCommonGroup, QuestionCommon
+from site_setting.models import Slider, SiteSetting, MenuLinkBox, FooterLinkBox, QuestionCommonGroup
 
 
 # Class_base_templateview for Home page
