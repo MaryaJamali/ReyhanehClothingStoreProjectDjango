@@ -9,7 +9,6 @@ from account.models import User
 from django.contrib.auth import logout
 from cart.models import Order, OrderDetail
 from product.models import Product, ProductWishList
-from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from .forms import EditProfileModelForm, ChangePasswordForm
 
@@ -258,10 +257,13 @@ def remove_wishlist(request):
 
     if wishlist_product is None:
         return JsonResponse({'status': 'detail_not_found'})
-
+    # Get the remaining wishlist items after deletion
+    remaining_wishlist = ProductWishList.objects.filter(user=request.user).exclude(id=wishlist_id)
     wishlist_product.delete()
-    return JsonResponse({
-        'status': 'success',
-        'body': render_to_string('user_panel/include/wish-list-content.html')
-    })
-
+    if remaining_wishlist.exists():
+        body_html = render_to_string('user_panel/include/wish-list-content.html',
+                                     {'wishlist_products': remaining_wishlist})
+        return JsonResponse({
+            'status': 'success',
+            'body': body_html
+        })
