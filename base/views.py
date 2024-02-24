@@ -62,6 +62,15 @@ class SizeGuide(TemplateView):
     template_name = 'base/size-guide.html'
 
 
+# Function_base_view for QuestionCommon page
+def question_common_view(request: HttpRequest):
+    question_common_group = QuestionCommonGroup.objects.all()
+    context = {
+        'question_common_group': question_common_group,
+    }
+    return render(request, 'base/questions-common.html', context=context)
+
+
 # Function_base_view for site-header-component page
 def site_header_component(request: HttpRequest):
     setting: SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
@@ -74,11 +83,6 @@ def site_header_component(request: HttpRequest):
         'menu_link_boxes': menu_link_boxes
     }
     return render(request, 'shared/site-header-component.html', context=context)
-
-
-# Function_base_view for site-customer-features-component page
-def site_customer_features_component(request: HttpRequest):
-    return render(request, 'shared/site-customer-features-component.html')
 
 
 # Function_base_view for site-footer-component page
@@ -101,10 +105,11 @@ def site_footer_component(request: HttpRequest):
     return render(request, 'shared/site-footer-component.html', context=context)
 
 
-# Function_base_view for QuestionCommon page
-def question_common_view(request: HttpRequest):
-    question_common_group = QuestionCommonGroup.objects.all()
-    context = {
-        'question_common_group': question_common_group,
-    }
-    return render(request, 'base/questions-common.html', context=context)
+# Function_base_view for site-customer-features-component page
+def site_customer_features_component(request: HttpRequest):
+    return render(request, 'shared/site-customer-features-component.html')
+
+
+# Function_base_view for site_search_component page
+def site_search_component(request: HttpRequest):
+    return render(request, 'shared/site-search-component.html')
