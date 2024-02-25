@@ -21,7 +21,8 @@ Below is an overview of the project structure .....
 - **README.md** : Project documentation.📝
 - **req.txt** : List of project dependencies.📄
 ## Installation and execution :
-1. Simulate your repository: ```git clone https://github.com/MaryaJamali/ReyhanehClothingStoreProjectDjango.git```
+1. Simulate your repository:<br>
+```git clone https://github.com/MaryaJamali/ReyhanehClothingStoreProjectDjango.git```
 2. Create a virtual environment: ```conda create -n <enviroment name>```
 3. Activate the virtual environment: ```conda activate <enviroment name>```
 4. Install dependencies: ```pip install -r req.txt```
