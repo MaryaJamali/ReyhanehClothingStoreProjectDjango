@@ -18,15 +18,17 @@ Below is an overview of the project structure .....
 - **utils** : Utility functions and modules.🔗
 - **db.sqlite3** : SQLite database file.🌐
 - **manage.py** : Django management script.💻
+- **LICENSE** : Permission to use the project.🧾
 - **README.md** : Project documentation.📝
 - **req.txt** : List of project dependencies.📄
 ## Installation and execution :
-1. Simulate your repository:<br>
+1. Read the project license<br>
+2. Simulate your repository:<br>
 ```git clone https://github.com/MaryaJamali/ReyhanehClothingStoreProjectDjango.git```
-2. Create a virtual environment: ```conda create -n <enviroment name>```
-3. Activate the virtual environment: ```conda activate <enviroment name>```
-4. Install dependencies: ```pip install -r req.txt```
-5. Run the program
+3. Create a virtual environment: ```conda create -n <enviroment name>```
+4. Activate the virtual environment: ```conda activate <enviroment name>```
+5. Install dependencies: ```pip install -r req.txt```
+6. Run the program
 ## General Description :
 Below is an overview of the project pages .....
 ### Main pages of the project <br>
@@ -58,6 +60,8 @@ ___
  This project can be developed; Therefore, developers can help develop and improve the project by reading the code documentation.
  ## Notice : 🔊🔊🔊
  The coding of this project in the price filter and search box section has not been completed and will be completed in the future 😘
+ ## License :
+ In the `LICENSE` file, the rules for using the project are written by the developer. Please read before downloading the project
  ## Contact the developer :
  For technical support or to report issues, you can visit the GitHub page or contact me through the contact methods I have.<br>
  📧 Developer Email 👉  m.jamali16@yahoo.com  <br>
