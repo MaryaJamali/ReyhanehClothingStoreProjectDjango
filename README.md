@@ -18,6 +18,7 @@ Below is an overview of the project structure .....
 - **utils** : Utility functions and modules.🔗
 - **db.sqlite3** : SQLite database file.🌐
 - **manage.py** : Django management script.💻
+- **.gitignore** : File to ignore some cells and files.📄
 - **LICENSE** : Permission to use the project.🧾
 - **README.md** : Project documentation.📝
 - **req.txt** : List of project dependencies.📄
